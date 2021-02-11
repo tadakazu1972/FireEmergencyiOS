@@ -123,6 +123,7 @@
 		59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59AC16611E6BF80B00BBB28F /* purpose.txt */; };
 		59AC16641E6C006C00BBB28F /* Guide6Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AC16631E6C006C00BBB28F /* Guide6Dialog.swift */; };
 		59AC16661E6C038000BBB28F /* Guide1Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AC16651E6C038000BBB28F /* Guide1Dialog.swift */; };
+		59B40E5425D51E07009E581A /* PersonalViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B40E5325D51E07009E581A /* PersonalViewController1.swift */; };
 		59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */; };
 		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
 		59C9A958244ED616000B3C01 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C9A957244ED616000B3C01 /* EarthquakeViewController.swift */; };
@@ -288,6 +289,7 @@
 		59AC16611E6BF80B00BBB28F /* purpose.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = purpose.txt; sourceTree = "<group>"; };
 		59AC16631E6C006C00BBB28F /* Guide6Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide6Dialog.swift; sourceTree = "<group>"; };
 		59AC16651E6C038000BBB28F /* Guide1Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide1Dialog.swift; sourceTree = "<group>"; };
+		59B40E5325D51E07009E581A /* PersonalViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController1.swift; sourceTree = "<group>"; };
 		59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		59C9A957244ED616000B3C01 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				59F6407124553AF200A39423 /* ViewController2.swift */,
+				59B40E5325D51E07009E581A /* PersonalViewController1.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
@@ -706,6 +709,7 @@
 				5953611E1E7F7D0F00551A0E /* Guide41Dialog.swift in Sources */,
 				5952337E1E741A2000FC8CE8 /* Guide5Dialog.swift in Sources */,
 				5960E6101E45F8D000D1917A /* FMDatabaseQueue.m in Sources */,
+				59B40E5425D51E07009E581A /* PersonalViewController1.swift in Sources */,
 				5960EB7A1E46C7BD00D1917A /* StringExtensions.swift in Sources */,
 				5953613A1E7FBEF400551A0E /* ContactPassInputDialog.swift in Sources */,
 				59D8AEF31E6126C200A3EDE2 /* ContactCellCheckbox.swift in Sources */,

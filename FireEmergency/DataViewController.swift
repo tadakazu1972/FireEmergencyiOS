@@ -74,7 +74,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnPersonal.layer.cornerRadius = 8.0
         btnPersonal.tag = 0
         btnPersonal.translatesAutoresizingMaskIntoConstraints = false
-        btnPersonal.addTarget(self, action: #selector(self.onClickbtnGuide(_:)), for: .touchUpInside)
+        btnPersonal.addTarget(self, action: #selector(self.onClickbtnPersonal(_:)), for: .touchUpInside)
         self.view.addSubview(btnPersonal)
         //戻る
         btnBack.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -357,6 +357,12 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //アプリ説明書
     @objc func onClickbtnGuide(_ sender : UIButton){
         mScreen = 3
+        mViewController2.updateView()
+    }
+    
+    //非常参集　職員情報登録画面遷移
+    @objc func onClickbtnPersonal(_ sender : UIButton){
+        mScreen = 4
         mViewController2.updateView()
     }
     

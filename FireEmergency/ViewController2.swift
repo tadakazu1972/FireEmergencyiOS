@@ -10,7 +10,7 @@ import UIKit
 
 //グローバル変数
 //internal var mViewController2: ViewController2!
-//基礎データ入力ボタンからの画面切り替え判定変数　1:基礎データ入力　2:連絡網データ操作 3:アプリ説明書
+//基礎データ入力ボタンからの画面切り替え判定変数　1:基礎データ入力　2:連絡網データ操作 3:アプリ説明書　4:非常参集職員情報登録
 internal var mScreen: Int!
 
 class ViewController2: UIViewController {
@@ -43,6 +43,12 @@ class ViewController2: UIViewController {
         return viewController
     }()
     
+    private lazy var mPersonalViewController1: PersonalViewController1 = {
+        var viewController = PersonalViewController1()
+        add(asChildViewController: viewController)
+        return viewController
+    }()
+    
     //スタート
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,19 +76,29 @@ class ViewController2: UIViewController {
         case 1:
             remove(asChildViewController: mContactViewController)
             remove(asChildViewController: mGuideViewController)
+            remove(asChildViewController: mPersonalViewController1)
             add(asChildViewController: mDataViewController)
             
         //連絡網データ操作
         case 2:
             remove(asChildViewController: mDataViewController)
             remove(asChildViewController: mGuideViewController)
+            remove(asChildViewController: mPersonalViewController1)
             add(asChildViewController: mContactViewController)
             
         //アプリ説明書
         case 3:
             remove(asChildViewController: mDataViewController)
             remove(asChildViewController: mContactViewController)
+            remove(asChildViewController: mPersonalViewController1)
             add(asChildViewController: mGuideViewController)
+        
+        //非常参集　職員情報登録
+        case 4:
+            remove(asChildViewController: mDataViewController)
+            remove(asChildViewController: mContactViewController)
+            remove(asChildViewController: mGuideViewController)
+            add(asChildViewController: mPersonalViewController1)
                         
         default:
             break
