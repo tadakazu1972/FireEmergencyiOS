@@ -70,13 +70,22 @@ class ViewController: UIViewController {
         //初回起動判定
         if userDefaults.bool(forKey: "firstLaunch"){
             //初回起動時処理 一度も基礎データ入力されないorデータ入力画面でもスピナーをさわらない場合はセットされない=結果でnilが表示される　それを防止
+            //基礎データ
             userDefaults.set("消防局", forKey: "mainStation")
             userDefaults.set("消防局", forKey: "tsunamiStation")
             userDefaults.set("１号招集", forKey: "kubun")
+            //非常参集　職員情報
+            userDefaults.set("", forKey: "personalId")
+            userDefaults.set("", forKey: "personalClass")
+            userDefaults.set("", forKey: "personalAge")
+            userDefaults.set("", forKey: "personalDepartment")
+            userDefaults.set("", forKey: "personalName")
+            userDefaults.set(false, forKey: "personalEngineer")
+            userDefaults.set(false, forKey: "personalParamdic")
             
             //DBダミーデータ生成
-            mDBHelper.insert("大阪　太郎",tel: "09066080765",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
-            mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
+            mDBHelper.insert("大阪　太郎",tel: "09099999999",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
+            mDBHelper.insert("浪速　緑",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
             
             //２回目以降ではfalseに
             userDefaults.set(false, forKey: "firstLaunch")
