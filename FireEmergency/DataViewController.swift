@@ -11,6 +11,7 @@ import UIKit
 class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //メイン画面
     let btnData         = UIButton(frame: CGRect.zero)
+    let btnPersonal     = UIButton(frame: CGRect.zero)
     let btnBack         = UIButton(frame: CGRect.zero)
     let btnContact      = UIButton(frame: CGRect.zero) //連絡網データ操作起動の入口ボタン
     let lblData         = UILabel(frame: CGRect.zero)
@@ -64,6 +65,17 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnData.translatesAutoresizingMaskIntoConstraints = false
         btnData.addTarget(self, action: #selector(self.onClickbtnGuide(_:)), for: .touchUpInside)
         self.view.addSubview(btnData)
+        //非常参集職員情報登録画面遷移ボタン
+        btnPersonal.backgroundColor = UIColor.red
+        btnPersonal.layer.masksToBounds = true
+        btnPersonal.setTitle("非常参集　職員情報入力", for: UIControl.State())
+        btnPersonal.setTitleColor(UIColor.white, for: UIControl.State())
+        btnPersonal.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        btnPersonal.layer.cornerRadius = 8.0
+        btnPersonal.tag = 0
+        btnPersonal.translatesAutoresizingMaskIntoConstraints = false
+        btnPersonal.addTarget(self, action: #selector(self.onClickbtnGuide(_:)), for: .touchUpInside)
+        self.view.addSubview(btnPersonal)
         //戻る
         btnBack.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnBack.layer.masksToBounds = true
@@ -182,8 +194,14 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
             ])
         self.view.addConstraints([
+            //非常参集職員情報遷移ボタン
+            Constraint(btnPersonal, .top, to:self.btnData, .bottom, constant:8),
+            Constraint(btnPersonal, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnPersonal, .trailing, to:self.view, .trailingMargin, constant:8)
+            ])
+        self.view.addConstraints([
             //戻るボタン
-            Constraint(btnBack, .top, to:btnData, .bottom, constant:8),
+            Constraint(btnBack, .top, to:btnPersonal, .bottom, constant:8),
             Constraint(btnBack, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnBack, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])

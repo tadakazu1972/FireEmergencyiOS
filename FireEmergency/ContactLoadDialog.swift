@@ -76,7 +76,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         //csvファイル読込
         let file_name = "fire.csv"
         var csvString = ""
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains( FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true ).first! as NSString {
+        if let dir : NSString = NSSearchPathForDirectoriesInDomains( FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true ).first! as NSString? {
             
             let path_file_name = dir.appendingPathComponent( file_name )
             
