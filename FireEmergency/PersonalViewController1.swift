@@ -11,8 +11,10 @@ import UIKit
 class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     //メイン画面
     let lblData         = UILabel(frame: CGRect.zero)
-    let txtName         = UITextField(frame: CGRect.zero)
-    let txtTel          = UITextField(frame: CGRect.zero)
+    let lblId           = UILabel(frame: CGRect.zero)
+    let txtId           = UITextField(frame: CGRect.zero)
+    let lblClass        = UILabel(frame: CGRect.zero)
+    let txtClass          = UITextField(frame: CGRect.zero)
     let txtMail         = UITextField(frame: CGRect.zero)
     let lblKubun        = UILabel(frame: CGRect.zero)
     let txtKubun        = UITextField(frame: CGRect.zero)
@@ -77,25 +79,39 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         lblData.text = "職員情報　登録画面"
         lblData.adjustsFontSizeToFitWidth = true
         lblData.textColor = UIColor.black
-        lblData.textAlignment = NSTextAlignment.left
+        lblData.textAlignment = NSTextAlignment.center
         lblData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblData)
-        //名前テキストフィールド
-        txtName.text = userDefaults.string(forKey: "personalId")
-        txtName.adjustsFontSizeToFitWidth = true
-        txtName.textColor = UIColor.black
-        txtName.delegate = self
-        txtName.borderStyle = UITextField.BorderStyle.bezel
-        txtName.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtName)
-        //電話番号テキストフィールド
-        txtTel.text = userDefaults.string(forKey: "personalClass")
-        txtTel.adjustsFontSizeToFitWidth = true
-        txtTel.textColor = UIColor.black
-        txtTel.delegate = self
-        txtTel.borderStyle = UITextField.BorderStyle.bezel
-        txtTel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtTel)
+        //職員番号ラベル
+        lblId.text = "職員番号"
+        lblId.adjustsFontSizeToFitWidth = true
+        lblId.textColor = UIColor.black
+        lblId.textAlignment = NSTextAlignment.left
+        lblId.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblId)
+        //職員番号テキストフィールド
+        txtId.text = userDefaults.string(forKey: "personalId")
+        txtId.adjustsFontSizeToFitWidth = true
+        txtId.textColor = UIColor.black
+        txtId.delegate = self
+        txtId.borderStyle = UITextField.BorderStyle.bezel
+        txtId.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(txtId)
+        //階級ラベル
+        lblClass.text = "階　　級"
+        lblClass.adjustsFontSizeToFitWidth = true
+        lblClass.textColor = UIColor.black
+        lblClass.textAlignment = NSTextAlignment.left
+        lblClass.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblClass)
+        //階級テキストフィールド
+        txtClass.text = userDefaults.string(forKey: "personalClass")
+        txtClass.adjustsFontSizeToFitWidth = true
+        txtClass.textColor = UIColor.black
+        txtClass.delegate = self
+        txtClass.borderStyle = UITextField.BorderStyle.bezel
+        txtClass.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(txtClass)
         //メールアドレステキストフィールド
         txtMail.text = userDefaults.string(forKey: "personalAge")
         txtMail.adjustsFontSizeToFitWidth = true
@@ -238,24 +254,36 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //新規データ入力ラベル
             Constraint(lblData, .top, to:self.view, .top, constant:28),
-            Constraint(lblData, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblData, .centerX, to:self.view, .centerX, constant:0),
             Constraint(lblData, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
-            //名前テキストフィールド
-            Constraint(txtName, .top, to:lblData, .bottom, constant:24),
-            Constraint(txtName, .leading, to:self.view, .leading, constant:16),
-            Constraint(txtName, .trailing, to:self.view, .trailing, constant:-16)
+            //職員番号ラベル
+            Constraint(lblId, .top, to:lblData, .bottom, constant:24),
+            Constraint(lblId, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblId, .trailing, to:self.view, .centerX, constant:-16)
+        ])
+        self.view.addConstraints([
+            //職員番号テキストフィールド
+            Constraint(txtId, .top, to:lblData, .bottom, constant:24),
+            Constraint(txtId, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtId, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
-            //電話テキストフィールド
-            Constraint(txtTel, .top, to:txtName, .bottom, constant:24),
-            Constraint(txtTel, .leading, to:self.view, .leading, constant:16),
-            Constraint(txtTel, .trailing, to:self.view, .trailing, constant:-16)
+            //階級ラベル
+            Constraint(lblClass, .top, to:txtId, .bottom, constant:24),
+            Constraint(lblClass, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblClass, .trailing, to:self.view, .centerX, constant:-16)
+        ])
+        self.view.addConstraints([
+            //階級テキストフィールド
+            Constraint(txtClass, .top, to:txtId, .bottom, constant:24),
+            Constraint(txtClass, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtClass, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //メールアドレステキストフィールド
-            Constraint(txtMail, .top, to:txtTel, .bottom, constant:24),
+            Constraint(txtMail, .top, to:txtClass, .bottom, constant:24),
             Constraint(txtMail, .leading, to:self.view, .leading, constant:16),
             Constraint(txtMail, .trailing, to:self.view, .trailing, constant:-16)
             ])
