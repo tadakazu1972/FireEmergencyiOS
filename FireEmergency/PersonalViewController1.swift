@@ -14,7 +14,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let lblId           = UILabel(frame: CGRect.zero)
     let txtId           = UITextField(frame: CGRect.zero)
     let lblClass        = UILabel(frame: CGRect.zero)
-    let txtClass          = UITextField(frame: CGRect.zero)
+    let txtClass        = UITextField(frame: CGRect.zero)
+    let picClass        = UIPickerView(frame: CGRect.zero)
+    let classArray: NSArray = ["司令長","司令","司令補","消防士長","消防副士長","消防士"]
     let txtMail         = UITextField(frame: CGRect.zero)
     let lblKubun        = UILabel(frame: CGRect.zero)
     let txtKubun        = UITextField(frame: CGRect.zero)
@@ -104,14 +106,26 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         lblClass.textAlignment = NSTextAlignment.left
         lblClass.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblClass)
+        
+        //pickerViewとともにポップアップするツールバーとボタンの設定
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 35))
+        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.selectRow))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
+        toolbar.setItems([flexibleSpace, doneItem], animated: true)
+        
         //階級テキストフィールド
         txtClass.text = userDefaults.string(forKey: "personalClass")
-        txtClass.adjustsFontSizeToFitWidth = true
-        txtClass.textColor = UIColor.black
-        txtClass.delegate = self
+        txtClass.inputView = picClass //これでテキストフィールドとピッカービューを紐付け
+        txtClass.inputAccessoryView = toolbar //上で設定したポップアップと紐付け
         txtClass.borderStyle = UITextField.BorderStyle.bezel
         txtClass.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtClass)
+        //階級PickerView
+        picClass.delegate = self
+        picClass.dataSource = self
+        picClass.translatesAutoresizingMaskIntoConstraints = false
+        picClass.tag = 0
+        picClass.selectRow(0, inComponent:0, animated:false)
         //メールアドレステキストフィールド
         txtMail.text = userDefaults.string(forKey: "personalAge")
         txtMail.adjustsFontSizeToFitWidth = true
@@ -121,11 +135,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         txtMail.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtMail)
         
-        //pickerViewとともにポップアップするツールバーとボタンの設定
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 35))
-        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.selectRow))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
-        toolbar.setItems([flexibleSpace, doneItem], animated: true)
+        
         
         //非常招集区分ラベル
         lblKubun.text = "■非常招集区分"
@@ -359,6 +369,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         //返す行数
         var rowNum: Int = 1
         switch pickerView.tag {
+        case 0:
+            rowNum = classArray.count
+            break
         case 1:
             rowNum = kubunArray.count
             break
@@ -384,6 +397,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         //返す列
         var picComponent: String?
         switch pickerView.tag {
+        case 0:
+            picComponent = classArray[row] as? String
+            break
         case 1:
             picComponent = kubunArray[row] as? String
             break
@@ -408,6 +424,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
         print("列:\(row)")
         switch pickerView.tag {
+        case 0:
+            txtClass.text = classArray[row] as? String
+            break
         case 1:
             txtKubun.text = kubunArray[row] as? String
             break
@@ -430,6 +449,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //ツールバーで選択ボタンを押した時
     @objc func selectRow(){
+        txtClass.endEditing(true)
         txtKubun.endEditing(true) //閉じるアクション
         txtSyozoku0.endEditing(true)
         txtSyozoku.endEditing(true)
