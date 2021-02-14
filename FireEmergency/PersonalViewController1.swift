@@ -32,6 +32,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let lblParamedic    = UILabel(frame: CGRect.zero)
     let btnSave         = UIButton(frame: CGRect.zero)
     let btnCancel       = UIButton(frame: CGRect.zero)
+    let btnNext         = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
     fileprivate var mInfoDialog: InfoDialog!
     //所属(大分類)のインデックス保存用
@@ -40,6 +41,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     internal var mDBHelper: DBHelper!
     //非常参集　職員情報　保存用
     let userDefaults = UserDefaults.standard
+    //参集署選択ダイアログ
+    fileprivate var mSansyusyoSelectDialog: SansyusyoSelectDialog!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,6 +200,17 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         btnSave.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSave)
         
+        //参集署選択ボタン
+        btnNext.backgroundColor = UIColor.red
+        btnNext.layer.masksToBounds = true
+        btnNext.setTitle("参集署　到着", for: UIControl.State())
+        btnNext.setTitleColor(UIColor.white, for: UIControl.State())
+        btnNext.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        btnNext.layer.cornerRadius = 8.0
+        btnNext.addTarget(self, action: #selector(self.onClickbtnNext(_:)), for: .touchUpInside)
+        btnNext.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnNext)
+        
         //テキストフィールドの入力時に表示されるキーボードがフォーカスを外れたら閉じるように監視
         let tapGestureResponder: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGestureResponder.cancelsTouchesInView = false
@@ -320,13 +334,19 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
             Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
             Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
             Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
-            ])
+        ])
         self.view.addConstraints([
             //登録ボタン
             Constraint(btnSave, .bottom, to:self.view, .bottom, constant:-10),
             Constraint(btnSave, .leading, to:self.view, .centerX, constant:8),
             Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8)
-            ])
+        ])
+        self.view.addConstraints([
+            //参集署選択ボタン
+            Constraint(btnNext, .bottom, to:btnCancel, .top, constant:-16),
+            Constraint(btnNext, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnNext, .trailing, to:self.view, .trailing, constant:-8)
+        ])
     }
     
     //テキストフィールドのキーボード閉じる処理
@@ -447,6 +467,12 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     @objc func onClickbtnCancel(_ sender : UIButton){
         self.dismiss(animated: true)
         mViewController.view.alpha = 1.0
+    }
+    
+    //参集署選択ボタンクリック
+    @objc func onClickbtnNext(_ sender: UIButton){
+        mSansyusyoSelectDialog = SansyusyoSelectDialog(parentView: self)
+        mSansyusyoSelectDialog.showInfo()
     }
     
     override func didReceiveMemoryWarning() {

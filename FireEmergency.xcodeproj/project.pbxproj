@@ -73,6 +73,7 @@
 		5953615A1E815F4900551A0E /* guide223.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361591E815F4900551A0E /* guide223.png */; };
 		5953615C1E81610500551A0E /* guide224.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615B1E81610500551A0E /* guide224.png */; };
 		5953615E1E81629C00551A0E /* guide225.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615D1E81629C00551A0E /* guide225.png */; };
+		5960CEF025D8FBE90072129C /* SansyusyoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */; };
 		5960D68022056743005E512C /* KinentaiSelectDialog3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960D67F22056743005E512C /* KinentaiSelectDialog3.swift */; };
 		5960D6842205C384005E512C /* KinentaiResultDialog31.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960D6832205C384005E512C /* KinentaiResultDialog31.swift */; };
 		5960D68622067431005E512C /* KinentaiResultDialog32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960D68522067431005E512C /* KinentaiResultDialog32.swift */; };
@@ -230,6 +231,7 @@
 		595361591E815F4900551A0E /* guide223.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide223.png; sourceTree = "<group>"; };
 		5953615B1E81610500551A0E /* guide224.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide224.png; sourceTree = "<group>"; };
 		5953615D1E81629C00551A0E /* guide225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide225.png; sourceTree = "<group>"; };
+		5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SansyusyoSelectDialog.swift; sourceTree = "<group>"; };
 		5960D67F22056743005E512C /* KinentaiSelectDialog3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiSelectDialog3.swift; sourceTree = "<group>"; };
 		5960D6832205C384005E512C /* KinentaiResultDialog31.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiResultDialog31.swift; sourceTree = "<group>"; };
 		5960D68522067431005E512C /* KinentaiResultDialog32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiResultDialog32.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				59F6407124553AF200A39423 /* ViewController2.swift */,
 				59B40E5325D51E07009E581A /* PersonalViewController1.swift */,
+				5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
@@ -755,6 +758,7 @@
 				593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */,
 				5960D6842205C384005E512C /* KinentaiResultDialog31.swift in Sources */,
 				593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */,
+				5960CEF025D8FBE90072129C /* SansyusyoSelectDialog.swift in Sources */,
 				5953613C1E7FCDD700551A0E /* Guide21Dialog.swift in Sources */,
 				597FD1401E2EF3CF0011ABB1 /* KinentaiNankaitraf1.swift in Sources */,
 				590157681E38CC6800928154 /* ContactCell1.swift in Sources */,
