@@ -17,49 +17,19 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let txtClass        = UITextField(frame: CGRect.zero)
     let picClass        = UIPickerView(frame: CGRect.zero)
     let classArray: NSArray = ["司令長","司令","司令補","消防士長","消防副士長","消防士"]
-    let txtMail         = UITextField(frame: CGRect.zero)
-    let lblKubun        = UILabel(frame: CGRect.zero)
-    let txtKubun        = UITextField(frame: CGRect.zero)
-    let picKubun        = UIPickerView(frame: CGRect.zero)
-    let kubunArray: NSArray = ["１号招集","２号招集","３号招集","４号招集"]
+    let lblAge          = UILabel(frame: CGRect.zero)
+    let txtAge         = UITextField(frame: CGRect.zero)
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
     let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
-    let lblSyozoku      = UILabel(frame: CGRect.zero)
-    let txtSyozoku      = UITextField(frame: CGRect.zero)
-    let picSyozoku      = UIPickerView(frame: CGRect.zero)
-    let syozokuArray: NSArray = [["総務課","人事課","施設課","予防課","規制課","警防課","司令課","救急課"],
-                                 ["北本署","梅田","浮田","南森町","与力","大淀町","本庄"],
-                                 ["都島本署","高倉","東野田"],
-                                 ["福島本署","上福島","海老江"],
-                                 ["此花本署","桜島","西九条"],
-                                 ["中央本署","東雲","道頓堀","南坂町","上町"],
-                                 ["西本署","江戸堀","新町"],
-                                 ["港本署","田中"],
-                                 ["大正本署","泉尾","鶴町"],
-                                 ["天王寺本署","元町"],
-                                 ["浪速本署","恵美須","立葉","浪速出張所"],
-                                 ["西淀川本署","佃","大和田","竹島"],
-                                 ["淀川本署","十三橋","加島","東三国"],
-                                 ["東淀川本署","豊里","小松","井高野","柴島","西淡路"],
-                                 ["東成本署","中本","深江"],
-                                 ["生野本署","勝山","中川","巽"],
-                                 ["旭本署","新森","赤川"],
-                                 ["城東本署","放出","中浜","関目"],
-                                 ["鶴見本署","今津","矢田"],
-                                 ["住之江本署","平林","加賀屋","南港"],
-                                 ["阿倍野本署","清明通","阪南"],
-                                 ["住吉本署","苅田","万代"],
-                                 ["東住吉本署","北田辺","杭全","矢田"],
-                                 ["平野本署","加美","長吉","喜連","加美正覚寺"],
-                                 ["西成本署","海道","津守"],
-                                 ["水上"],
-                                 ["教育訓練センター"]]
-    let lblKinmu        = UILabel(frame: CGRect.zero)
-    let txtKinmu        = UITextField(frame: CGRect.zero)
-    let picKinmu        = UIPickerView(frame: CGRect.zero)
-    let kinmuArray: NSArray = ["日勤","１部","２部"]
+    let lblName      = UILabel(frame: CGRect.zero)
+    let txtName      = UITextField(frame: CGRect.zero)
+    let lblShikaku        = UILabel(frame: CGRect.zero)
+    let swtEngineer     = UISwitch(frame: CGRect.zero)
+    let lblEngineer     = UILabel(frame: CGRect.zero)
+    let swtParamedic    = UISwitch(frame: CGRect.zero)
+    let lblParamedic    = UILabel(frame: CGRect.zero)
     let btnSave         = UIButton(frame: CGRect.zero)
     let btnCancel       = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
@@ -126,101 +96,88 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         picClass.translatesAutoresizingMaskIntoConstraints = false
         picClass.tag = 0
         picClass.selectRow(0, inComponent:0, animated:false)
-        //メールアドレステキストフィールド
-        txtMail.text = userDefaults.string(forKey: "personalAge")
-        txtMail.adjustsFontSizeToFitWidth = true
-        txtMail.textColor = UIColor.black
-        txtMail.delegate = self
-        txtMail.borderStyle = UITextField.BorderStyle.bezel
-        txtMail.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtMail)
-        
-        
-        
-        //非常招集区分ラベル
-        lblKubun.text = "■非常招集区分"
-        lblKubun.adjustsFontSizeToFitWidth = true
-        lblKubun.textAlignment = NSTextAlignment.left
-        lblKubun.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(lblKubun)
-        //非常招集区分テキストフィールド
-        txtKubun.borderStyle = UITextField.BorderStyle.bezel
-        txtKubun.text = userDefaults.string(forKey: "personalDepartment")
-        txtKubun.inputView = picKubun //これでテキストフィールドとピッカービューを紐付け
-        txtKubun.inputAccessoryView = toolbar //上で設定したポップアップと紐付け
-        txtKubun.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtKubun)
-        //非常招集区分PickerView
-        picKubun.delegate = self
-        picKubun.dataSource = self
-        picKubun.translatesAutoresizingMaskIntoConstraints = false
-        picKubun.tag = 1
-        picKubun.selectRow(0, inComponent:0, animated:false)
-        
-        //所属(大分類)ラベル
-        lblSyozoku0.text = "■所属(大分類)"
+        //年齢ラベル
+        lblAge.text = "年　　齢"
+        lblAge.adjustsFontSizeToFitWidth = true
+        lblAge.textColor = UIColor.black
+        lblAge.textAlignment = NSTextAlignment.left
+        lblAge.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblAge)
+        //年齢テキストフィールド
+        txtAge.text = userDefaults.string(forKey: "personalAge")
+        txtAge.adjustsFontSizeToFitWidth = true
+        txtAge.textColor = UIColor.black
+        txtAge.delegate = self
+        txtAge.borderStyle = UITextField.BorderStyle.bezel
+        txtAge.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(txtAge)
+        //所属ラベル
+        lblSyozoku0.text = "所　　属"
         lblSyozoku0.adjustsFontSizeToFitWidth = true
         lblSyozoku0.textAlignment = NSTextAlignment.left
         lblSyozoku0.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSyozoku0)
-        //所属(大分類)テキストフィールド
+        //所属テキストフィールド
         txtSyozoku0.borderStyle = UITextField.BorderStyle.bezel
-        txtSyozoku0.text = userDefaults.string(forKey: "personalName")
+        txtSyozoku0.text = userDefaults.string(forKey: "personalDepartment")
         txtSyozoku0.inputView = picSyozoku0
         txtSyozoku0.inputAccessoryView = toolbar
         txtSyozoku0.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtSyozoku0)
-        //所属(大分類)PickerView
+        //所属PickerView
         picSyozoku0.delegate = self
         picSyozoku0.dataSource = self
         picSyozoku0.translatesAutoresizingMaskIntoConstraints = false
         picSyozoku0.tag = 2
         picSyozoku0.selectRow(0, inComponent:0, animated:false) //呼び出したrow値でピッカー初期化
+        //氏名ラベル
+        lblName.text = "氏　　名"
+        lblName.adjustsFontSizeToFitWidth = true
+        lblName.textAlignment = NSTextAlignment.left
+        lblName.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblName)
+        //氏名テキストフィールド
+        txtName.borderStyle = UITextField.BorderStyle.bezel
+        txtName.text = userDefaults.string(forKey: "personalName")
+        txtName.translatesAutoresizingMaskIntoConstraints = false
+        txtName.delegate = self
+        self.view.addSubview(txtName)
         
-        //所属(小分類)ラベル
-        lblSyozoku.text = "■所属(小分類)"
-        lblSyozoku.adjustsFontSizeToFitWidth = true
-        lblSyozoku.textAlignment = NSTextAlignment.left
-        lblSyozoku.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(lblSyozoku)
-        //所属(小分類)テキストフィールド
-        txtSyozoku.borderStyle = UITextField.BorderStyle.bezel
-        txtSyozoku.text = userDefaults.string(forKey: "personalName")
-        txtSyozoku.inputView = picSyozoku
-        txtSyozoku.inputAccessoryView = toolbar
-        txtSyozoku.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtSyozoku)
-        //所属(小分類)PickerView
-        picSyozoku.delegate = self
-        picSyozoku.dataSource = self
-        picSyozoku.translatesAutoresizingMaskIntoConstraints = false
-        picSyozoku.tag = 3
-        picSyozoku.selectRow(0, inComponent:0, animated:false)
-        
-        //勤務区分ラベル
-        lblKinmu.text = "■勤務区分"
-        lblKinmu.adjustsFontSizeToFitWidth = true
-        lblKinmu.textAlignment = NSTextAlignment.left
-        lblKinmu.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(lblKinmu)
-        //勤務区分テキストフィールド
-        txtKinmu.borderStyle = UITextField.BorderStyle.bezel
-        txtKinmu.text = userDefaults.string(forKey: "personalName")
-        txtKinmu.inputView = picKinmu
-        txtKinmu.inputAccessoryView = toolbar
-        txtKinmu.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(txtKinmu)
-        //勤務区分ピッカービュー
-        picKinmu.delegate = self
-        picKinmu.dataSource = self
-        picKinmu.translatesAutoresizingMaskIntoConstraints = false
-        picKinmu.tag = 4
-        picKinmu.selectRow(0, inComponent:0, animated:false)
+        //資格ラベル
+        lblShikaku.text = "資　　格"
+        lblShikaku.adjustsFontSizeToFitWidth = true
+        lblShikaku.textAlignment = NSTextAlignment.left
+        lblShikaku.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblShikaku)
+        //機関員スイッチ
+        swtEngineer.isOn = userDefaults.bool(forKey: "personalEngineer")
+        swtEngineer.addTarget(self, action: #selector(changeswtEngineer(_:)), for: UIControl.Event.valueChanged)
+        swtEngineer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(swtEngineer)
+        //機関員ラベル
+        lblEngineer.text = "機関員"
+        lblEngineer.adjustsFontSizeToFitWidth = true
+        lblEngineer.textColor = UIColor.black
+        lblEngineer.textAlignment = NSTextAlignment.left
+        lblEngineer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblEngineer)
+        //救命士スイッチ
+        swtParamedic.isOn = userDefaults.bool(forKey: "personalParamedic")
+        swtParamedic.addTarget(self, action: #selector(changeswtParamedic(_:)), for: UIControl.Event.valueChanged)
+        swtParamedic.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(swtParamedic)
+        //救命士ラベル
+        lblParamedic.text = "救命士"
+        lblParamedic.adjustsFontSizeToFitWidth = true
+        lblParamedic.textColor = UIColor.black
+        lblParamedic.textAlignment = NSTextAlignment.left
+        lblParamedic.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblParamedic)
         
         //キャンセルボタン
         btnCancel.backgroundColor = UIColor.blue
         btnCancel.layer.masksToBounds = true
-        btnCancel.setTitle("キャンセル", for: UIControl.State())
+        btnCancel.setTitle("戻る", for: UIControl.State())
         btnCancel.setTitleColor(UIColor.white, for: UIControl.State())
         btnCancel.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         btnCancel.layer.cornerRadius = 8.0
@@ -239,6 +196,11 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), for: .touchUpInside)
         btnSave.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSave)
+        
+        //テキストフィールドの入力時に表示されるキーボードがフォーカスを外れたら閉じるように監視
+        let tapGestureResponder: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGestureResponder.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGestureResponder)
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
@@ -290,61 +252,69 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
             Constraint(txtClass, .top, to:txtId, .bottom, constant:24),
             Constraint(txtClass, .leading, to:self.view, .centerX, constant:0),
             Constraint(txtClass, .trailing, to:self.view, .trailing, constant:-16)
+        ])
+        self.view.addConstraints([
+            //年齢ラベル
+            Constraint(lblAge, .top, to:txtClass, .bottom, constant:24),
+            Constraint(lblAge, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblAge, .trailing, to:self.view, .centerX, constant:-16)
+        ])
+        self.view.addConstraints([
+            //年齢テキストフィールド
+            Constraint(txtAge, .top, to:txtClass, .bottom, constant:24),
+            Constraint(txtAge, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtAge, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
-            //メールアドレステキストフィールド
-            Constraint(txtMail, .top, to:txtClass, .bottom, constant:24),
-            Constraint(txtMail, .leading, to:self.view, .leading, constant:16),
-            Constraint(txtMail, .trailing, to:self.view, .trailing, constant:-16)
-            ])
-        self.view.addConstraints([
-            //非常招集区分ラベル
-            Constraint(lblKubun, .top, to:txtMail, .bottom, constant:24),
-            Constraint(lblKubun, .leading, to:self.view, .leading, constant:16),
-            Constraint(lblKubun, .width, to:self.view, .width, constant:0, multiplier:0.8)
-            ])
-        self.view.addConstraints([
-            //非常招集区分テキストフィールド
-            Constraint(txtKubun, .top, to:txtMail, .bottom, constant:24),
-            Constraint(txtKubun, .leading, to:self.view, .centerX, constant:0),
-            Constraint(txtKubun, .trailing, to:self.view, .trailing, constant:-16)
-            ])
-        self.view.addConstraints([
-            //所属(大分類)ラベル
-            Constraint(lblSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            //所属ラベル
+            Constraint(lblSyozoku0, .top, to:txtAge, .bottom, constant:24),
             Constraint(lblSyozoku0, .leading, to:self.view, .leading, constant:16),
             Constraint(lblSyozoku0, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
-            //所属(大分類)テキストフィールド
-            Constraint(txtSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            //所属テキストフィールド
+            Constraint(txtSyozoku0, .top, to:txtAge, .bottom, constant:24),
             Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:0),
             Constraint(txtSyozoku0, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
-            //所属(小分類)ラベル
-            Constraint(lblSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
-            Constraint(lblSyozoku, .leading, to:self.view, .leading, constant:16),
-            Constraint(lblSyozoku, .width, to:self.view, .width, constant:0, multiplier:0.8)
+            //氏名ラベル
+            Constraint(lblName, .top, to:txtSyozoku0, .bottom, constant:24),
+            Constraint(lblName, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblName, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
-            //所属(小分類)テキストフィールド
-            Constraint(txtSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
-            Constraint(txtSyozoku, .leading, to:self.view, .centerX, constant:0),
-            Constraint(txtSyozoku, .trailing, to:self.view, .trailing, constant:-16)
+            //氏名テキストフィールド
+            Constraint(txtName, .top, to:txtSyozoku0, .bottom, constant:24),
+            Constraint(txtName, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtName, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
-            //勤務区分ラベル
-            Constraint(lblKinmu, .top, to:lblSyozoku, .bottom, constant:24),
-            Constraint(lblKinmu, .leading, to:self.view, .leading, constant:16),
-            Constraint(lblKinmu, .width, to:self.view, .width, constant:0, multiplier:0.8)
-            ])
+            //資格ラベル
+            Constraint(lblShikaku, .top, to:txtName, .bottom, constant:24),
+            Constraint(lblShikaku, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblShikaku, .width, to:self.view, .width, constant:0, multiplier:0.8)
+        ])
         self.view.addConstraints([
-            //勤務区分テキストフィールド
-            Constraint(txtKinmu, .top, to:lblSyozoku, .bottom, constant:24),
-            Constraint(txtKinmu, .leading, to:self.view, .centerX, constant:0),
-            Constraint(txtKinmu, .trailing, to:self.view, .trailing, constant:-16)
-            ])
+            //機関員ラベル
+            Constraint(lblEngineer, .top, to:txtName, .bottom, constant:32),
+            Constraint(lblEngineer, .leading, to:self.view, .centerX, constant:32)
+        ])
+        self.view.addConstraints([
+            //機関員スイッチ
+            Constraint(swtEngineer, .top, to:txtName, .bottom, constant:24),
+            Constraint(swtEngineer, .trailing, to:self.view, .trailing, constant:-16)
+        ])
+        self.view.addConstraints([
+            //救命士ラベル
+            Constraint(lblParamedic, .top, to:lblEngineer, .bottom, constant:32),
+            Constraint(lblParamedic, .leading, to:self.view, .centerX, constant:32)
+        ])
+        self.view.addConstraints([
+            //救命士スイッチ
+            Constraint(swtParamedic, .top, to:lblEngineer, .bottom, constant:24),
+            Constraint(swtParamedic, .trailing, to:self.view, .trailing, constant:-16)
+        ])
         self.view.addConstraints([
             //キャンセルボタン
             Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
@@ -355,8 +325,13 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
             //登録ボタン
             Constraint(btnSave, .bottom, to:self.view, .bottom, constant:-10),
             Constraint(btnSave, .leading, to:self.view, .centerX, constant:8),
-            Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8),
+            Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8)
             ])
+    }
+    
+    //テキストフィールドのキーボード閉じる処理
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     //表示例数
@@ -372,20 +347,11 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             rowNum = classArray.count
             break
-        case 1:
-            rowNum = kubunArray.count
-            break
         case 2:
             rowNum = syozoku0Array.count
             break
-        case 3:
-            rowNum = (syozokuArray[syozoku0Index] as AnyObject).count
-            break
-        case 4:
-            rowNum = kinmuArray.count
-            break
         default:
-            rowNum = kubunArray.count
+            rowNum = classArray.count
             break
         }
         
@@ -400,20 +366,11 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             picComponent = classArray[row] as? String
             break
-        case 1:
-            picComponent = kubunArray[row] as? String
-            break
         case 2:
             picComponent = syozoku0Array[row] as? String
             break
-        case 3:
-            picComponent = (syozokuArray[syozoku0Index] as! NSArray)[row] as? String
-            break
-        case 4:
-            picComponent = kinmuArray[row] as? String
-            break
         default:
-            picComponent = kubunArray[row] as? String
+            picComponent = classArray[row] as? String
             break
         }
         
@@ -427,20 +384,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             txtClass.text = classArray[row] as? String
             break
-        case 1:
-            txtKubun.text = kubunArray[row] as? String
-            break
         case 2:
             txtSyozoku0.text = syozoku0Array[row] as? String
-            //所属(小分類)の表示を変更
-            syozoku0Index = row
-            txtSyozoku.text = (syozokuArray[syozoku0Index] as! NSArray)[0] as? String
-            break
-        case 3:
-            txtSyozoku.text = (syozokuArray[syozoku0Index] as! NSArray)[row] as? String
-            break
-        case 4:
-            txtKinmu.text = kinmuArray[row] as? String
             break
         default:
             break
@@ -450,23 +395,52 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     //ツールバーで選択ボタンを押した時
     @objc func selectRow(){
         txtClass.endEditing(true)
-        txtKubun.endEditing(true) //閉じるアクション
         txtSyozoku0.endEditing(true)
-        txtSyozoku.endEditing(true)
-        txtKinmu.endEditing(true)
+        txtName.endEditing(true)
+    }
+    
+    //機関員スイッチ　切替
+    @objc func changeswtEngineer(_ sender: UISwitch){
+        // UISwitchの値を取得
+        let onCheck: Bool = sender.isOn
+        if onCheck {
+            //オン
+            userDefaults.set(true, forKey: "personalEngineer")
+        } else {
+            //オフ
+            userDefaults.set(false, forKey: "personalEngineer")
+        }
+    }
+    
+    //機関員スイッチ　切替
+    @objc func changeswtParamedic(_ sender: UISwitch){
+        // UISwitchの値を取得
+        let onCheck: Bool = sender.isOn
+        if onCheck {
+            //オン
+            userDefaults.set(true, forKey: "personalParamedic")
+        } else {
+            //オフ
+            userDefaults.set(false, forKey: "personalParamedic")
+        }
     }
     
     //登録ボタンクリック
     @objc func onClickbtnSave(_ sender : UIButton){
         
         //userdefaultに書き込み
+        userDefaults.set(txtId.text, forKey: "personalId")
+        userDefaults.set(txtClass.text, forKey: "personalClass")
+        userDefaults.set(txtAge.text, forKey: "personalAge")
+        userDefaults.set(txtSyozoku0.text, forKey: "personalDepartment")
+        userDefaults.set(txtName.text, forKey: "personalName")
         
-        
-        //画面遷移
-        let data:ContactViewController = ContactViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
+        //登録しましたアラート　表示
+        let dialog = UIAlertController(title: "登録しました", message: "修正が必要な場合は再度登録してください", preferredStyle: .alert)
+        //ボタンのタイトル
+        dialog.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        //実際に表示させる
+        self.present(dialog, animated: true, completion: nil)
     }
     
     //キャンセルボタンクリック
