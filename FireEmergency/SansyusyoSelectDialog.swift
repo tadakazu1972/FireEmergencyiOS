@@ -16,6 +16,7 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     fileprivate var collection: UICollectionView!
     fileprivate var items:[String] = ["","","",""]
     fileprivate var btnClose: UIButton!
+    fileprivate var btnMail: UIButton!
     fileprivate var mKinentaiResultDialog: KinentaiResultDialog!
     
     //コンストラクタ
@@ -29,11 +30,12 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
         collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         btnClose = UIButton()
+        btnMail  = UIButton()
         
         //itemsに参集署を設定
         items = ["総務","企画","警防","予防","救急","施設","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上"]
 
-        text1.text = "■参集署選択\n　必ず参集署に到着してから送信"
+        text1.text = "■参集署　メール送信\n　必ず参集署に到着してから送信"
     }
     
     //デコンストラクタ
@@ -80,15 +82,26 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         self.win1.addSubview(collection)
         
         //閉じるボタン生成
-        btnClose.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
-        btnClose.backgroundColor = UIColor.orange
+        btnClose.frame = CGRect(x: 0,y: 0,width: 125,height: 30)
+        btnClose.backgroundColor = UIColor.blue
         btnClose.setTitle("閉じる", for: UIControl.State())
         btnClose.setTitleColor(UIColor.white, for: UIControl.State())
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPoint(x: self.win1.frame.width/2, y: self.win1.frame.height-20)
+        btnClose.layer.position = CGPoint(x: self.win1.frame.width/2-75, y: self.win1.frame.height-20)
         btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
         self.win1.addSubview(btnClose)
+        
+        //メール送信ボタン生成
+        btnMail.frame = CGRect(x: 0,y: 0,width: 125,height: 30)
+        btnMail.backgroundColor = UIColor.red
+        btnMail.setTitle("メール送信", for: UIControl.State())
+        btnMail.setTitleColor(UIColor.white, for: UIControl.State())
+        btnMail.layer.masksToBounds = true
+        btnMail.layer.cornerRadius = 10.0
+        btnMail.layer.position = CGPoint(x: self.win1.frame.width/2+75, y: self.win1.frame.height-20)
+        btnMail.addTarget(self, action: #selector(self.onClickMail(_:)), for: .touchUpInside)
+        self.win1.addSubview(btnMail)
     }
     
     //閉じる
@@ -96,7 +109,6 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
-        mViewController.view.alpha = 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
@@ -112,13 +124,41 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row)!")
-        //csvファイルの結果呼び出し
-        //mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
-        //mKinentaiResultDialog.showResult(mIndex, item: itemNo)
+        //let cell: CustomUICollectionViewCell = collection.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CustomUICollectionViewCell
+        //cell[indexPath].textLabel?.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        //実際に表示させる
+        //win1.alpha = 0.5
+        
         //自らのダイアログを消去しておく
-        win1.isHidden = true      //win1隠す
-        text1.text = ""         //使い回しするのでテキスト内容クリア
-        items = ["","","",""]
+        //win1.isHidden = true      //win1隠す
+    }
+    
+    //メール送信
+    @objc func onClickMail(_ sender: UIButton){
+        //ダイアログ消去
+        win1.isHidden = true
+        text1.text = ""
+        parent.view.alpha = 1.0
+        
+        //メールアドレス集約
+        var addressArray: [String] = []
+        print(addressArray) //デバッグ用
+        
+        //次の関数でMailViewControllerを生成して画面遷移する
+        sendMail(addressArray)
+    }
+    
+    //メール送信 MailViewController遷移
+    func sendMail(_ addressArray: [String]){
+        //MailViewControllerのインスタンス生成
+        let data:MailViewController = MailViewController(addressArray: addressArray)
+        
+        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        parent.present(nav, animated: true, completion: nil)
     }
 }
 

@@ -336,16 +336,16 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
             Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
         ])
         self.view.addConstraints([
-            //登録ボタン
-            Constraint(btnSave, .bottom, to:self.view, .bottom, constant:-10),
-            Constraint(btnSave, .leading, to:self.view, .centerX, constant:8),
-            Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8)
-        ])
-        self.view.addConstraints([
             //参集署選択ボタン
-            Constraint(btnNext, .bottom, to:btnCancel, .top, constant:-16),
+            Constraint(btnNext, .bottom, to:self.view, .bottom, constant:-10),
             Constraint(btnNext, .leading, to:self.view, .centerX, constant:8),
             Constraint(btnNext, .trailing, to:self.view, .trailing, constant:-8)
+        ])
+        self.view.addConstraints([
+            //登録ボタン
+            Constraint(btnSave, .top, to:swtParamedic, .bottom, constant:40),
+            Constraint(btnSave, .centerX, to:self.view, .centerX, constant:0),
+            Constraint(btnSave, .width, to:self.view, .width, constant:0, multiplier:0.5)
         ])
     }
     
