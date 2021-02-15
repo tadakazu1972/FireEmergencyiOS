@@ -128,6 +128,7 @@
 		59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */; };
 		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
 		59C9A958244ED616000B3C01 /* EarthquakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C9A957244ED616000B3C01 /* EarthquakeViewController.swift */; };
+		59CF1BF125DAABE000CF2C73 /* MailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CF1BF025DAABE000CF2C73 /* MailViewController2.swift */; };
 		59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */; };
 		59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */; };
 		59D8AEDD1E53452600A3EDE2 /* ContactDeleteDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */; };
@@ -295,6 +296,7 @@
 		59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		59C9A957244ED616000B3C01 /* EarthquakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthquakeViewController.swift; sourceTree = "<group>"; };
+		59CF1BF025DAABE000CF2C73 /* MailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailViewController2.swift; sourceTree = "<group>"; };
 		59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoSelectDialog.swift; sourceTree = "<group>"; };
 		59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo_keikakutaisyo.txt; sourceTree = "<group>"; };
 		59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDeleteDialog.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 				59F6407124553AF200A39423 /* ViewController2.swift */,
 				59B40E5325D51E07009E581A /* PersonalViewController1.swift */,
 				5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */,
+				59CF1BF025DAABE000CF2C73 /* MailViewController2.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
@@ -579,7 +582,7 @@
 				TargetAttributes = {
 					598AC8DA1D850AE6006842C8 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = XSUE867SN9;
+						DevelopmentTeam = X7TZM2569N;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				594CA33E1DF057ED00FF8714 /* TyphoonResultDialog.swift in Sources */,
+				59CF1BF125DAABE000CF2C73 /* MailViewController2.swift in Sources */,
 				597FD1221E2B1F4F0011ABB1 /* KinentaiResultDialog.swift in Sources */,
 				595361521E801B6500551A0E /* Guide22Dialog.swift in Sources */,
 				594DDA4B1D9F50D40078EE72 /* InfoDialog.swift in Sources */,
@@ -917,7 +921,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = XSUE867SN9;
+				DEVELOPMENT_TEAM = X7TZM2569N;
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

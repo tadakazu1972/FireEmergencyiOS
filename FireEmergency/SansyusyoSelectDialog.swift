@@ -17,9 +17,9 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     fileprivate var items:[String] = ["","","",""]
     fileprivate var address:[String] = []
     fileprivate var mailAddress: String! //メール送信先アドレス格納用
+    fileprivate var subject: String! //参集署ごとのメール件名「＠参集署」格納用
     fileprivate var btnClose: UIButton!
     fileprivate var btnMail: UIButton!
-    fileprivate var mKinentaiResultDialog: KinentaiResultDialog!
     
     //コンストラクタ
     init(parentView: PersonalViewController1){
@@ -130,9 +130,11 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //タップした参集署のメールアドレスを格納
         mailAddress = address[indexPath.row] + "@city.osaka.lg.jp"
+        subject = "@" + items[indexPath.row]
         //確認用
         print("セルを選択 #\(indexPath.row)!")
         print(mailAddress!)
+        print(subject!)
     }
     
     //メール送信
@@ -142,18 +144,22 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         text1.text = ""
         parent.view.alpha = 1.0
         
-        //メールアドレス集約
+        //選択された参集署のメールアドレスと件名
         var addressArray: [String] = []
-        print(addressArray) //デバッグ用
+        // addressArray = ["pa0009@city.osaka.lg.jp", "@中央"] の形で格納される。
+        // 後にMailViewControllerで送信先アドレス：addressAttary[0],件名：addressArray[1]で呼び出して使用する
+        addressArray.append(mailAddress)
+        addressArray.append(subject)
+        //print(addressArray) //デバッグ用
         
         //次の関数でMailViewControllerを生成して画面遷移する
         sendMail(addressArray)
     }
     
-    //メール送信 MailViewController遷移
+    //参集署宛メール送信 MailViewController2遷移
     func sendMail(_ addressArray: [String]){
-        //MailViewControllerのインスタンス生成
-        let data:MailViewController = MailViewController(addressArray: addressArray)
+        //MailViewController2のインスタンス生成
+        let data:MailViewController2 = MailViewController2(addressArray: addressArray)
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
