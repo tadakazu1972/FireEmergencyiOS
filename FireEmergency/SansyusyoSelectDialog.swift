@@ -15,6 +15,8 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     fileprivate var text1: UITextView!
     fileprivate var collection: UICollectionView!
     fileprivate var items:[String] = ["","","",""]
+    fileprivate var address:[String] = []
+    fileprivate var mailAddress: String! //メール送信先アドレス格納用
     fileprivate var btnClose: UIButton!
     fileprivate var btnMail: UIButton!
     fileprivate var mKinentaiResultDialog: KinentaiResultDialog!
@@ -34,6 +36,9 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         
         //itemsに参集署を設定
         items = ["総務","企画","警防","予防","救急","施設","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上"]
+        
+        address =
+            ["pa0002","pa0110","pa0004","pa0003","pa0034","pa0031","pa0005","pa0006","pa0007","pa0008","pa0009","pa0036","pa0010","pa0011","pa0013","pa0012","pa0014","pa0015","pa0016","pa0017","pa0018","pa0019","pa0020","pa0021","pa0023","pa0022","pa0024","pa0025","pa0026","pa0027","pa0028"]
 
         text1.text = "■参集署　メール送信\n　必ず参集署に到着してから送信"
     }
@@ -123,14 +128,11 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //タップした参集署のメールアドレスを格納
+        mailAddress = address[indexPath.row] + "@city.osaka.lg.jp"
+        //確認用
         print("セルを選択 #\(indexPath.row)!")
-        //let cell: CustomUICollectionViewCell = collection.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CustomUICollectionViewCell
-        //cell[indexPath].textLabel?.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        //実際に表示させる
-        //win1.alpha = 0.5
-        
-        //自らのダイアログを消去しておく
-        //win1.isHidden = true      //win1隠す
+        print(mailAddress!)
     }
     
     //メール送信
