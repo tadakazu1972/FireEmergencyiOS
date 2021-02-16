@@ -60,18 +60,18 @@ class MailViewController2: UIViewController, MFMailComposeViewControllerDelegate
         //メール本文の作成 userDefaultからの呼び出しを連結
         personalId = userDefaults.string(forKey:"personalId")!
         personalClass = userDefaults.string(forKey:"personalClass")!
-        personalAge = userDefaults.string(forKey:"personalAge")!
+        personalAge = userDefaults.string(forKey:"personalAge")! + "歳"
         personalDepartment = userDefaults.string(forKey:"personalDepartment")!
         personalName = userDefaults.string(forKey:"personalName")!
         if userDefaults.bool(forKey:"personalEngineer"){
-            personalEngineer = "機関員"
+            personalEngineer = "有"
         } else {
-            personalEngineer = ""
+            personalEngineer = "無"
         }
         if userDefaults.bool(forKey:"personalParamedic"){
-            personalParamedic = "救命士"
+            personalParamedic = "有"
         } else {
-            personalParamedic = ""
+            personalParamedic = "無"
         }
         message = "\(personalId)　\(personalClass)　\(personalAge)　\(personalDepartment)　\(personalName)　\(personalEngineer)　\(personalParamedic)"
         mailViewController.setMessageBody(message, isHTML: false)
