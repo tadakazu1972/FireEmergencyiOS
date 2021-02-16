@@ -42,7 +42,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     //非常参集　職員情報　保存用
     let userDefaults = UserDefaults.standard
     //参集署選択ダイアログ
-    fileprivate var mSansyusyoSelectDialog: SansyusyoSelectDialog!
+    fileprivate var mKyokusyoSelectDialog: KyokusyoSelectDialog!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -471,8 +471,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //参集署選択ボタンクリック
     @objc func onClickbtnNext(_ sender: UIButton){
-        mSansyusyoSelectDialog = SansyusyoSelectDialog(parentView: self)
-        mSansyusyoSelectDialog.showInfo()
+        mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
+        mKyokusyoSelectDialog.showInfo()
     }
     
     override func didReceiveMemoryWarning() {

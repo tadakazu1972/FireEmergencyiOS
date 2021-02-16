@@ -73,6 +73,7 @@
 		5953615A1E815F4900551A0E /* guide223.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361591E815F4900551A0E /* guide223.png */; };
 		5953615C1E81610500551A0E /* guide224.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615B1E81610500551A0E /* guide224.png */; };
 		5953615E1E81629C00551A0E /* guide225.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615D1E81629C00551A0E /* guide225.png */; };
+		595966B825DBF94100157446 /* KyokusyoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595966B725DBF94100157446 /* KyokusyoSelectDialog.swift */; };
 		5960CEF025D8FBE90072129C /* SansyusyoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */; };
 		5960D68022056743005E512C /* KinentaiSelectDialog3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960D67F22056743005E512C /* KinentaiSelectDialog3.swift */; };
 		5960D6842205C384005E512C /* KinentaiResultDialog31.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960D6832205C384005E512C /* KinentaiResultDialog31.swift */; };
@@ -232,6 +233,7 @@
 		595361591E815F4900551A0E /* guide223.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide223.png; sourceTree = "<group>"; };
 		5953615B1E81610500551A0E /* guide224.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide224.png; sourceTree = "<group>"; };
 		5953615D1E81629C00551A0E /* guide225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide225.png; sourceTree = "<group>"; };
+		595966B725DBF94100157446 /* KyokusyoSelectDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KyokusyoSelectDialog.swift; sourceTree = "<group>"; };
 		5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SansyusyoSelectDialog.swift; sourceTree = "<group>"; };
 		5960D67F22056743005E512C /* KinentaiSelectDialog3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiSelectDialog3.swift; sourceTree = "<group>"; };
 		5960D6832205C384005E512C /* KinentaiResultDialog31.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiResultDialog31.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				59F6407124553AF200A39423 /* ViewController2.swift */,
 				59B40E5325D51E07009E581A /* PersonalViewController1.swift */,
+				595966B725DBF94100157446 /* KyokusyoSelectDialog.swift */,
 				5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */,
 				59CF1BF025DAABE000CF2C73 /* MailViewController2.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
@@ -582,7 +585,7 @@
 				TargetAttributes = {
 					598AC8DA1D850AE6006842C8 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = XSUE867SN9;
+						DevelopmentTeam = X7TZM2569N;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -772,6 +775,7 @@
 				597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */,
 				595361181E7F6EA000551A0E /* Guide43Dialog.swift in Sources */,
 				594CA3421E002F8900FF8714 /* TyphoonSelectDialog2.swift in Sources */,
+				595966B825DBF94100157446 /* KyokusyoSelectDialog.swift in Sources */,
 				59D8AEE31E59B64A00A3EDE2 /* ContactUpdateViewController.swift in Sources */,
 				59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */,
 			);
@@ -921,7 +925,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XSUE867SN9;
+				DEVELOPMENT_TEAM = X7TZM2569N;
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -941,7 +945,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XSUE867SN9;
+				DEVELOPMENT_TEAM = X7TZM2569N;
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
