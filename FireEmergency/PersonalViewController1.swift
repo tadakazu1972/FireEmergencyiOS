@@ -16,7 +16,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let lblClass        = UILabel(frame: CGRect.zero)
     let txtClass        = UITextField(frame: CGRect.zero)
     let picClass        = UIPickerView(frame: CGRect.zero)
-    let classArray: NSArray = ["司令長","司令","司令補","消防士長","消防副士長","消防士"]
+    let classArray: NSArray = ["司令長","司令","司令補","消防士長","消防士"]
     let lblAge          = UILabel(frame: CGRect.zero)
     let txtAge         = UITextField(frame: CGRect.zero)
     let lblSyozoku0     = UILabel(frame: CGRect.zero)

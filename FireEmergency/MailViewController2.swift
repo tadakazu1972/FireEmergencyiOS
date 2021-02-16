@@ -73,7 +73,7 @@ class MailViewController2: UIViewController, MFMailComposeViewControllerDelegate
         } else {
             personalParamedic = "無"
         }
-        message = "\(personalId)　\(personalClass)　\(personalAge)　\(personalDepartment)　\(personalName)　\(personalEngineer)　\(personalParamedic)"
+        message = "\(personalId) \(personalClass) \(personalAge) \(personalDepartment) \(personalName) \(personalEngineer) \(personalParamedic)"
         mailViewController.setMessageBody(message, isHTML: false)
         
         self.present(mailViewController, animated:true, completion:nil)
