@@ -58,9 +58,11 @@ class EarthResultDialog {
         if let _kubun = userDefaults.string(forKey: "kubun"){
             kubun = _kubun
         }
-        //元の画面を暗く
+        //元の画面を暗く、タップ無効化
         parent.view.alpha = 0.3
+        parent.view.isUserInteractionEnabled = false
         mViewController.view.alpha = 0.3
+        mViewController.view.isUserInteractionEnabled = false
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.white
@@ -240,6 +242,8 @@ class EarthResultDialog {
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+        parent.view.isUserInteractionEnabled = true //タップ有効化
         mViewController.view.alpha = 1.0 //明るく
+        mViewController.view.isUserInteractionEnabled = true
     }
 }
