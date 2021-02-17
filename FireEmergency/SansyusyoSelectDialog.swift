@@ -20,27 +20,43 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     fileprivate var subject: String! //参集署ごとのメール件名「＠参集署」格納用
     fileprivate var btnClose: UIButton!
     fileprivate var btnMail: UIButton!
+    //消防局か消防署か　どちらが押されたのか判定用（KyokusyoSelectDialogから引き継ぐ 0:消防局 1:消防署）
+    fileprivate var mIndex: Int!
     
     //コンストラクタ
-    init(parentView: PersonalViewController1){
+    init(index: Int, parentView: PersonalViewController1){
         parent = parentView
         win1 = UIWindow()
         text1 = UITextView()
         let layout = UICollectionViewFlowLayout() //これがないとエラーになる
-        layout.itemSize = CGSize(width: 70,height: 30) // Cellの大きさ
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) //Cellのマージン
+        layout.itemSize = CGSize(width: 100,height: 40) // Cellの大きさ
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32) //Cellのマージン
+        layout.minimumInteritemSpacing = 30 //セル同士の間隔
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
         collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         btnClose = UIButton()
         btnMail  = UIButton()
+        mIndex = index
         
-        //itemsに参集署を設定
-        items = ["総務","企画","警防","予防","救急","施設","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上"]
+        //mIndexの値を判定してitemsに参集署を設定
+        //消防局の場合
+        if mIndex == 0 {
+            items = ["総務","施設","企画","人事","訓練センター","予防","規制","警防","司令","救急"]
+            //総務:pa0002　企画:pa0110　警防:pa0035　予防:pa0003　救急:pa0034　施設:pa0031
+            //人事：pa0030　訓練センター:pa0029　規制:pa0032　司令:pa0108
         
-        address =
-            ["pa0002","pa0110","pa0035","pa0003","pa0034","pa0031","pa0005","pa0006","pa0007","pa0008","pa0009","pa0036","pa0010","pa0011","pa0013","pa0012","pa0014","pa0015","pa0016","pa0017","pa0018","pa0019","pa0020","pa0021","pa0023","pa0022","pa0024","pa0025","pa0026","pa0027","pa0028"]
+            address =
+                ["pa0002","pa0031","pa0110","pa0030","pa0029","pa0003","pa0032","pa0035","pa0108","pa0034"]
+        } else {
+            //消防署の場合
+            items = ["北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上"]
+            
+            address =
+                ["pa0005","pa0006","pa0007","pa0008","pa0009","pa0036","pa0010","pa0011","pa0013","pa0012","pa0014","pa0015","pa0016","pa0017","pa0018","pa0019","pa0020","pa0021","pa0023","pa0022","pa0024","pa0025","pa0026","pa0027","pa0028"]
+            
+        }
 
-        text1.text = "■参集署　メール送信\n　必ず参集署に到着してから送信"
+        text1.text = "■参集先　メール送信\n　必ず参集先に到着してから送信"
     }
     
     //デコンストラクタ
@@ -51,6 +67,7 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         collection = nil
         items = ["","","",""]
         btnClose = nil
+        mIndex = nil
     }
         
     //表示

@@ -16,7 +16,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let lblClass        = UILabel(frame: CGRect.zero)
     let txtClass        = UITextField(frame: CGRect.zero)
     let picClass        = UIPickerView(frame: CGRect.zero)
-    let classArray: NSArray = ["司令長","司令","司令補","消防士長","消防士"]
+    let classArray: NSArray = ["正監","監","司令長","司令","司令補","消防士長","消防士"]
     let lblAge          = UILabel(frame: CGRect.zero)
     let txtAge         = UITextField(frame: CGRect.zero)
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
@@ -414,6 +414,12 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //ツールバーで選択ボタンを押した時
     @objc func selectRow(){
+        //初起動で何も登録されていない場合、ピッカーを移動させずに選択ボタンを押した場合にnil防止として0番目を登録する
+        //正監はケース少ないだろうが、消防局はそのままピッカー初期のままこれで良し、と選択ボタン押すケースが想定されるため
+        if txtClass.text == "" { txtClass.text = classArray[0] as? String }
+        if txtSyozoku0.text == "" { txtSyozoku0.text = syozoku0Array[0] as? String }
+        
+        //キーボード消去
         txtClass.endEditing(true)
         txtSyozoku0.endEditing(true)
         txtName.endEditing(true)

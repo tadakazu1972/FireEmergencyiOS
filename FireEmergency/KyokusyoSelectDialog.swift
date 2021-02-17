@@ -117,16 +117,15 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //確認用
         print("セルを選択 #\(indexPath.row)!")
-        //消防署をタップ
-        if indexPath.row == 1 {
-            //自らを消去
-            win1.isHidden = true      //win1隠す
-            text1.text = ""         //使い回しするのでテキスト内容クリア
-            parent.view.alpha = 1.0 //元の画面明るく
-            //消防署選択ダイアログへ遷移
-            mSansyusyoSelectDialog = SansyusyoSelectDialog(parentView: parent)
-            mSansyusyoSelectDialog.showInfo()
-        }
+
+        //自らを消去
+        win1.isHidden = true      //win1隠す
+        text1.text = ""         //使い回しするのでテキスト内容クリア
+        parent.view.alpha = 1.0 //元の画面明るく
+
+        //消防局か消防署かどちらの選択がされたのかを第１引数にして次の選択ダイアログへ遷移
+        mSansyusyoSelectDialog = SansyusyoSelectDialog(index: indexPath.row, parentView: parent)
+        mSansyusyoSelectDialog.showInfo()
     }
 }
 
