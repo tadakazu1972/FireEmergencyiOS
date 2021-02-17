@@ -11,7 +11,7 @@ import UIKit
 class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     //ボタン押したら出るUIWindow
     fileprivate var parent: PersonalViewController1!
-    fileprivate var win1: UIWindow!
+    public var win1: UIWindow!
     fileprivate var text1: UITextView!
     fileprivate var collection: UICollectionView!
     fileprivate var items:[String] = ["","","",""]
@@ -22,6 +22,9 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     fileprivate var btnMail: UIButton!
     //消防局か消防署か　どちらが押されたのか判定用（KyokusyoSelectDialogから引き継ぐ 0:消防局 1:消防署）
     fileprivate var mIndex: Int!
+    //基礎データ登録で保存された勤務消防署と津波警報時参集指定署を呼び出す用
+    let userDefaults = UserDefaults.standard
+    fileprivate var mAlertDialog: AlertDialog!
     
     //コンストラクタ
     init(index: Int, parentView: PersonalViewController1){
@@ -72,8 +75,9 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         
     //表示
     func showInfo (){
-        //元の画面を暗く
-        parent.view.alpha = 0.3
+        //元の画面を暗く、タップを無効化
+        parent.view.alpha = 0.1
+        parent.view.isUserInteractionEnabled = false
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.white
@@ -128,9 +132,15 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     
     //閉じる
     @objc func onClickClose(_ sender: UIButton){
+        dismissDialog()
+     }
+    
+    //消去処理
+    func dismissDialog(){
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+        parent.view.isUserInteractionEnabled = true //タップ有効化
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
@@ -152,14 +162,24 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         print("セルを選択 #\(indexPath.row)!")
         print(mailAddress!)
         print(subject!)
+        //基礎データで登録されている「勤務消防署」「津波警報時(震度5弱以上)の参集指定署」のどちらにも該当しない場合、アラート表示
+        //まずは基礎データの登録を呼び出し
+        let mainStation = userDefaults.string(forKey: "mainStation")
+        let tsunamiStation = userDefaults.string(forKey: "tsunamiStation")
+        //判定
+        if items[indexPath.row] != mainStation && items[indexPath.row] != tsunamiStation {
+            print("どっちもちゃうけど大丈夫か？")
+            //アラート　表示
+            //アラート表示
+            mAlertDialog = AlertDialog(parentView: self)
+            mAlertDialog.showInfo()
+        }
     }
     
     //メール送信
     @objc func onClickMail(_ sender: UIButton){
         //ダイアログ消去
-        win1.isHidden = true
-        text1.text = ""
-        parent.view.alpha = 1.0
+        dismissDialog()
         
         //選択された参集署のメールアドレスと件名
         var addressArray: [String] = []

@@ -17,7 +17,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let lblData         = UILabel(frame: CGRect.zero)
     let lblKinmu        = UILabel(frame: CGRect.zero)
     let picKinmu        = UIPickerView(frame: CGRect.zero)
-    let kinmuArray: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
+    let kinmuArray: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","訓練センター"]
     let lblTsunami      = UILabel(frame: CGRect.zero)
     let picTsunami      = UIPickerView(frame: CGRect.zero)
     let lblKubun        = UILabel(frame: CGRect.zero)

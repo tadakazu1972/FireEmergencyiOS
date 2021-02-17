@@ -37,18 +37,14 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     fileprivate var mInfoDialog: InfoDialog!
     //所属(大分類)のインデックス保存用
     fileprivate var syozoku0Index : Int = 0
-    //SQLite用
-    internal var mDBHelper: DBHelper!
     //非常参集　職員情報　保存用
     let userDefaults = UserDefaults.standard
     //参集署選択ダイアログ
     fileprivate var mKyokusyoSelectDialog: KyokusyoSelectDialog!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mDBHelper = DBHelper()
-        
+                
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //データ修正ラベル
         lblData.text = "職員情報　登録画面"
@@ -215,9 +211,6 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         let tapGestureResponder: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGestureResponder.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGestureResponder)
-        
-        //ボタン押したら表示するDialog生成
-        mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
     //制約ひな型
@@ -477,10 +470,11 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //参集署選択ボタンクリック
     @objc func onClickbtnNext(_ sender: UIButton){
+        //ダイアログ表示
         mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
         mKyokusyoSelectDialog.showInfo()
     }
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

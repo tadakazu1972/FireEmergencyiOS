@@ -33,7 +33,7 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
         collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         btnClose = UIButton()
-        
+                
         //itemsに参集署を設定
         items = ["消防局","消防署"]
 
@@ -52,8 +52,9 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         
     //表示
     func showInfo (){
-        //元の画面を暗く
-        parent.view.alpha = 0.3
+        //元の画面を暗く、画面タップ無効化
+        parent.view.alpha = 0.1
+        parent.view.isUserInteractionEnabled = false
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.white
@@ -93,16 +94,22 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         btnClose.layer.position = CGPoint(x: self.win1.frame.width/2, y: self.win1.frame.height-20)
         btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
         self.win1.addSubview(btnClose)
-        
     }
     
-    //閉じる
+    //閉じるボタン押された
     @objc func onClickClose(_ sender: UIButton){
+        dismissDialog()
+    }
+    
+    //消去処理
+    func dismissDialog(){
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+        parent.view.isUserInteractionEnabled = true //タップ有効化
     }
     
+    //コレクションビュー表示
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
         return self.items.count
     }
@@ -119,13 +126,22 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         print("セルを選択 #\(indexPath.row)!")
 
         //自らを消去
-        win1.isHidden = true      //win1隠す
-        text1.text = ""         //使い回しするのでテキスト内容クリア
-        parent.view.alpha = 1.0 //元の画面明るく
-
+        dismissDialog()
+    
         //消防局か消防署かどちらの選択がされたのかを第１引数にして次の選択ダイアログへ遷移
         mSansyusyoSelectDialog = SansyusyoSelectDialog(index: indexPath.row, parentView: parent)
         mSansyusyoSelectDialog.showInfo()
+    }
+    
+    @objc func tappedOverlayView() {
+        self.win1.removeFromSuperview()
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if (touch.view!.isDescendant(of: win1)){
+            return true
+        }
+        return false
     }
 }
 
