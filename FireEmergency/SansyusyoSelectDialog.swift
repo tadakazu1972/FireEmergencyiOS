@@ -167,12 +167,22 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         let mainStation = userDefaults.string(forKey: "mainStation")
         let tsunamiStation = userDefaults.string(forKey: "tsunamiStation")
         //判定
-        if items[indexPath.row] != mainStation && items[indexPath.row] != tsunamiStation {
-            print("どっちもちゃうけど大丈夫か？")
-            //アラート　表示
-            //アラート表示
-            mAlertDialog = AlertDialog(parentView: self)
-            mAlertDialog.showInfo()
+        //参集先が消防局の場合
+        if mIndex == 0 {
+            if mainStation != "消防局" && tsunamiStation != "消防局" {
+                print("どっちも消防局ではないが参集先は消防局で大丈夫か？")
+                mAlertDialog = AlertDialog(parentView: self)
+                mAlertDialog.showInfo()
+            }
+        }
+        //参集先が消防署の場合
+        if mIndex == 1 {
+            if items[indexPath.row] != mainStation && items[indexPath.row] != tsunamiStation {
+                print("どっちもちゃうけど大丈夫か？")
+                //アラート表示
+                mAlertDialog = AlertDialog(parentView: self)
+                mAlertDialog.showInfo()
+            }
         }
     }
     
