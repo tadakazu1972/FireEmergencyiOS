@@ -464,8 +464,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //キャンセルボタンクリック
     @objc func onClickbtnCancel(_ sender : UIButton){
-        self.dismiss(animated: true)
-        mViewController.view.alpha = 1.0
+        //基礎データ入力へ遷移
+        mScreen = 1
+        mViewController2.updateView()
     }
     
     //参集署選択ボタンクリック

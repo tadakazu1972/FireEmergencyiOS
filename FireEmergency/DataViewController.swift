@@ -55,7 +55,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mViewController.view.alpha = 0.1
         //Button生成
         //アプリ説明書
-        btnData.backgroundColor = UIColor.blue
+        btnData.backgroundColor = UIColor(red:0.0, green:0.55, blue:0.0, alpha:1.0)
         btnData.layer.masksToBounds = true
         btnData.setTitle("アプリ説明書", for: UIControl.State())
         btnData.setTitleColor(UIColor.white, for: UIControl.State())
@@ -77,10 +77,11 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnPersonal.addTarget(self, action: #selector(self.onClickbtnPersonal(_:)), for: .touchUpInside)
         self.view.addSubview(btnPersonal)
         //戻る
-        btnBack.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnBack.backgroundColor = UIColor.blue
         btnBack.layer.masksToBounds = true
         btnBack.setTitle("戻る", for: UIControl.State())
-        btnBack.setTitleColor(UIColor.black, for: UIControl.State())
+        btnBack.setTitleColor(UIColor.white, for: UIControl.State())
+        btnBack.layer.cornerRadius = 8.0
         btnBack.tag=1
         btnBack.addTarget(self, action: #selector(self.onClickbtnBack(_:)), for: .touchUpInside)
         btnBack.translatesAutoresizingMaskIntoConstraints = false
@@ -188,23 +189,23 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func viewDidLayoutSubviews(){
         //制約
         self.view.addConstraints([
-            //アプリ説明書ボタン
-            Constraint(btnData, .top, to:self.view, .top, constant:20),
-            Constraint(btnData, .leading, to:self.view, .leading, constant:8),
-            Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
-            ])
-        self.view.addConstraints([
             //非常参集職員情報遷移ボタン
-            Constraint(btnPersonal, .top, to:self.btnData, .bottom, constant:8),
+            Constraint(btnPersonal, .top, to:self.view, .top, constant:20),
             Constraint(btnPersonal, .leading, to:self.view, .leading, constant:8),
             Constraint(btnPersonal, .trailing, to:self.view, .trailingMargin, constant:8)
-            ])
+        ])
         self.view.addConstraints([
             //戻るボタン
             Constraint(btnBack, .top, to:btnPersonal, .bottom, constant:8),
-            Constraint(btnBack, .centerX, to:self.view, .centerX, constant:0),
-            Constraint(btnBack, .width, to:self.view, .width, constant:0, multiplier:0.8)
-            ])
+            Constraint(btnBack, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnBack, .trailing, to:self.view, .centerX, constant:-8)
+        ])
+        self.view.addConstraints([
+            //アプリ説明書ボタン
+            Constraint(btnData, .top, to:self.btnPersonal, .bottom, constant:8),
+            Constraint(btnData, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
+        ])
         self.view.addConstraints([
             //padY1
             Constraint(padY1, .top, to:btnBack, .bottom, constant:0),
@@ -255,7 +256,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             ])
         self.view.addConstraints([
             //登録ボタン
-            Constraint(btnSave, .bottom, to:btnContact, .top, constant:-10),
+            Constraint(btnSave, .bottom, to:btnContact, .top, constant:-20),
             Constraint(btnSave, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnSave, .width, to:self.view, .width, constant:8, multiplier:0.5)
             ])
