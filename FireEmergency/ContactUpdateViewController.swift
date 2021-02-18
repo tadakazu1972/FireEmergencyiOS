@@ -21,7 +21,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
-    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
+    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","訓練センター"]
     let lblSyozoku      = UILabel(frame: CGRect.zero)
     let txtSyozoku      = UITextField(frame: CGRect.zero)
     let picSyozoku      = UIPickerView(frame: CGRect.zero)
@@ -51,7 +51,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
                                  ["平野本署","加美","長吉","喜連","加美正覚寺"],
                                  ["西成本署","海道","津守"],
                                  ["水上"],
-                                 ["教育訓練センター"]]
+                                 ["訓練センター"]]
     let lblKinmu        = UILabel(frame: CGRect.zero)
     let txtKinmu        = UITextField(frame: CGRect.zero)
     let picKinmu        = UIPickerView(frame: CGRect.zero)

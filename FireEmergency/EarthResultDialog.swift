@@ -40,7 +40,7 @@ class EarthResultDialog {
     func showResult(_ data :Int){
         //勤務消防署が保存されている場合は呼び出して格納
         if let _mainStation = userDefaults.string(forKey: "mainStation"){
-            if _mainStation == "消防局" || _mainStation == "教育訓練センター" {
+            if _mainStation == "消防局" || _mainStation == "訓練センター" {
                 mainStation = _mainStation
             } else {
                 mainStation = _mainStation + "消防署"
@@ -48,7 +48,7 @@ class EarthResultDialog {
         }
         //大津波・津波警報時参集指定署が保存されている場合は呼び出して格納
         if let _tsunamiStation = userDefaults.string(forKey: "tsunamiStation"){
-            if _tsunamiStation == "消防局" || _tsunamiStation == "教育訓練センター" {
+            if _tsunamiStation == "消防局" || _tsunamiStation == "訓練センター" {
                 tsunamiStation = _tsunamiStation
             } else {
                 tsunamiStation = _tsunamiStation + "消防署"

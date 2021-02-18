@@ -40,7 +40,7 @@ class TyphoonResultDialog {
     func showResult(_ data :Int){
         //勤務消防署が保存されている場合は呼び出して格納
         if let _mainStation = userDefaults.string(forKey: "mainStation"){
-            if _mainStation == "消防局" || _mainStation == "教育訓練センター" {
+            if _mainStation == "消防局" || _mainStation == "訓練センター" {
                 mainStation = _mainStation
             } else {
                 mainStation = _mainStation + "消防署"
@@ -48,7 +48,7 @@ class TyphoonResultDialog {
         }
         //大津波・津波警報時参集指定署が保存されている場合は呼び出して格納
         if let _tsunamiStation = userDefaults.string(forKey: "tsunamiStation"){
-            if _tsunamiStation == "消防局" || _tsunamiStation == "教育訓練センター" {
+            if _tsunamiStation == "消防局" || _tsunamiStation == "訓練センター" {
                 tsunamiStation = _tsunamiStation
             } else {
                 tsunamiStation = _tsunamiStation + "消防署"
@@ -117,7 +117,7 @@ class TyphoonResultDialog {
             break
         //大雨警報
         case 23:
-            if mainStation == "教育訓練センター" {
+            if mainStation == "訓練センター" {
                 text1.text="■大雨警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
             } else {
                 text1.text="■大雨警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
@@ -125,7 +125,7 @@ class TyphoonResultDialog {
             break
         //大雪警報
         case 24:
-            if mainStation == "教育訓練センター" {
+            if mainStation == "訓練センター" {
                 text1.text="■大雪警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
             } else {
                 text1.text="■大雪警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
@@ -133,7 +133,7 @@ class TyphoonResultDialog {
             break
         //洪水警報
         case 25:
-            if mainStation == "教育訓練センター" {
+            if mainStation == "訓練センター" {
                 text1.text="■洪水警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
             } else {
                 text1.text="■洪水警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
@@ -152,7 +152,7 @@ class TyphoonResultDialog {
             break
         //高潮警報
         case 27:
-            if mainStation == "教育訓練センター" {
+            if mainStation == "訓練センター" {
                 text1.text="■高潮警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
             } else {
                 text1.text="■高潮警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
@@ -160,7 +160,7 @@ class TyphoonResultDialog {
             break
         //高潮注意報
         case 28:
-            if mainStation == "教育訓練センター" {
+            if mainStation == "訓練センター" {
                 text1.text="■高潮注意報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
             } else {
                 text1.text="■高潮注意報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"

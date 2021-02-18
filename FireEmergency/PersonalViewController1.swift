@@ -16,13 +16,13 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let lblClass        = UILabel(frame: CGRect.zero)
     let txtClass        = UITextField(frame: CGRect.zero)
     let picClass        = UIPickerView(frame: CGRect.zero)
-    let classArray: NSArray = ["正監","監","司令長","司令","司令補","消防士長","消防士"]
+    let classArray: NSArray = ["正監","監","司令長","司令","司令補","士長","士"]
     let lblAge          = UILabel(frame: CGRect.zero)
     let txtAge         = UITextField(frame: CGRect.zero)
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
-    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
+    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","訓練センター"]
     let lblName      = UILabel(frame: CGRect.zero)
     let txtName      = UITextField(frame: CGRect.zero)
     let lblShikaku        = UILabel(frame: CGRect.zero)
@@ -199,7 +199,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         //参集署選択ボタン
         btnNext.backgroundColor = UIColor.red
         btnNext.layer.masksToBounds = true
-        btnNext.setTitle("参集署　到着", for: UIControl.State())
+        btnNext.setTitle("参集先　到着", for: UIControl.State())
         btnNext.setTitleColor(UIColor.white, for: UIControl.State())
         btnNext.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         btnNext.layer.cornerRadius = 8.0

@@ -54,7 +54,7 @@ class TyphoonResultDialog2 {
     func showResult(_ data :Int){
         //勤務消防署が保存されている場合は呼び出して格納
         if let _mainStation = userDefaults.string(forKey: "mainStation"){
-            if _mainStation == "消防局" || _mainStation == "教育訓練センター" {
+            if _mainStation == "消防局" || _mainStation == "訓練センター" {
                 mainStation = _mainStation
             } else {
                 mainStation = _mainStation + "消防署"
@@ -62,7 +62,7 @@ class TyphoonResultDialog2 {
         }
         //大津波・津波警報時参集指定署が保存されている場合は呼び出して格納
         if let _tsunamiStation = userDefaults.string(forKey: "tsunamiStation"){
-            if _tsunamiStation == "消防局" || _tsunamiStation == "教育訓練センター" {
+            if _tsunamiStation == "消防局" || _tsunamiStation == "訓練センター" {
                 tsunamiStation = _tsunamiStation
             } else {
                 tsunamiStation = _tsunamiStation + "消防署"
@@ -205,7 +205,7 @@ class TyphoonResultDialog2 {
                 if kubun == "１号招集" {
                     message = "招集なし"
                 } else {
-                    if mainStation == "消防局" || mainStation == "教育訓練センター" {
+                    if mainStation == "消防局" || mainStation == "訓練センター" {
                         message = "２号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
                         message = "２号非常招集\n\n\(mainStation)へ参集\n\n"
@@ -854,14 +854,14 @@ class TyphoonResultDialog2 {
                 message = "招集なし"
             //２号、３号対象者は(非番・日勤)表示
             } else if kubun == "２号招集" || kubun == "３号招集" {
-                    if mainStation == "消防局" || mainStation == "教育訓練センター" {
+                    if mainStation == "消防局" || mainStation == "訓練センター" {
                         message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
                         message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
             //４号対象者
             } else {
-                    if mainStation == "消防局" || mainStation == "教育訓練センター" {
+                    if mainStation == "消防局" || mainStation == "訓練センター" {
                         message = "２号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
                         message = "２号非常招集\n\n\(mainStation)へ参集\n\n"

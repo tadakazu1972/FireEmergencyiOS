@@ -170,9 +170,11 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         //参集先が消防局の場合
         if mIndex == 0 {
             if mainStation != "消防局" && tsunamiStation != "消防局" {
-                print("どっちも消防局ではないが参集先は消防局で大丈夫か？")
-                mAlertDialog = AlertDialog(parentView: self)
-                mAlertDialog.showInfo()
+                if mainStation != "訓練センター" && tsunamiStation != "訓練センター" {
+                    print("どっちも消防局ではないが参集先は消防局で大丈夫か？")
+                    mAlertDialog = AlertDialog(parentView: self)
+                    mAlertDialog.showInfo()
+                }
             }
         }
         //参集先が消防署の場合
