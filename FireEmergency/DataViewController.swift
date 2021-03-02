@@ -68,7 +68,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //非常参集職員情報登録画面遷移ボタン
         btnPersonal.backgroundColor = UIColor.red
         btnPersonal.layer.masksToBounds = true
-        btnPersonal.setTitle("非常参集　職員情報入力", for: UIControl.State())
+        btnPersonal.setTitle("非常参集受付　職員情報入力", for: UIControl.State())
         btnPersonal.setTitleColor(UIColor.white, for: UIControl.State())
         btnPersonal.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
         btnPersonal.layer.cornerRadius = 8.0

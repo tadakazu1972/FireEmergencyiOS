@@ -18,11 +18,13 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let picClass        = UIPickerView(frame: CGRect.zero)
     let classArray: NSArray = ["正監","監","司令長","司令","司令補","士長","士"]
     let lblAge          = UILabel(frame: CGRect.zero)
-    let txtAge         = UITextField(frame: CGRect.zero)
+    let txtAge          = UITextField(frame: CGRect.zero)
+    let picAge          = UIPickerView(frame: CGRect.zero)
+    let ageArray: NSArray = ["18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70"]
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
-    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","訓練センター"]
+    let syozoku0Array: NSArray = ["北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","消防局","訓練センター"]
     let lblName      = UILabel(frame: CGRect.zero)
     let txtName      = UITextField(frame: CGRect.zero)
     let lblShikaku        = UILabel(frame: CGRect.zero)
@@ -61,6 +63,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         lblId.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblId)
         //職員番号テキストフィールド
+        txtId.placeholder = "半角数字で入力"
         txtId.text = userDefaults.string(forKey: "personalId")
         txtId.adjustsFontSizeToFitWidth = true
         txtId.textColor = UIColor.black
@@ -104,12 +107,17 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addSubview(lblAge)
         //年齢テキストフィールド
         txtAge.text = userDefaults.string(forKey: "personalAge")
-        txtAge.adjustsFontSizeToFitWidth = true
-        txtAge.textColor = UIColor.black
-        txtAge.delegate = self
+        txtAge.inputView = picAge
+        txtAge.inputAccessoryView = toolbar
         txtAge.borderStyle = UITextField.BorderStyle.bezel
         txtAge.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtAge)
+        //年齢PickerView
+        picAge.delegate = self
+        picAge.dataSource = self
+        picAge.translatesAutoresizingMaskIntoConstraints = false
+        picAge.tag = 1
+        picAge.selectRow(0, inComponent:0, animated:false) //呼び出したrow値でピッカー初期化
         //所属ラベル
         lblSyozoku0.text = "所　　属"
         lblSyozoku0.adjustsFontSizeToFitWidth = true
@@ -136,6 +144,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         lblName.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblName)
         //氏名テキストフィールド
+        txtName.placeholder = "姓名の間に空白入れない"
         txtName.borderStyle = UITextField.BorderStyle.bezel
         txtName.text = userDefaults.string(forKey: "personalName")
         txtName.translatesAutoresizingMaskIntoConstraints = false
@@ -245,7 +254,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //職員番号テキストフィールド
             Constraint(txtId, .top, to:lblData, .bottom, constant:24),
-            Constraint(txtId, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtId, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtId, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
@@ -257,7 +266,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //階級テキストフィールド
             Constraint(txtClass, .top, to:txtId, .bottom, constant:24),
-            Constraint(txtClass, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtClass, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtClass, .trailing, to:self.view, .trailing, constant:-16)
         ])
         self.view.addConstraints([
@@ -269,7 +278,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //年齢テキストフィールド
             Constraint(txtAge, .top, to:txtClass, .bottom, constant:24),
-            Constraint(txtAge, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtAge, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtAge, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
@@ -281,7 +290,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //所属テキストフィールド
             Constraint(txtSyozoku0, .top, to:txtAge, .bottom, constant:24),
-            Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtSyozoku0, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
@@ -293,7 +302,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         self.view.addConstraints([
             //氏名テキストフィールド
             Constraint(txtName, .top, to:txtSyozoku0, .bottom, constant:24),
-            Constraint(txtName, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtName, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtName, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
@@ -360,6 +369,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             rowNum = classArray.count
             break
+        case 1:
+            rowNum = ageArray.count
+            break
         case 2:
             rowNum = syozoku0Array.count
             break
@@ -379,6 +391,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             picComponent = classArray[row] as? String
             break
+        case 1:
+            picComponent = ageArray[row] as? String
+            break
         case 2:
             picComponent = syozoku0Array[row] as? String
             break
@@ -397,6 +412,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 0:
             txtClass.text = classArray[row] as? String
             break
+        case 1:
+            txtAge.text = ageArray[row] as? String
+            break
         case 2:
             txtSyozoku0.text = syozoku0Array[row] as? String
             break
@@ -408,12 +426,14 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     //ツールバーで選択ボタンを押した時
     @objc func selectRow(){
         //初起動で何も登録されていない場合、ピッカーを移動させずに選択ボタンを押した場合にnil防止として0番目を登録する
-        //正監はケース少ないだろうが、消防局はそのままピッカー初期のままこれで良し、と選択ボタン押すケースが想定されるため
+        //正監はケース少ないだろうが、年齢18、所属北は違うと気づくことを願って。
         if txtClass.text == "" { txtClass.text = classArray[0] as? String }
+        if txtAge.text == "" { txtAge.text = ageArray[0] as? String }
         if txtSyozoku0.text == "" { txtSyozoku0.text = syozoku0Array[0] as? String }
         
         //キーボード消去
         txtClass.endEditing(true)
+        txtAge.endEditing(true)
         txtSyozoku0.endEditing(true)
         txtName.endEditing(true)
     }
