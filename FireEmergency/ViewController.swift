@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     //メイン画面
     var mSegment: UISegmentedControl!
     let btnData         = UIButton(frame: CGRect.zero)
+    let btnPersonal     = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
     //fileprivate var mViewController: ViewController!
     fileprivate var mInfoDialog: InfoDialog!
@@ -130,6 +131,18 @@ class ViewController: UIViewController {
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         
+        //非常参集職員情報登録画面遷移ボタン
+        btnPersonal.backgroundColor = UIColor.red
+        btnPersonal.layer.masksToBounds = true
+        btnPersonal.setTitle("非常参集受付", for: UIControl.State())
+        btnPersonal.setTitleColor(UIColor.white, for: UIControl.State())
+        btnPersonal.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        btnPersonal.layer.cornerRadius = 8.0
+        btnPersonal.tag = 0
+        btnPersonal.translatesAutoresizingMaskIntoConstraints = false
+        btnPersonal.addTarget(self, action: #selector(self.onClickbtnPersonal(_:)), for: .touchUpInside)
+        self.view.addSubview(btnPersonal)
+        
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
@@ -163,7 +176,13 @@ class ViewController: UIViewController {
             //基礎データ入力ボタン
             Constraint(btnData, .top, to:self.view, .top, constant:44),
             Constraint(btnData, .leading, to:self.view, .leading, constant:8),
-            Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
+            Constraint(btnData, .trailing, to:self.view, .centerX, constant:-8)
+        ])
+        self.view.addConstraints([
+            //非常参集受付ボタン
+            Constraint(btnPersonal, .top, to:self.view, .top, constant:44),
+            Constraint(btnPersonal, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnPersonal, .trailing, to:self.view, .trailingMargin, constant:8)
         ])
     }
     
@@ -255,6 +274,19 @@ class ViewController: UIViewController {
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         //画面遷移
         self.present(nav, animated: true, completion: nil)        
+    }
+    
+    //非常参集　職員情報登録画面遷移
+    @objc func onClickbtnPersonal(_ sender : UIButton){
+        //自身を暗く
+        self.view.alpha = 0.0
+        mScreen = 4
+        mViewController2.updateView()
+        //navigationControllerのrootViewControllerにViewController2をセット
+        let nav = UINavigationController(rootViewController: mViewController2)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        //画面遷移
+        self.present(nav, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
