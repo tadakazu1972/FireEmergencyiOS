@@ -42,6 +42,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     //非常参集　職員情報　保存用
     let userDefaults = UserDefaults.standard
     //参集署選択ダイアログ
+    fileprivate var mKinmusyoSelectDialog: KinmusyoSelectDialog!
     fileprivate var mKyokusyoSelectDialog: KyokusyoSelectDialog!
         
     override func viewDidLoad() {
@@ -512,8 +513,10 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         //基礎データ画面を暗く
         mViewController2.view.alpha = 0.1
         //ダイアログ表示
-        mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
-        mKyokusyoSelectDialog.showInfo()
+        mKinmusyoSelectDialog = KinmusyoSelectDialog(parentView: self)
+        mKinmusyoSelectDialog.showInfo()
+        //mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
+        //mKyokusyoSelectDialog.showInfo()
     }
         
     override func didReceiveMemoryWarning() {
