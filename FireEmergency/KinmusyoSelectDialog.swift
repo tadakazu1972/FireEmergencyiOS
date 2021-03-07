@@ -11,29 +11,35 @@ import UIKit
 class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     //ボタン押したら出るUIWindow
     fileprivate var parent: PersonalViewController1!
-    fileprivate var win1: UIWindow!
+    public var win1: UIWindow!
     fileprivate var text1: UITextView!
     fileprivate var text2: UITextView!
     fileprivate var text3: UITextView!
     fileprivate var text4: UITextView!
     fileprivate var collection: UICollectionView!
     fileprivate var items:[String] = []
+    fileprivate var syoMailAddress: [String: String] = [:]
     fileprivate var sansyusyo:[String] = []
     fileprivate var address:[String] = []
     fileprivate var mailAddress: String! //メール送信先アドレス格納用
     fileprivate var subject: String! //参集署ごとのメール件名「＠参集署」格納用
+    /*
     fileprivate var btnKinmu: UIButton!
     fileprivate var btnShitei: UIButton!
     fileprivate var btnSonota: UIButton!
+    */
     fileprivate var btnClose: UIButton!
     fileprivate var btnMail: UIButton!
-    fileprivate var mSansyusyoSelectDialog: SansyusyoSelectDialog!
     //上記以外参集署選択ダイアログ
+    fileprivate var mSansyusyoSelectDialog: SansyusyoSelectDialog!    
     fileprivate var mKyokusyoSelectDialog: KyokusyoSelectDialog!
     //非常参集　職員情報　保存用
     let userDefaults = UserDefaults.standard
+    var mainStation: String?
+    var tsunamiStation: String?
     //警告用
     fileprivate var mAlertDialog: AlertDialog!
+    fileprivate var mAlertDialogMail: AlertDialogMail!
     
     //コンストラクタ
     init(parentView: PersonalViewController1){
@@ -46,35 +52,31 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         
         let layout = UICollectionViewFlowLayout() //これがないとエラーになる
         layout.itemSize = CGSize(width: 100,height: 50) // Cellの大きさ
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32) //Cellのマージン
+        layout.sectionInset = UIEdgeInsets(top: 40, left: 32, bottom: 40, right: 20) //Cellのマージン
         layout.minimumInteritemSpacing = 40 //セル同士の間隔
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
         collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        
+        /*
         btnKinmu = UIButton()
         btnShitei = UIButton()
         btnSonota = UIButton()
-        
+        */
         btnClose = UIButton()
         btnMail  = UIButton()
                 
-        text1.text = "■参集先"
+        text1.text = "■参集先　メール送信\n　必ず参集先に到着してから送信"
         text2.text = "勤務消防署"
         text3.text = "指定参集署"
         text4.text = "上記以外"
         
         //基礎データから勤務消防署、指定参集署を呼び出し
-        let mainStation: String! = userDefaults.string(forKey: "mainStation")
-        let tsunamiStation: String! = userDefaults.string(forKey: "tsunamiStation")
+        mainStation = userDefaults.string(forKey: "mainStation")
+        tsunamiStation = userDefaults.string(forKey: "tsunamiStation")
         //collectionViewのアイテムとして配列に格納
-        items = [mainStation, tsunamiStation, "上記以外"]
+        items = [mainStation!, tsunamiStation!, "その他"]
         
-        //メール送信に使う基礎設定
-        sansyusyo = ["北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上"]
-        
-        address =
-            ["pa0005","pa0006","pa0007","pa0008","pa0009","pa0036","pa0010","pa0011","pa0013","pa0012","pa0014","pa0015","pa0016","pa0017","pa0018","pa0019","pa0020","pa0021","pa0023","pa0022","pa0024","pa0025","pa0026","pa0027","pa0028"]
-        
+        //メール送信に使う基礎設定 辞書型
+        syoMailAddress = ["北":"pa0005","都島":"pa0006","福島":"pa0007","此花":"pa0008","中央":"pa0009","西":"pa0036","港":"pa0010","大正":"pa0011","天王寺":"pa0013","浪速":"pa0012","西淀川":"pa0014","淀川":"pa0015","東淀川":"pa0016","東成":"pa0017","生野":"pa0018","旭":"pa0019","城東":"pa0020","鶴見":"pa0021","住之江":"pa0023","阿倍野":"pa0022","住吉":"pa0024","東住吉":"pa0025","平野":"pa0026","西成":"pa0027","水上":"pa0028"]
     }
     
     //デコンストラクタ
@@ -86,9 +88,11 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         text3 = nil
         text4 = nil
         collection = nil
+        /*
         btnKinmu = nil
         btnShitei = nil
         btnSonota = nil
+        */
         items = ["","","",""]
         btnClose = nil
         btnMail = nil
@@ -126,7 +130,16 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         //表示
         self.win1.makeKeyAndVisible()
         
-        //TextView生成
+        //UICollectionView生成
+        collection.frame = CGRect(x: 0 ,y: 0, width: win1.frame.width/2, height: win1.frame.height-40)
+        collection.layer.position = CGPoint(x: win1.frame.width/2+65, y: win1.frame.minY-20)
+        collection.backgroundColor = UIColor.white
+        collection.delegate = self
+        collection.dataSource = self
+        collection.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        self.win1.addSubview(collection)
+        
+        //TextView生成 UICollectionの後に描画しないとかぶって見えない
         text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
         text1.backgroundColor = UIColor.clear
         text1.font = UIFont.systemFont(ofSize: CGFloat(18))
@@ -134,14 +147,6 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         text1.textAlignment = NSTextAlignment.left
         text1.isEditable = false
         self.win1.addSubview(text1)
-        
-        //UICollectionView生成
-        collection.frame = CGRect(x: 10,y: 60, width: self.win1.frame.width-20, height: self.win1.frame.height-100)
-        collection.backgroundColor = UIColor.white
-        collection.delegate = self
-        collection.dataSource = self
-        collection.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        self.win1.addSubview(collection)
         
         //勤務消防署、指定参集署、上記以外　TextView生成
         text2.frame = CGRect(x: 0, y: 0, width: self.win1.frame.width/2, height: 60)
@@ -263,11 +268,59 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //タップしたボタンによる動作
+        switch indexPath.row {
+        //勤務消防署
+        case 0:
+            //消防局なら本局の課を選択させるため、index:0でSansyusyoSelectDialogへ遷移
+            if mainStation == "消防局" {
+                //自分を消去
+                dismissDialog()
+                //基礎データ画面を暗く
+                mViewController2.view.alpha = 0.1
+                mSansyusyoSelectDialog = SansyusyoSelectDialog(index: 0, parentView: parent)
+                mSansyusyoSelectDialog.showInfo()
+            } else {
+                //消防署の該当署のメールアドレスを抽出
+                pickupSyoMailAddress(syo: mainStation)
+            }
+            break
+        //指定参集署
+        case 1:
+            //消防局なら本局の課を選択させるため、index:0でSansyusyoSelectDialogへ遷移
+            if tsunamiStation == "消防局" {
+                //自分を消去
+                dismissDialog()
+                //基礎データ画面を暗く
+                mViewController2.view.alpha = 0.1
+                mSansyusyoSelectDialog = SansyusyoSelectDialog(index: 0, parentView: parent)
+                mSansyusyoSelectDialog.showInfo()
+            } else {
+                //消防署の該当署のメールアドレスを抽出
+                pickupSyoMailAddress(syo: tsunamiStation)
+            }
+            break
+        //その他　消防局　消防署　選択ダイアログへ遷移
+        case 2:
+            //自分を消去
+            dismissDialog()
+            //基礎データ画面を暗く
+            mViewController2.view.alpha = 0.1
+            //ダイアログ表示
+            mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: parent)
+            mKyokusyoSelectDialog.showInfo()
+            break
+        default:
+            break
+        }
+    }
+    
+    func pickupSyoMailAddress(syo: String?){
         //タップした参集署のメールアドレスを格納
-        mailAddress = address[indexPath.row] + "@city.osaka.lg.jp"
-        subject = "@" + items[indexPath.row]
+        let syo: String = syo!
+        mailAddress = syoMailAddress[syo]! + "@city.osaka.lg.jp"
+        subject = "@" + syo
         //確認用
-        print("セルを選択 #\(indexPath.row)!")
         print(mailAddress!)
         print(subject!)
     }
@@ -286,19 +339,26 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
     
     //メール送信
     @objc func onClickMail(_ sender: UIButton){
-        //ダイアログ消去
-        dismissDialog()
+        //参集先をタップしていない場合は警告出してメール送信に進ませない
+        if mailAddress == nil {
+            mAlertDialogMail = AlertDialogMail(parentView: self)
+            mAlertDialogMail.showInfo()
+        } else {
+            //メール送信へ進む
+            //ダイアログ消去
+            dismissDialog()
         
-        //選択された参集署のメールアドレスと件名
-        var addressArray: [String] = []
-        // addressArray = ["pa0009@city.osaka.lg.jp", "@中央"] の形で格納される。
-        // 後にMailViewControllerで送信先アドレス：addressAttary[0],件名：addressArray[1]で呼び出して使用する
-        addressArray.append(mailAddress)
-        addressArray.append(subject)
-        //print(addressArray) //デバッグ用
+            //選択された参集署のメールアドレスと件名
+            var addressArray: [String] = []
+            // addressArray = ["pa0009@city.osaka.lg.jp", "@中央"] の形で格納される。
+            // 後にMailViewControllerで送信先アドレス：addressAttary[0],件名：addressArray[1]で呼び出して使用する
+            addressArray.append(mailAddress)
+            addressArray.append(subject)
+            //print(addressArray) //デバッグ用
         
-        //次の関数でMailViewControllerを生成して画面遷移する
-        sendMail(addressArray)
+            //次の関数でMailViewControllerを生成して画面遷移する
+            sendMail(addressArray)
+        }
     }
     
     //参集署宛メール送信 MailViewController2遷移

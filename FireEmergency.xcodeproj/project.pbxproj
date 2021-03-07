@@ -91,6 +91,7 @@
 		5960EB7A1E46C7BD00D1917A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960EB791E46C7BD00D1917A /* StringExtensions.swift */; };
 		5960EB7C1E47443500D1917A /* ContactLoadDialog2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */; };
 		5967947425F495A400CED7B7 /* KinmusyoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5967947325F495A400CED7B7 /* KinmusyoSelectDialog.swift */; };
+		5967947625F50CF100CED7B7 /* AlertDialogMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5967947525F50CF100CED7B7 /* AlertDialogMail.swift */; };
 		597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1151E2113E50011ABB1 /* ViewController.swift */; };
 		597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1171E21DB780011ABB1 /* typhoon_caution.txt */; };
 		597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1191E21DB820011ABB1 /* kokuminhogo_caution.txt */; };
@@ -260,6 +261,7 @@
 		5960EB791E46C7BD00D1917A /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactLoadDialog2.swift; sourceTree = "<group>"; };
 		5967947325F495A400CED7B7 /* KinmusyoSelectDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinmusyoSelectDialog.swift; sourceTree = "<group>"; };
+		5967947525F50CF100CED7B7 /* AlertDialogMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogMail.swift; sourceTree = "<group>"; };
 		597FD1151E2113E50011ABB1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		597FD1171E21DB780011ABB1 /* typhoon_caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon_caution.txt; sourceTree = "<group>"; };
 		597FD1191E21DB820011ABB1 /* kokuminhogo_caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo_caution.txt; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				595966B725DBF94100157446 /* KyokusyoSelectDialog.swift */,
 				5960CEEF25D8FBE90072129C /* SansyusyoSelectDialog.swift */,
 				595D52E925DCEF8B004DC37C /* AlerDialog.swift */,
+				5967947525F50CF100CED7B7 /* AlertDialogMail.swift */,
 				59CF1BF025DAABE000CF2C73 /* MailViewController2.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
@@ -754,6 +757,7 @@
 				5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */,
 				59AC16601E6267A100BBB28F /* GuideViewController.swift in Sources */,
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
+				5967947625F50CF100CED7B7 /* AlertDialogMail.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */,
 				595233721E73C83200FC8CE8 /* Guide2SelectDialog.swift in Sources */,
 				59AC16641E6C006C00BBB28F /* Guide6Dialog.swift in Sources */,
