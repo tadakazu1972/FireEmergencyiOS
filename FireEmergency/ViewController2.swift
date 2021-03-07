@@ -53,6 +53,9 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //明るく
+        self.view.alpha = 1.0
+        
         //常にViewController2のインスタンス作成時には基礎データ入力画面になるように1をセット
         mScreen = 1
         

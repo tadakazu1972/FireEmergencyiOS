@@ -51,7 +51,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //自身を明るく
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         self.view.alpha = 1.0
-        //元の画面を暗く
+        //背後にある画面を暗く
         mViewController.view.alpha = 0.1
         //Button生成
         //アプリ説明書

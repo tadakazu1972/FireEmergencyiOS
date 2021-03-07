@@ -507,8 +507,10 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         mViewController2.updateView()
     }
     
-    //参集署選択ボタンクリック
+    //参集先到着ボタンクリック
     @objc func onClickbtnNext(_ sender: UIButton){
+        //基礎データ画面を暗く
+        mViewController2.view.alpha = 0.1
         //ダイアログ表示
         mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
         mKyokusyoSelectDialog.showInfo()

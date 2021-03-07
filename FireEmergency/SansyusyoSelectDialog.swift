@@ -76,6 +76,7 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     //表示
     func showInfo (){
         //元の画面を暗く、タップを無効化
+        mViewController2.view.alpha = 0.1 //親２画面も明るく
         parent.view.alpha = 0.1
         parent.view.isUserInteractionEnabled = false
         //初期設定
@@ -140,6 +141,7 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+        mViewController2.view.alpha = 1.0 //親２画面も明るく
         parent.view.isUserInteractionEnabled = true //タップ有効化
     }
     

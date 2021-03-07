@@ -106,6 +106,7 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+        mViewController2.view.alpha = 1.0 //親２画面も明るく
         parent.view.isUserInteractionEnabled = true //タップ有効化
     }
     
