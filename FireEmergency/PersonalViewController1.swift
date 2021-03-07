@@ -351,8 +351,20 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         ])
     }
     
+    //氏名にスペースあったら削除 キーボード閉じる時、Rowに飛んだ時、登録ボタン押す時呼び出して使う
+    private func trimSpaces(){
+        //半角スペース
+        txtName.text = txtName.text?.replacingOccurrences(of: " ", with: "")
+        //全角スペース
+        txtName.text = txtName.text?.replacingOccurrences(of: "　", with: "")
+    }
+    
     //テキストフィールドのキーボード閉じる処理
     @objc func dismissKeyboard() {
+        
+        //氏名からスペース削除
+        self.trimSpaces()
+        
         self.view.endEditing(true)
     }
     
@@ -431,6 +443,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         if txtAge.text == "" { txtAge.text = ageArray[0] as? String }
         if txtSyozoku0.text == "" { txtSyozoku0.text = syozoku0Array[0] as? String }
         
+        //氏名からスペース削除
+        self.trimSpaces()
+        
         //キーボード消去
         txtClass.endEditing(true)
         txtAge.endEditing(true)
@@ -466,6 +481,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //登録ボタンクリック
     @objc func onClickbtnSave(_ sender : UIButton){
+        
+        //氏名からスペース削除
+        self.trimSpaces()
         
         //userdefaultに書き込み
         userDefaults.set(txtId.text, forKey: "personalId")
