@@ -20,6 +20,7 @@ class MailViewController2: UIViewController, MFMailComposeViewControllerDelegate
     var personalAge: String = ""
     var personalDepartment: String = ""
     var personalName: String = ""
+    var personalRide: String = ""
     var personalEngineer: String = ""
     var personalParamedic: String = ""
     
@@ -63,6 +64,7 @@ class MailViewController2: UIViewController, MFMailComposeViewControllerDelegate
         personalAge = userDefaults.string(forKey:"personalAge")! + "歳"
         personalDepartment = userDefaults.string(forKey:"personalDepartment")!
         personalName = userDefaults.string(forKey:"personalName")!
+        personalRide = userDefaults.string(forKey:"personalRide")!
         if userDefaults.bool(forKey:"personalEngineer"){
             personalEngineer = "有"
         } else {
@@ -73,7 +75,7 @@ class MailViewController2: UIViewController, MFMailComposeViewControllerDelegate
         } else {
             personalParamedic = "無"
         }
-        message = "\(personalId) \(personalClass) \(personalAge) \(personalDepartment) \(personalName) \(personalEngineer) \(personalParamedic)"
+        message = "\(personalId) \(personalClass) \(personalAge) \(personalDepartment) \(personalName) \(personalRide) \(personalEngineer) \(personalParamedic)"
         mailViewController.setMessageBody(message, isHTML: false)
         
         self.present(mailViewController, animated:true, completion:nil)

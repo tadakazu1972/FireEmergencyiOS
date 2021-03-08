@@ -27,6 +27,10 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     let syozoku0Array: NSArray = ["北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","消防局","訓練センター"]
     let lblName      = UILabel(frame: CGRect.zero)
     let txtName      = UITextField(frame: CGRect.zero)
+    let lblRide         = UILabel(frame: CGRect.zero)
+    let txtRide         = UITextField(frame: CGRect.zero)
+    let picRide         = UIPickerView(frame: CGRect.zero)
+    let rideArray: NSArray = ["ST","R","A","特殊隊","通信","日勤"]
     let lblShikaku        = UILabel(frame: CGRect.zero)
     let swtEngineer     = UISwitch(frame: CGRect.zero)
     let lblEngineer     = UILabel(frame: CGRect.zero)
@@ -151,6 +155,25 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         txtName.translatesAutoresizingMaskIntoConstraints = false
         txtName.delegate = self
         self.view.addSubview(txtName)
+        //現在の乗組ラベル
+        lblRide.text = "現在の乗組"
+        lblRide.adjustsFontSizeToFitWidth = true
+        lblRide.textAlignment = NSTextAlignment.left
+        lblRide.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblRide)
+        //現在の乗組テキストフィールド
+        txtRide.borderStyle = UITextField.BorderStyle.bezel
+        txtRide.text = userDefaults.string(forKey: "personalRide")
+        txtRide.inputView = picRide
+        txtRide.inputAccessoryView = toolbar
+        txtRide.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(txtRide)
+        //現在の乗組PickerView
+        picRide.delegate = self
+        picRide.dataSource = self
+        picRide.translatesAutoresizingMaskIntoConstraints = false
+        picRide.tag = 3
+        picRide.selectRow(0, inComponent:0, animated:false) //呼び出したrow値でピッカー初期化
         
         //資格ラベル
         lblShikaku.text = "資　　格"
@@ -242,94 +265,106 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         //制約
         self.view.addConstraints([
             //新規データ入力ラベル
-            Constraint(lblData, .top, to:self.view, .top, constant:28),
+            Constraint(lblData, .top, to:self.view, .top, constant:20),
             Constraint(lblData, .centerX, to:self.view, .centerX, constant:0),
             Constraint(lblData, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //職員番号ラベル
-            Constraint(lblId, .top, to:lblData, .bottom, constant:24),
+            Constraint(lblId, .top, to:lblData, .bottom, constant:20),
             Constraint(lblId, .leading, to:self.view, .leading, constant:16),
             Constraint(lblId, .trailing, to:self.view, .centerX, constant:-16)
         ])
         self.view.addConstraints([
             //職員番号テキストフィールド
-            Constraint(txtId, .top, to:lblData, .bottom, constant:24),
+            Constraint(txtId, .top, to:lblData, .bottom, constant:20),
             Constraint(txtId, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtId, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //階級ラベル
-            Constraint(lblClass, .top, to:txtId, .bottom, constant:24),
+            Constraint(lblClass, .top, to:txtId, .bottom, constant:20),
             Constraint(lblClass, .leading, to:self.view, .leading, constant:16),
             Constraint(lblClass, .trailing, to:self.view, .centerX, constant:-16)
         ])
         self.view.addConstraints([
             //階級テキストフィールド
-            Constraint(txtClass, .top, to:txtId, .bottom, constant:24),
+            Constraint(txtClass, .top, to:txtId, .bottom, constant:20),
             Constraint(txtClass, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtClass, .trailing, to:self.view, .trailing, constant:-16)
         ])
         self.view.addConstraints([
             //年齢ラベル
-            Constraint(lblAge, .top, to:txtClass, .bottom, constant:24),
+            Constraint(lblAge, .top, to:txtClass, .bottom, constant:20),
             Constraint(lblAge, .leading, to:self.view, .leading, constant:16),
             Constraint(lblAge, .trailing, to:self.view, .centerX, constant:-16)
         ])
         self.view.addConstraints([
             //年齢テキストフィールド
-            Constraint(txtAge, .top, to:txtClass, .bottom, constant:24),
+            Constraint(txtAge, .top, to:txtClass, .bottom, constant:20),
             Constraint(txtAge, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtAge, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //所属ラベル
-            Constraint(lblSyozoku0, .top, to:txtAge, .bottom, constant:24),
+            Constraint(lblSyozoku0, .top, to:txtAge, .bottom, constant:20),
             Constraint(lblSyozoku0, .leading, to:self.view, .leading, constant:16),
             Constraint(lblSyozoku0, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //所属テキストフィールド
-            Constraint(txtSyozoku0, .top, to:txtAge, .bottom, constant:24),
+            Constraint(txtSyozoku0, .top, to:txtAge, .bottom, constant:20),
             Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtSyozoku0, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //氏名ラベル
-            Constraint(lblName, .top, to:txtSyozoku0, .bottom, constant:24),
+            Constraint(lblName, .top, to:txtSyozoku0, .bottom, constant:20),
             Constraint(lblName, .leading, to:self.view, .leading, constant:16),
             Constraint(lblName, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //氏名テキストフィールド
-            Constraint(txtName, .top, to:txtSyozoku0, .bottom, constant:24),
+            Constraint(txtName, .top, to:txtSyozoku0, .bottom, constant:20),
             Constraint(txtName, .leading, to:self.view, .centerX, constant:-32),
             Constraint(txtName, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
+            //現在の乗組ラベル
+            Constraint(lblRide, .top, to:txtName, .bottom, constant:20),
+            Constraint(lblRide, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblRide, .width, to:self.view, .width, constant:0, multiplier:0.8)
+            ])
+        self.view.addConstraints([
+            //現在の乗組テキストフィールド
+            Constraint(txtRide, .top, to:txtName, .bottom, constant:20),
+            Constraint(txtRide, .leading, to:self.view, .centerX, constant:-32),
+            Constraint(txtRide, .trailing, to:self.view, .trailing, constant:-16)
+            ])
+        self.view.addConstraints([
             //資格ラベル
-            Constraint(lblShikaku, .top, to:txtName, .bottom, constant:24),
+            Constraint(lblShikaku, .top, to:txtRide, .bottom, constant:20),
             Constraint(lblShikaku, .leading, to:self.view, .leading, constant:16),
             Constraint(lblShikaku, .width, to:self.view, .width, constant:0, multiplier:0.8)
         ])
         self.view.addConstraints([
             //機関員ラベル
-            Constraint(lblEngineer, .top, to:txtName, .bottom, constant:32),
+            Constraint(lblEngineer, .top, to:txtRide, .bottom, constant:28),
             Constraint(lblEngineer, .leading, to:self.view, .centerX, constant:32)
         ])
         self.view.addConstraints([
             //機関員スイッチ
-            Constraint(swtEngineer, .top, to:txtName, .bottom, constant:24),
+            Constraint(swtEngineer, .top, to:txtRide, .bottom, constant:20),
             Constraint(swtEngineer, .trailing, to:self.view, .trailing, constant:-16)
         ])
         self.view.addConstraints([
             //救命士ラベル
-            Constraint(lblParamedic, .top, to:lblEngineer, .bottom, constant:32),
+            Constraint(lblParamedic, .top, to:lblEngineer, .bottom, constant:28),
             Constraint(lblParamedic, .leading, to:self.view, .centerX, constant:32)
         ])
         self.view.addConstraints([
             //救命士スイッチ
-            Constraint(swtParamedic, .top, to:lblEngineer, .bottom, constant:24),
+            Constraint(swtParamedic, .top, to:lblEngineer, .bottom, constant:20),
             Constraint(swtParamedic, .trailing, to:self.view, .trailing, constant:-16)
         ])
         self.view.addConstraints([
@@ -346,7 +381,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         ])
         self.view.addConstraints([
             //登録ボタン
-            Constraint(btnSave, .top, to:swtParamedic, .bottom, constant:40),
+            Constraint(btnSave, .top, to:swtParamedic, .bottom, constant:20),
             Constraint(btnSave, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnSave, .width, to:self.view, .width, constant:0, multiplier:0.5)
         ])
@@ -388,6 +423,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 2:
             rowNum = syozoku0Array.count
             break
+        case 3:
+            rowNum = rideArray.count
+            break
         default:
             rowNum = classArray.count
             break
@@ -410,6 +448,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 2:
             picComponent = syozoku0Array[row] as? String
             break
+        case 3:
+            picComponent = rideArray[row] as? String
+            break
         default:
             picComponent = classArray[row] as? String
             break
@@ -431,6 +472,9 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         case 2:
             txtSyozoku0.text = syozoku0Array[row] as? String
             break
+        case 3:
+            txtRide.text = rideArray[row] as? String
+            break
         default:
             break
         }
@@ -443,6 +487,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         if txtClass.text == "" { txtClass.text = classArray[0] as? String }
         if txtAge.text == "" { txtAge.text = ageArray[0] as? String }
         if txtSyozoku0.text == "" { txtSyozoku0.text = syozoku0Array[0] as? String }
+        if txtRide.text == "" { txtRide.text = rideArray[0] as? String }
         
         //氏名からスペース削除
         self.trimSpaces()
@@ -452,6 +497,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         txtAge.endEditing(true)
         txtSyozoku0.endEditing(true)
         txtName.endEditing(true)
+        txtRide.endEditing(true)
     }
     
     //機関員スイッチ　切替
@@ -492,6 +538,7 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         userDefaults.set(txtAge.text, forKey: "personalAge")
         userDefaults.set(txtSyozoku0.text, forKey: "personalDepartment")
         userDefaults.set(txtName.text, forKey: "personalName")
+        userDefaults.set(txtRide.text, forKey: "personalRide")
         
         //登録しましたアラート　表示
         let dialog = UIAlertController(title: "登録しました", message: "修正が必要な場合は再度登録してください", preferredStyle: .alert)
