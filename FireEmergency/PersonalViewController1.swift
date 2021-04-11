@@ -397,10 +397,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //テキストフィールドのキーボード閉じる処理
     @objc func dismissKeyboard() {
-        
         //氏名からスペース削除
         self.trimSpaces()
-        
         self.view.endEditing(true)
     }
     
@@ -488,10 +486,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
         if txtAge.text == "" { txtAge.text = ageArray[0] as? String }
         if txtSyozoku0.text == "" { txtSyozoku0.text = syozoku0Array[0] as? String }
         if txtRide.text == "" { txtRide.text = rideArray[0] as? String }
-        
         //氏名からスペース削除
         self.trimSpaces()
-        
         //キーボード消去
         txtClass.endEditing(true)
         txtAge.endEditing(true)
@@ -528,24 +524,50 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //登録ボタンクリック
     @objc func onClickbtnSave(_ sender : UIButton){
-        
-        //氏名からスペース削除
-        self.trimSpaces()
-        
-        //userdefaultに書き込み
-        userDefaults.set(txtId.text, forKey: "personalId")
-        userDefaults.set(txtClass.text, forKey: "personalClass")
-        userDefaults.set(txtAge.text, forKey: "personalAge")
-        userDefaults.set(txtSyozoku0.text, forKey: "personalDepartment")
-        userDefaults.set(txtName.text, forKey: "personalName")
-        userDefaults.set(txtRide.text, forKey: "personalRide")
-        
-        //登録しましたアラート　表示
-        let dialog = UIAlertController(title: "登録しました", message: "修正が必要な場合は再度登録してください", preferredStyle: .alert)
-        //ボタンのタイトル
-        dialog.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        //実際に表示させる
-        self.present(dialog, animated: true, completion: nil)
+        //入力チェック
+        if checkPersonalData(){
+            //登録しましたアラート　表示
+            let dialog = UIAlertController(title: "登録しました", message: "修正が必要な場合は再度登録してください", preferredStyle: .alert)
+            //ボタンのタイトル
+            dialog.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+            //実際に表示させる
+            self.present(dialog, animated: true, completion: nil)
+        }
+    }
+    
+    func checkPersonalData()-> Bool {
+        //職員番号７桁チェック
+        if txtId.text!.count != 7 {
+            //アラート　表示
+            let dialog = UIAlertController(title: "職員番号が７桁になっていません", message: "職員番号は７桁半角数字で入力してください", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+            //実際に表示させる
+            self.present(dialog, animated: true, completion: nil)
+            
+            return false
+        //氏名が空白かチェック
+        } else if txtName.text == "" {
+            //アラート　表示
+            let dialog = UIAlertController(title: "氏名が入力されていません", message: "姓名の間に空白を入れない", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+            //実際に表示させる
+            self.present(dialog, animated: true, completion: nil)
+            
+            return false
+        } else {
+            //以下　登録処理
+            //氏名からスペース削除
+            self.trimSpaces()
+            //userdefaultに書き込み
+            userDefaults.set(txtId.text, forKey: "personalId")
+            userDefaults.set(txtClass.text, forKey: "personalClass")
+            userDefaults.set(txtAge.text, forKey: "personalAge")
+            userDefaults.set(txtSyozoku0.text, forKey: "personalDepartment")
+            userDefaults.set(txtName.text, forKey: "personalName")
+            userDefaults.set(txtRide.text, forKey: "personalRide")
+            
+            return true
+        }
     }
     
     //キャンセルボタンクリック
@@ -557,13 +579,17 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     
     //参集先到着ボタンクリック
     @objc func onClickbtnNext(_ sender: UIButton){
-        //基礎データ画面を暗く
-        mViewController2.view.alpha = 0.1
-        //ダイアログ表示
-        mKinmusyoSelectDialog = KinmusyoSelectDialog(parentView: self)
-        mKinmusyoSelectDialog.showInfo()
-        //mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
-        //mKyokusyoSelectDialog.showInfo()
+        //焦って登録ボタンを押さずに参集先到着ボタンを押した場合も考慮して
+        //入力データチェック、戻り値がtrueなら画面遷移
+        if checkPersonalData() {
+            //基礎データ画面を暗く
+            mViewController2.view.alpha = 0.1
+            //ダイアログ表示
+            mKinmusyoSelectDialog = KinmusyoSelectDialog(parentView: self)
+            mKinmusyoSelectDialog.showInfo()
+            //mKyokusyoSelectDialog = KyokusyoSelectDialog(parentView: self)
+            //mKyokusyoSelectDialog.showInfo()
+        }
     }
         
     override func didReceiveMemoryWarning() {
