@@ -94,7 +94,7 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         //TextView生成
         text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
         text1.backgroundColor = UIColor.clear
-        text1.font = UIFont.systemFont(ofSize: CGFloat(18))
+        text1.font = UIFont.systemFont(ofSize: CGFloat(16))
         text1.textColor = UIColor.black
         text1.textAlignment = NSTextAlignment.left
         text1.isEditable = false

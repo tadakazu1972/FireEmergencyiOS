@@ -131,8 +131,8 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         self.win1.makeKeyAndVisible()
         
         //UICollectionView生成
-        collection.frame = CGRect(x: 0 ,y: 0, width: win1.frame.width/2, height: win1.frame.height-40)
-        collection.layer.position = CGPoint(x: win1.frame.width/2+65, y: win1.frame.minY-20)
+        collection.frame = CGRect(x: 0 ,y: 0, width: win1.frame.width/2, height: 280)
+        collection.layer.position = CGPoint(x: win1.frame.width/2+65, y: win1.frame.height/2+10)
         collection.backgroundColor = UIColor.white
         collection.delegate = self
         collection.dataSource = self
@@ -142,7 +142,7 @@ class KinmusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         //TextView生成 UICollectionの後に描画しないとかぶって見えない
         text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
         text1.backgroundColor = UIColor.clear
-        text1.font = UIFont.systemFont(ofSize: CGFloat(18))
+        text1.font = UIFont.systemFont(ofSize: CGFloat(16))
         text1.textColor = UIColor.black
         text1.textAlignment = NSTextAlignment.left
         text1.isEditable = false
