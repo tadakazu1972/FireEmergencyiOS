@@ -48,6 +48,8 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
     //参集署選択ダイアログ
     fileprivate var mKinmusyoSelectDialog: KinmusyoSelectDialog!
     fileprivate var mKyokusyoSelectDialog: KyokusyoSelectDialog!
+    //iPhoneSE(2016)=iPhone5画面判定用
+    let iPhone5 : CGRect = CGRect(x: 0.0, y: 0.0, width: 320.0, height: 568.0)
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -367,24 +369,57 @@ class PersonalViewController1: UIViewController, UIPickerViewDelegate, UIPickerV
             Constraint(swtParamedic, .top, to:lblEngineer, .bottom, constant:20),
             Constraint(swtParamedic, .trailing, to:self.view, .trailing, constant:-16)
         ])
-        self.view.addConstraints([
-            //キャンセルボタン
-            Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
-            Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
-            Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
-        ])
-        self.view.addConstraints([
-            //参集署選択ボタン
-            Constraint(btnNext, .bottom, to:self.view, .bottom, constant:-10),
-            Constraint(btnNext, .leading, to:self.view, .centerX, constant:8),
-            Constraint(btnNext, .trailing, to:self.view, .trailing, constant:-8)
-        ])
-        self.view.addConstraints([
-            //登録ボタン
-            Constraint(btnSave, .top, to:swtParamedic, .bottom, constant:20),
-            Constraint(btnSave, .centerX, to:self.view, .centerX, constant:0),
-            Constraint(btnSave, .width, to:self.view, .width, constant:0, multiplier:0.5)
-        ])
+        //iPhoneSEのとき登録ボタンのカブりを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            self.view.addConstraints([
+                //キャンセルボタン
+                Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
+                Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
+                Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8),
+                Constraint(btnCancel, .height, to:self.view, .height, constant:0, multiplier:0.05)
+            ])
+        } else {
+            self.view.addConstraints([
+                //キャンセルボタン
+                Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
+                Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
+                Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
+            ])
+        }
+        //iPhoneSEのとき登録ボタンのカブりを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            self.view.addConstraints([
+                //参集署選択ボタン
+                Constraint(btnNext, .bottom, to:self.view, .bottom, constant:-10),
+                Constraint(btnNext, .leading, to:self.view, .centerX, constant:8),
+                Constraint(btnNext, .trailing, to:self.view, .trailing, constant:-8),
+                Constraint(btnNext, .height, to:self.view, .height, constant:0, multiplier:0.05)
+            ])
+        } else {
+            self.view.addConstraints([
+                //参集署選択ボタン
+                Constraint(btnNext, .bottom, to:self.view, .bottom, constant:-10),
+                Constraint(btnNext, .leading, to:self.view, .centerX, constant:8),
+                Constraint(btnNext, .trailing, to:self.view, .trailing, constant:-8)
+            ])
+        }
+        //iPhoneSEのとき登録ボタンのカブりを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            self.view.addConstraints([
+                //登録ボタン
+                Constraint(btnSave, .bottom, to:btnCancel, .top, constant:-4),
+                Constraint(btnSave, .centerX, to:self.view, .centerX, constant:0),
+                Constraint(btnSave, .width, to:self.view, .width, constant:0, multiplier:0.5),
+                Constraint(btnSave, .height, to:self.view, .height, constant:0, multiplier:0.05)
+            ])
+        } else {
+            self.view.addConstraints([
+                //登録ボタン
+                Constraint(btnSave, .top, to:swtParamedic, .bottom, constant:20),
+                Constraint(btnSave, .centerX, to:self.view, .centerX, constant:0),
+                Constraint(btnSave, .width, to:self.view, .width, constant:0, multiplier:0.5)
+            ])
+        }
     }
     
     //氏名にスペースあったら削除 キーボード閉じる時、Rowに飛んだ時、登録ボタン押す時呼び出して使う

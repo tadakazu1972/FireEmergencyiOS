@@ -20,6 +20,8 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
     fileprivate var subject: String! //参集署ごとのメール件名「＠参集署」格納用
     fileprivate var btnClose: UIButton!
     fileprivate var mSansyusyoSelectDialog: SansyusyoSelectDialog!
+    //iPhoneSE(2016)=iPhone5画面判定用
+    let iPhone5 : CGRect = CGRect(x: 0.0, y: 0.0, width: 320.0, height: 568.0)
     
     //コンストラクタ
     init(parentView: PersonalViewController1){
@@ -27,9 +29,19 @@ class KyokusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionView
         win1 = UIWindow()
         text1 = UITextView()
         let layout = UICollectionViewFlowLayout() //これがないとエラーになる
-        layout.itemSize = CGSize(width: 100,height: 50) // Cellの大きさ
+        //iPhoneSEのときボタンの幅を小さくしないと１列表示になるのを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            layout.itemSize = CGSize(width: 80,height: 50) // Cellの大きさ
+        } else {
+            layout.itemSize = CGSize(width: 100,height: 50) // Cellの大きさ
+        }
         layout.sectionInset = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32) //Cellのマージン
-        layout.minimumInteritemSpacing = 40 //セル同士の間隔
+        //iPhoneSEのときボタンの幅を小さくしないと１列表示になるのを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            layout.minimumInteritemSpacing = 20 //セル同士の間隔
+        } else {
+            layout.minimumInteritemSpacing = 40 //セル同士の間隔
+        }
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
         collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         btnClose = UIButton()

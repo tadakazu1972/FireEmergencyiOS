@@ -25,6 +25,8 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
     //基礎データ登録で保存された勤務消防署と津波警報時参集指定署を呼び出す用
     let userDefaults = UserDefaults.standard
     fileprivate var mAlertDialog: AlertDialog!
+    //iPhoneSE(2016)=iPhone5画面判定用
+    let iPhone5 : CGRect = CGRect(x: 0.0, y: 0.0, width: 320.0, height: 568.0)
     
     //コンストラクタ
     init(index: Int, parentView: PersonalViewController1){
@@ -32,7 +34,12 @@ class SansyusyoSelectDialog: NSObject, UICollectionViewDelegate, UICollectionVie
         win1 = UIWindow()
         text1 = UITextView()
         let layout = UICollectionViewFlowLayout() //これがないとエラーになる
-        layout.itemSize = CGSize(width: 100,height: 40) // Cellの大きさ
+        //iPhoneSEのときボタンの幅を小さくしないと１列表示になるのを防ぐ
+        if Int(UIScreen.main.bounds.size.height)==Int(iPhone5.height){
+            layout.itemSize = CGSize(width: 80,height: 40) // Cellの大きさ
+        } else {
+            layout.itemSize = CGSize(width: 100,height: 40) // Cellの大きさ
+        }
         layout.sectionInset = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32) //Cellのマージン
         layout.minimumInteritemSpacing = 30 //セル同士の間隔
         layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
