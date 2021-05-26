@@ -345,7 +345,7 @@ class TyphoonResultDialog2 {
             text2.text = "2号:淀川,消防局\n3号:その他の署"
             setLevel4(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
             break
-        //高川 2020.06　追加(既存分を修正しないためcase 131-135)
+        //高川 2020.06　追加(既存分を修正しないためcase 131-135)、2021.05改正
         //氾濫注意水位、水防警報(出動)
         case 131:
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
@@ -363,7 +363,7 @@ class TyphoonResultDialog2 {
             break
         //避難準備情報発令の見込み
         case 132:
-            let title:String! = "■高川(水路橋)\n 【警戒レベル３】\n避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき(水位1.55m)\n\n"
+            let title:String! = "■高川(水路橋)\n 【警戒レベル３】\n避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき(水位1.62m)\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "4号:淀川,消防局\n5号:その他の署"
@@ -371,7 +371,7 @@ class TyphoonResultDialog2 {
             break
         //避難勧告
         case 133:
-            let title:String! = "■高川(水路橋)\n【警戒レベル４】\n避難勧告(水位1.6m)\n\n"
+            let title:String! = "■高川(水路橋)\n【警戒レベル４】\n避難勧告(水位1.7m)\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "3号:淀川,消防局\n4号:その他の署"
