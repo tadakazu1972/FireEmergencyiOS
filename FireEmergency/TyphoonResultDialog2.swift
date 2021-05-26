@@ -672,7 +672,7 @@ class TyphoonResultDialog2 {
             let hosoku:String! = "※災害発生又は切迫の状況が確認され、且つ、東除川が氾濫相当水位に到達した場合"
             let gaitousyo = Set(arrayLiteral: "平野", "消防局")
             text2.text = "1号:平野,消防局\n2号:その他の署"
-            setLevel4(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
+            setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
             break
         //氾濫注意水位、水防警報(出動)        //西除川(布忍橋) 2020.06　追加(既存分を修正しないためcase 131-135)
         //氾濫注意水位、水防警報(出動)
@@ -892,6 +892,32 @@ class TyphoonResultDialog2 {
                         message = "３号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
                         message = "３号非常招集\n\n\(mainStation)へ参集\n\n" + hosoku
+                    }
+            }
+        }
+        text1.text = title + message
+    }
+    
+    //【警戒レベル５】緊急安全確保
+    func setLevel5(title: String, hosoku: String, gaitousyo: Set<String>){
+        var message:String! = ""
+        if gaitousyo.contains(userDefaults.string(forKey: "mainStation")!){
+            //１号招集なので、全員(非番・日勤)表示
+            if mainStation == "消防局" || mainStation == "訓練センター" {
+                message = "１号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
+            } else {
+                message = "１号非常招集\n\n\(mainStation)へ参集\n\n"
+            }
+        } else {
+            //該当署以外は２号招集なので、１号は招集なしの判定する
+            if kubun == "１号招集" {
+                message = "招集なし"
+            //２号、３号、４号対象者は(非番・日勤)表示
+            } else {
+                    if mainStation == "消防局" {
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    } else {
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
             }
         }
