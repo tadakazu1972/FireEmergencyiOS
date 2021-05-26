@@ -241,13 +241,18 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
                 mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 10, parentView: parent)
                 mTyphoonSelectDialog2.showInfo()
                 break
-            //西除川 2020.06　追加 index:14(既存分を変更しないため)
+            //石川（玉手橋） 2021.05 追加 index:15
             case 12:
+                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 15, parentView: parent)
+                mTyphoonSelectDialog2.showInfo()
+                break
+            //西除川 2020.06　追加 index:14(既存分を変更しないため)
+            case 13:
                 mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 14, parentView: parent)
                 mTyphoonSelectDialog2.showInfo()
                 break
             //高潮区域
-            case 13:
+            case 14:
                 mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 11, parentView: parent)
                 mTyphoonSelectDialog2.showInfo()
                 break

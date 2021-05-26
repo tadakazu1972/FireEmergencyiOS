@@ -69,8 +69,10 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
         case 10:
             items = ["■氾濫注意水位(水位2.9m)、水防警報(出動)",  "■【警戒レベル３】避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき(水位3.2m)", "■【警戒レベル４】避難勧告(水位3.9m)", "■【警戒レベル４】避難指示(緊急)(水位5.3m)"] //東除川（大堀上小橋）
             break
+        case 15:
+            items = ["【警戒レベル５】緊急安全確保（参考水位5.88m)"] //石川（玉手橋） 2021.05追加
         case 14:
-        items = ["■氾濫注意水位(水位2.5m)、水防警報(出動)",  "■【警戒レベル３】避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき(水位3.7m)", "■【警戒レベル４】避難勧告(水位4m)", "■【警戒レベル４】避難指示(緊急)(水位5.06m)"] //西除川 2020.06 追加
+            items = ["■氾濫注意水位(水位2.5m)、水防警報(出動)",  "■【警戒レベル３】避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき(水位3.7m)", "■【警戒レベル４】避難勧告(水位4m)", "■【警戒レベル４】避難指示(緊急)(水位5.06m)"] //西除川 2020.06 追加
         break
         case 11:
             items = ["■高潮区域(水防警報(出動))",  "■【警戒レベル３】避難準備・高齢者等避難開始(見込みを含む。)又は避難勧告が発令される見込みとなったとき", "■【警戒レベル４】避難勧告", "■【警戒レベル４】避難指示(緊急)"] //高潮 2020.09 名称を高潮のみに変更
@@ -446,6 +448,17 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
             case 3:
                 mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
                 mTyphoonResultDialog2.showResult(104)
+                break
+            default:
+                break
+            }
+            break
+        //石川（玉手橋）
+        case 15:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(151)
                 break
             default:
                 break

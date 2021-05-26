@@ -666,7 +666,15 @@ class TyphoonResultDialog2 {
             text2.text = "2号:平野,消防局\n3号:その他の署"
             setLevel4(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
             break
-        //西除川(布忍橋) 2020.06　追加(既存分を修正しないためcase 131-135)
+        //石川(玉手橋) 2021.05　追加(既存分を修正しないためcase 151のみ)
+        case 151:
+            let title:String! = "■石川(玉手橋)\n【警戒レベル５】\n緊急安全確保(参考水位5.88m)\n\n"
+            let hosoku:String! = "※災害発生又は切迫の状況が確認され、且つ、東除川が氾濫相当水位に到達した場合"
+            let gaitousyo = Set(arrayLiteral: "平野", "消防局")
+            text2.text = "1号:平野,消防局\n2号:その他の署"
+            setLevel4(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
+            break
+        //氾濫注意水位、水防警報(出動)        //西除川(布忍橋) 2020.06　追加(既存分を修正しないためcase 131-135)
         //氾濫注意水位、水防警報(出動)
         case 141:
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
