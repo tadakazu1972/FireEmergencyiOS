@@ -157,7 +157,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 15:
             let title:String! = "■淀川（枚方）\n【警戒レベル５】\n緊急安全確保(水位8.3m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "西淀川", "淀川", "東淀川", "旭", "消防局")
             text2.text = "1号:北,都島,福島,此花,西淀川,淀川,東淀川,旭,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -205,7 +205,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 25:
             let title:String! = "■大和川(柏原)\n【警戒レベル５】\n緊急安全確保(水位6.8m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "住之江", "住吉", "東住吉", "平野", "消防局")
             text2.text = "1号:住之江,住吉,東住吉,平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -253,7 +253,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 35:
             let title:String! = "■神崎川(三国)\n【警戒レベル５】\n緊急安全確保(水位5.8m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "西淀川", "淀川", "東淀川", "消防局")
             text2.text = "1号:西淀川,淀川,東淀川,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -301,7 +301,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 125:
             let title:String! = "■天竺川(天竺川橋)\n【警戒レベル５】\n緊急安全確保(水位2.86m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "1号:淀川,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -349,7 +349,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 135:
             let title:String! = "■高川(水路橋)\n【警戒レベル５】\n緊急安全確保(水位3.6m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "1号:淀川,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -397,7 +397,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 45:
             let title:String! = "■安威川(千歳橋)\n【警戒レベル５】\n緊急安全確保(水位5.1m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "東淀川", "消防局")
             text2.text = "1号:東淀川,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -446,7 +446,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 55:
             let title:String! = "■寝屋川(京橋)\n【警戒レベル５】\n緊急安全確保(水位3.5m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "都島", "中央", "東成", "生野", "旭", "城東", "鶴見", "東住吉", "平野", "消防局")
             text2.text = "1号:都島,中央,東成,生野,旭,城東,鶴見,東住吉,平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -494,7 +494,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 65:
             let title:String! = "■第二寝屋川(昭明橋)\n【警戒レベル５】\n緊急安全確保(水位4.85m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "城東", "鶴見", "消防局")
             text2.text = "1号:中央,東成,城東,鶴見,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -542,7 +542,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 75:
             let title:String! = "■平野川(剣橋)\n【警戒レベル５】\n緊急安全確保(水位4.4m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "生野", "城東", "東住吉", "平野", "消防局")
             text2.text = "1号:中央,東成,生野,城東,東住吉,平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -590,7 +590,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 85:
             let title:String! = "■平野川分水路(今里大橋)\n【警戒レベル５】\n緊急安全確保(水位4.63m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "生野", "城東", "東住吉", "平野", "消防局")
             text2.text = "1号:中央,東成,生野,城東,東住吉,平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -638,7 +638,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 95:
             let title:String! = "■古川(桑才)\n【警戒レベル５】\n緊急安全確保(水位3.67m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "旭", "城東", "鶴見", "消防局")
             text2.text = "1号:旭,城東,鶴見,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -686,7 +686,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 105:
             let title:String! = "■東除川(大堀上小橋)\n【警戒レベル５】\n緊急安全確保(水位5.3m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "平野", "消防局")
             text2.text = "1号:平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -694,7 +694,7 @@ class TyphoonResultDialog2 {
         //石川(玉手橋) 2021.05　追加(既存分を修正しないためcase 151のみ)
         case 151:
             let title:String! = "■石川(玉手橋)\n【警戒レベル５】\n緊急安全確保(参考水位5.88m)\n\n"
-            let hosoku:String! = "※災害発生又は切迫の状況が確認され、且つ、東除川が氾濫相当水位に到達した場合"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "平野", "消防局")
             text2.text = "1号:平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -742,7 +742,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 145:
             let title:String! = "■西除川(布忍橋)\n【警戒レベル５】\n緊急安全確保(水位5.06m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "東住吉", "平野", "消防局")
             text2.text = "1号:東住吉,平野,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -790,7 +790,7 @@ class TyphoonResultDialog2 {
         //緊急安全確保
         case 115:
             let title:String! = "■高潮\n【警戒レベル５】\n緊急安全確保\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央","西","港","大正","天王寺","浪速","西淀川", "淀川", "東淀川", "旭", "城東","阿倍野","住之江","住吉","西成","水上","消防局")
             text2.text = "1号:北,都島,福島,此花,中央,西,港,大正,天王寺,浪速,西淀川,淀川,東淀川,旭,城東,阿倍野,住之江,住吉,西成,水上,消防局\n2号:その他の署"
             setLevel5(title: title, hosoku: hosoku, gaitousyo: gaitousyo)
@@ -854,7 +854,7 @@ class TyphoonResultDialog2 {
             }
         } else {
             //その他の署は５号
-            message = "第５非常警備\n\n\(mainStation)\n\n招集なし"
+            message = "第５非常警備\n\nー\n\n招集なし"
         }
         text1.text = title + message
     }
@@ -872,9 +872,9 @@ class TyphoonResultDialog2 {
                 }
             } else if kubun == "４号招集" {
                 if mainStation == "消防局" {
-                    message = "３号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                 } else {
-                    message = "３号非常招集\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                 }
             } else {
                 message = "招集なし"
@@ -911,9 +911,9 @@ class TyphoonResultDialog2 {
             //４号対象者
             } else {
                     if mainStation == "消防局" || mainStation == "訓練センター" {
-                        message = "２号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号非常招集\n\n\(mainStation)へ参集\n\n"
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
             }
         } else {
@@ -930,9 +930,9 @@ class TyphoonResultDialog2 {
             //４号対象者
             } else {
                     if mainStation == "消防局" {
-                        message = "３号非常招集\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号非常招集\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
             }
         }
@@ -956,9 +956,9 @@ class TyphoonResultDialog2 {
             //２号、３号、４号対象者は(非番・日勤)表示
             } else {
                     if mainStation == "消防局" {
-                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
             }
         }
