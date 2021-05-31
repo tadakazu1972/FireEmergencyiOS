@@ -18,6 +18,7 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
     fileprivate var btnClose: UIButton!
     fileprivate var mTyphoonResultDialog2: TyphoonResultDialog2!
     fileprivate var mTyphoonSelectDialog: TyphoonSelectDialog! //１つ前の河川選択画面に戻る用
+    fileprivate var mTyphoonSelectDialog2: TyphoonSelectDialog2! //石川の水位を選択した際に東除川の水位選択画面に遷移する用
     //自分が何番目のダイアログが保存用
     fileprivate var mIndex: Int!
     
@@ -70,7 +71,7 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
             items = ["■氾濫注意水位(水位2.9m)、水防警報(出動)", "■高齢者等避難が発令される見込みとなったとき", "■【警戒レベル３】高齢者等避難(水位3.2m)", "■【警戒レベル４】避難指示(水位3.9m)", "■【警戒レベル５】緊急安全確保(水位5.3m)"] //東除川（大堀上小橋）
             break
         case 15:
-            items = ["【警戒レベル５】緊急安全確保（参考水位5.88m)"] //石川（玉手橋） 2021.05追加
+            items = ["【警戒レベル５】緊急安全確保（参考水位5.88m)\n※石川が上記水位に到達している場合は、東除川の水位を確認してください。"] //石川（玉手橋） 2021.05追加
         case 14:
             items = ["■氾濫注意水位(水位2.5m)、水防警報(出動)", "■高齢者等避難が発令される見込みとなったとき", "■【警戒レベル３】高齢者等避難(水位3.7m)", "■【警戒レベル４】避難指示(水位4m)", "■【警戒レベル５】緊急安全確保(水位5.06m)"] //西除川 2020.06 追加
         break
@@ -504,9 +505,10 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
         //石川（玉手橋）
         case 15:
             switch indexPath.row {
+            //東除川の水位選択画面に遷移する 2021.05追加
             case 0:
-                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
-                mTyphoonResultDialog2.showResult(151)
+                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 10, parentView: parent)
+                mTyphoonSelectDialog2.showInfo()
                 break
             default:
                 break
