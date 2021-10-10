@@ -38,6 +38,7 @@ class KinentaiViewController: UIViewController {
     //別クラスのインスタンス保持用変数
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mKinentaiSelectDialog: KinentaiSelectDialog!
+    fileprivate var mKinentaiSelectDialogSingleMultiple: KinentaiSelectDialogSingleMultiple!
     fileprivate var mKinentaiSelectDialog2: KinentaiSelectDialog2!
     fileprivate var mPassInputDialog: PassInputDialog!
     //結果表示用クラス保持用
@@ -374,8 +375,8 @@ class KinentaiViewController: UIViewController {
     
     //地震(震央「陸」)
     @objc func showSelectKinentai1(_ sender: UIButton){
-        mKinentaiSelectDialog = KinentaiSelectDialog(index: 1, parentView: self)
-        mKinentaiSelectDialog.showInfo()
+        mKinentaiSelectDialogSingleMultiple = KinentaiSelectDialogSingleMultiple(index: 1, parentView: self)
+        mKinentaiSelectDialogSingleMultiple.showInfo()
     }
     
     //地震(震央「海域」)
