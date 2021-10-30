@@ -41,7 +41,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         
         //itemsに47都道府県を設定
         items = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
-
+        
         //タイトルとなるtext1の内容を場合分け
         switch index {
         //地震(震央「陸」)
@@ -190,6 +190,44 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row)!")
         mSelectedPrefectureIndexList.append(indexPath.row)
+        selectScale()
         print("mSelectedPrefectureIndexList= #\(mSelectedPrefectureIndexList)!")
+    }
+    
+    func selectScale(){
+        print("selectScale()")
+        //アラート生成
+        //UIAlertControllerのスタイルがactionSheet
+        let actionSheet = UIAlertController(title: "Menu", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+
+        // 表示させたいタイトル1ボタンが押された時の処理をクロージャ実装する
+        let action1 = UIAlertAction(title: "表示させたいタイトル1", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            //実際の処理
+            print("表示させたいタイトル1の処理")
+        })
+        // 表示させたいタイトル2ボタンが押された時の処理をクロージャ実装する
+        let action2 = UIAlertAction(title: "表示させたいタイトル2", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            //実際の処理
+            print("表示させたいタイトル2の処理")
+
+        })
+
+        // 閉じるボタンが押された時の処理をクロージャ実装する
+        //UIAlertActionのスタイルがCancelなので赤く表示される
+        let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.destructive, handler: {
+            (action: UIAlertAction!) in
+            //実際の処理
+            print("閉じる")
+        })
+
+        //UIAlertControllerにタイトル1ボタンとタイトル2ボタンと閉じるボタンをActionを追加
+        actionSheet.addAction(action1)
+        actionSheet.addAction(action2)
+        actionSheet.addAction(close)
+
+        //実際にAlertを表示する
+        parent.present(actionSheet, animated: true, completion: nil)
     }
 }

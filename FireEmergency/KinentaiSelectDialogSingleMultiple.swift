@@ -94,7 +94,7 @@ class KinentaiSelectDialogSingleMultiple: NSObject, UITableViewDelegate, UITable
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 40)
+        text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
         text1.backgroundColor = UIColor.clear
         text1.font = UIFont.systemFont(ofSize: CGFloat(18))
         text1.textColor = UIColor.black
@@ -103,7 +103,7 @@ class KinentaiSelectDialogSingleMultiple: NSObject, UITableViewDelegate, UITable
         self.win1.addSubview(text1)
         
         //TableView生成
-        table.frame = CGRect(x: 10,y: 41, width: self.win1.frame.width-20, height: self.win1.frame.height-60)
+        table.frame = CGRect(x: 10,y: 80, width: self.win1.frame.width-20, height: self.win1.frame.height-120)
         table.delegate = self
         table.dataSource = self
         table.estimatedRowHeight = 10 //下とあわせこの２行で複数行表示されるときの間がひらくようになる
