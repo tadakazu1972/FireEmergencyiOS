@@ -190,44 +190,63 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row)!")
         mSelectedPrefectureIndexList.append(indexPath.row)
-        selectScale()
-        print("mSelectedPrefectureIndexList= #\(mSelectedPrefectureIndexList)!")
+        selectScale(items[indexPath.row])
+        print("mSelectedPrefectureIndexList= \(mSelectedPrefectureIndexList)")
     }
     
-    func selectScale(){
+    func selectScale(_ prefecture: String){
         print("selectScale()")
         //アラート生成
         //UIAlertControllerのスタイルがactionSheet
-        let actionSheet = UIAlertController(title: "Menu", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        let actionSheet = UIAlertController(title: "\(prefecture)の最大震度は？", message: "", preferredStyle: UIAlertController.Style.actionSheet)
 
         // 表示させたいタイトル1ボタンが押された時の処理をクロージャ実装する
-        let action1 = UIAlertAction(title: "表示させたいタイトル1", style: UIAlertAction.Style.default, handler: {
+        let action1 = UIAlertAction(title: "震度７", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             //実際の処理
-            print("表示させたいタイトル1の処理")
+            self.mSelectedPrefectureScaleList.append("震度７")
+            self.mSelectedPrefectureCSVList.append("riku7_multi.csv")
+            print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
+            print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
+            self.win1.isHidden = false
         })
         // 表示させたいタイトル2ボタンが押された時の処理をクロージャ実装する
-        let action2 = UIAlertAction(title: "表示させたいタイトル2", style: UIAlertAction.Style.default, handler: {
+        let action2 = UIAlertAction(title: "震度６強(特別区６弱)", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             //実際の処理
-            print("表示させたいタイトル2の処理")
-
+            self.mSelectedPrefectureScaleList.append("震度６強")
+            self.mSelectedPrefectureCSVList.append("riku6strong_multi.csv")
+            print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
+            print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
+            self.win1.isHidden = false
         })
-
-        // 閉じるボタンが押された時の処理をクロージャ実装する
+        // 表示させたいタイトル2ボタンが押された時の処理をクロージャ実装する
+        let action3 = UIAlertAction(title: "震度６弱(特別区は５強、政令市は５強又は６弱)", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            //実際の処理
+            self.mSelectedPrefectureScaleList.append("震度６弱")
+            self.mSelectedPrefectureCSVList.append("riku6weak_multi.csv")
+            print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
+            print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
+            self.win1.isHidden = false
+        })
+        /*// 閉じるボタンが押された時の処理をクロージャ実装する
         //UIAlertActionのスタイルがCancelなので赤く表示される
         let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.destructive, handler: {
             (action: UIAlertAction!) in
             //実際の処理
             print("閉じる")
-        })
+            self.win1.isHidden = false
+        })*/
 
         //UIAlertControllerにタイトル1ボタンとタイトル2ボタンと閉じるボタンをActionを追加
         actionSheet.addAction(action1)
         actionSheet.addAction(action2)
-        actionSheet.addAction(close)
+        actionSheet.addAction(action3)
+        //actionSheet.addAction(close)
 
         //実際にAlertを表示する
+        win1.isHidden = true
         parent.present(actionSheet, animated: true, completion: nil)
     }
 }
