@@ -381,8 +381,10 @@ class KinentaiViewController: UIViewController {
     
     //地震(震央「海域」)
     @objc func showSelectKinentai2(_ sender: UIButton){
-        mKinentaiSelectDialog = KinentaiSelectDialog(index: 2, parentView: self)
-        mKinentaiSelectDialog.showInfo()
+        mKinentaiSelectDialogSingleMultiple = KinentaiSelectDialogSingleMultiple(index: 2, parentView: self)
+        mKinentaiSelectDialogSingleMultiple.showInfo()
+        //mKinentaiSelectDialog = KinentaiSelectDialog(index: 2, parentView: self)
+        //mKinentaiSelectDialog.showInfo()
     }
     
     //アクションプラン

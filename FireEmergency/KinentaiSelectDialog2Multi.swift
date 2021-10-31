@@ -18,7 +18,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     fileprivate var btnFinishSelect: UIButton!
     fileprivate var btnClose: UIButton!
     fileprivate var mKinentaiResultDialogMulti: KinentaiResultDialogMulti!
-    //自分が何番目のダイアログか保存用
+    //陸、海域、大津波警報どれから遷移してきたのか判別用　それによって格納する読み込み先のcsvファイル名を変更する
     fileprivate var mIndex: Int!
     //複数都道府県選択保存配列
     fileprivate var mSelectedPrefectureIndexList:[Int] = [];
@@ -42,43 +42,8 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         //itemsに47都道府県を設定
         items = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
         
-        //タイトルとなるtext1の内容を場合分け
-        switch index {
-        //地震(震央「陸」)
-        case 11:
-            text1.text = "■最大震度７\n　震央管轄都道府県は？"
-            break
-        case 12:
-            text1.text = "■最大震度６強(特別区６弱)\n　震央管轄都道府県は？"
-            break
-        case 13:
-            text1.text = "■最大震度６弱(特別区５強,政令市５強又は６強) 震央管轄都道府県は？"
-            break
-        //地震(震央「海域」)
-        case 21:
-            text1.text = "■最大震度７\n　最大震度都道府県は？"
-            break
-        case 22:
-            text1.text = "■最大震度６強(特別区６弱)\n　最大震度都道府県は？"
-            break
-        case 23:
-            text1.text = "■最大震度６弱(特別区５強,政令市５強又は６強) 最大震度都道府県は？"
-            break
-        //アクションプランはこのダイアログには無い。ただ、case番号31-33は欠番とする
-        //大津波警報・噴火
-        case 41:
-            text1.text = "■大津波警報\n　都道府県は？"
-            break
-        case 42:
-            text1.text = "■噴火\n　都道府県は？"
-            break
-        //特殊災害(NBC含む)
-        case 51:
-            text1.text = "■特殊災害(NBC含む)\n　都道府県は？"
-            break
-        default:
-            break
-        }
+        //タイトル
+        text1.text = "■都道府県選択(複数選択可)"
     }
     
     //デコンストラクタ
@@ -206,7 +171,12 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度７")
-            self.mSelectedPrefectureCSVList.append("riku7_multi")
+            //陸か海域か
+            if self.mIndex == 1 {
+                self.mSelectedPrefectureCSVList.append("riku7_multi")
+            } else if self.mIndex == 2 {
+                self.mSelectedPrefectureCSVList.append("kaiiki7_multi")
+            }
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
@@ -216,7 +186,12 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度６強")
-            self.mSelectedPrefectureCSVList.append("riku6strong_multi")
+            //陸か海域か
+            if self.mIndex == 1 {
+                self.mSelectedPrefectureCSVList.append("riku6strong_multi")
+            } else if self.mIndex == 2 {
+                self.mSelectedPrefectureCSVList.append("kaiiki6strong_multi")
+            }
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
@@ -226,7 +201,12 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度６弱")
-            self.mSelectedPrefectureCSVList.append("riku6weak_multi")
+            //陸か海域か
+            if self.mIndex == 1 {
+                self.mSelectedPrefectureCSVList.append("riku6weak_multi")
+            } else if self.mIndex == 2 {
+                self.mSelectedPrefectureCSVList.append("kaiiki6weak_multi")
+            }
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
