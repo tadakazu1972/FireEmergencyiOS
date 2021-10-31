@@ -85,15 +85,24 @@ class KinentaiViewController: UIViewController {
         btnKinentai3.translatesAutoresizingMaskIntoConstraints = false
         btnKinentai3.addTarget(self, action: #selector(self.showSelectKinentai3(_:)), for: .touchUpInside)
         self.view.addSubview(btnKinentai3)
-        //大津波警報・噴火
+        //大津波警報
         btnKinentai4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKinentai4.layer.masksToBounds = true
-        btnKinentai4.setTitle("大津波警報・噴火", for: UIControl.State())
+        btnKinentai4.setTitle("大津波警報", for: UIControl.State())
         btnKinentai4.setTitleColor(UIColor.black, for: UIControl.State())
         btnKinentai4.tag=8
         btnKinentai4.translatesAutoresizingMaskIntoConstraints = false
         btnKinentai4.addTarget(self, action: #selector(self.showSelectKinentai4(_:)), for: .touchUpInside)
         self.view.addSubview(btnKinentai4)
+        //2020-10-31 追加
+        btnKinentai5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKinentai5.layer.masksToBounds = true
+        btnKinentai5.setTitle("噴火", for: UIControl.State())
+        btnKinentai5.setTitleColor(UIColor.black, for: UIControl.State())
+        btnKinentai5.tag=9
+        btnKinentai5.translatesAutoresizingMaskIntoConstraints = false
+        btnKinentai5.addTarget(self, action: #selector(self.showSelectKinentai5(_:)), for: .touchUpInside)
+        self.view.addSubview(btnKinentai5)
         /* 2020-04-24 削除
         //特殊災害(NBC含む)
         btnKinentai5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -285,6 +294,13 @@ class KinentaiViewController: UIViewController {
             Constraint(padY6, .leading, to:self.view, .leading, constant:0),
             Constraint(padY6, .height, to:self.view, .height, constant:0, multiplier:0.03)
         ])
+        //2021-10-31 追加
+        self.view.addConstraints([
+            //噴火
+            Constraint(btnKinentai5, .top, to:padY6, .bottom, constant:0),
+            Constraint(btnKinentai5, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnKinentai5, .width, to:self.view, .width, constant:0, multiplier:0.8)
+        ])
         /* 2020-04-24 削除
         self.view.addConstraints([
             //特殊災害(NBC含む)
@@ -393,12 +409,22 @@ class KinentaiViewController: UIViewController {
         mKinentaiSelectDialog.showInfo()
     }
     
-    //大津波警報・噴火
+    //大津波警報 2021-10-31改修
     @objc func showSelectKinentai4(_ sender: UIButton){
-        mKinentaiSelectDialog = KinentaiSelectDialog(index: 4, parentView: self)
-        mKinentaiSelectDialog.showInfo()
+        mKinentaiSelectDialogSingleMultiple = KinentaiSelectDialogSingleMultiple(index: 3, parentView: self)
+        mKinentaiSelectDialogSingleMultiple.showInfo()
+        //mKinentaiSelectDialog = KinentaiSelectDialog(index: 4, parentView: self)
+        //mKinentaiSelectDialog.showInfo()
     }
-    
+    //2021-10-31 追加
+    //噴火
+    @objc func showSelectKinentai5(_ sender: UIButton){
+        //噴火はKinentaiSelectDialogをすっとばしていきなり都道府県選択のKinentaiSelectDIalog2を呼び出す
+        mKinentaiSelectDialog2 = KinentaiSelectDialog2(index: 42, parentView: self)
+        mKinentaiSelectDialog2.showInfo()
+        //元画面を暗くしてから遷移
+        mViewController.view.alpha = 0.3
+    }
     /* 2020-04-24 削除
     //特殊災害(NBC含む)
     @objc func showSelectKinentai5(_ sender: UIButton){

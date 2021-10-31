@@ -173,7 +173,7 @@ class KinentaiSelectDialogSingleMultiple: NSObject, UITableViewDelegate, UITable
                     break
                 //複数の都道府県
                 case 1:
-                mKinentaiSelectDialog2Multi = KinentaiSelectDialog2Multi(index: 2, parentView: parent)
+                    mKinentaiSelectDialog2Multi = KinentaiSelectDialog2Multi(index: 2, parentView: parent)
                     mKinentaiSelectDialog2Multi.showInfo()
                     break
                 default:
@@ -185,13 +185,13 @@ class KinentaiSelectDialogSingleMultiple: NSObject, UITableViewDelegate, UITable
             switch indexPath.row {
                 //単一の都道府県
                 case 0:
-                    //mKinentaiToukai1 = KinentaiToukai1(parentView: parent)
-                    //mKinentaiToukai1.showResult()
+                    mKinentaiSelectDialog2 = KinentaiSelectDialog2(index: 41, parentView: parent)
+                    mKinentaiSelectDialog2.showInfo()
                     break
                 //複数の都道府県
                 case 1:
-                    //mKinentaiShutochokka1 = KinentaiShutochokka1(parentView: parent)
-                    //mKinentaiShutochokka1.showResult()
+                    mKinentaiSelectDialog2Multi = KinentaiSelectDialog2Multi(index: 3, parentView: parent)
+                    mKinentaiSelectDialog2Multi.showInfo()
                     break
                 default:
                     break

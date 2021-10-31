@@ -156,7 +156,10 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row + 1)")
         mSelectedPrefectureIndexList.append(indexPath.row + 1) //csvファイルのヘッダの分+1するのを忘れないように
-        selectScale(items[indexPath.row])
+        //陸、海域ならば震度選択　大津波警報なら起動しない
+        if mIndex != 3 {
+            selectScale(items[indexPath.row])
+        }
         print("mSelectedPrefectureIndexList= \(mSelectedPrefectureIndexList)")
     }
     

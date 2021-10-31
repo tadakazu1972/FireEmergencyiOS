@@ -73,28 +73,53 @@ class KinentaiResultDialogMulti {
         
         //CSV読み込みループ
         var _text : String = ""
-        for (i, items) in indexList.enumerated(){
-            print(i, "\(indexList[i])")
-            print(i, "\(scaleList[i])")
-            print(i, "\(csvList[i])")
-            
-            var lineText: String = ""
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "\(csvList[i])", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
+        //陸、海域の場合 scaleListに何も入っていない
+        if scaleList != [] {
+            for (i, items) in indexList.enumerated(){
+                print(i, "\(indexList[i])")
+                print(i, "\(scaleList[i])")
+                print(i, "\(csvList[i])")
+                var lineText: String = ""
+                var result: [[String]] = []
+                if let path = Bundle.main.path(forResource: "\(csvList[i])", ofType: "csv") {
+                    var csvString = ""
+                    do {
+                        csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                    csvString.enumerateLines { (line, stop) -> () in
+                        result.append(line.components(separatedBy: ","))
+                    }
+                    lineText = "\(i + 1).\(result[indexList[i]][0]) : \(scaleList[i])\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
+                } else {
+                    lineText = "csvファイル読み込みエラー"
                 }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                lineText = "\(i + 1).\(result[indexList[i]][0]) : \(scaleList[i])\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
-            } else {
-                lineText = "csvファイル読み込みエラー"
+                _text = _text + lineText
             }
-            _text = _text + lineText
+        } else {
+            //大津波警報の場合　震度リストが存在しない
+            for (i, items) in indexList.enumerated(){
+                print(i, "\(indexList[i])")
+                
+                var lineText: String = ""
+                var result: [[String]] = []
+                if let path = Bundle.main.path(forResource: "otsunami_multi", ofType: "csv") {
+                    var csvString = ""
+                    do {
+                        csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+                    } catch let error as NSError {
+                        print(error.localizedDescription)
+                    }
+                    csvString.enumerateLines { (line, stop) -> () in
+                        result.append(line.components(separatedBy: ","))
+                    }
+                    lineText = "\(i + 1).\(result[indexList[i]][0]) : 大津波警報\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
+                } else {
+                    lineText = "csvファイル読み込みエラー"
+                }
+                _text = _text + lineText
+            }
         }
         
         text1.text = _text        

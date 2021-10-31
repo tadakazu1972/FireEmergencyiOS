@@ -67,9 +67,10 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
             items = ["\n■指揮支援部隊\n　→出動可能な全隊出動\n　→出動先(タップで表示)\n","\n■大阪府大隊(陸上)\n　→被害確認後、出動可能な全隊出動\n　→出動先(タップで表示)\n","\n■航空小隊\n　→被害確認後、出動可能な全隊出動\n　→出動先(タップで表示)\n"]
             break
         case 4:
-            text1.text = "大津波警報・噴火"
-            items = ["■大津波警報","■噴火"]
+            text1.text = "大津波警報"
+            items = ["■単一の都道府県で発表","■複数の都道府県で発表"]
             break
+        //噴火はここで存在しない。先のクラスで都道府県選択に遷移しているため。
         //特殊災害(NBC含む)はここでは存在しない。KinentaiViewController>KinentaiSelectDiaglog2へ直接飛んでいるので。
         default:
             items = ["■震度７(特別区６強)","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強)"]
@@ -308,7 +309,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
                 break
             }
             break
-        //大津波警報・噴火
+        //大津波警報
         case 4:
             switch indexPath.row {
             case 0:
