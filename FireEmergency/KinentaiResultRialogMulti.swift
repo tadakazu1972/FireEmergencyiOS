@@ -71,13 +71,16 @@ class KinentaiResultDialogMulti {
         text1.isScrollEnabled = true
         text1.dataDetectorTypes = .link
         
-        //テキストの内容を場合分け
-        switch data {
-        //地震(震央「陸」)>震度７(特別区６強)
-        case 11:
-            //csvファイル読込
+        //CSV読み込みループ
+        var _text : String = ""
+        for (i, items) in indexList.enumerated(){
+            print(i, "\(indexList[i])")
+            print(i, "\(scaleList[i])")
+            print(i, "\(csvList[i])")
+            
+            var lineText: String = ""
             var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "riku7", ofType: "csv") {
+            if let path = Bundle.main.path(forResource: "\(csvList[i])", ofType: "csv") {
                 var csvString = ""
                 do {
                     csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
@@ -87,126 +90,14 @@ class KinentaiResultDialogMulti {
                 csvString.enumerateLines { (line, stop) -> () in
                     result.append(line.components(separatedBy: ","))
                 }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
+                lineText = "\(i + 1).\(result[indexList[i]][0]) : \(scaleList[i])\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
             } else {
-                text1.text = "csvファイル読み込みエラー"
+                lineText = "csvファイル読み込みエラー"
             }
-            break
-        case 12:
-            //csvファイル読込
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "riku6strong", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }
-            break
-        case 13:
-            //csvファイル読込
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "riku6weak", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }
-            break
-        //地震(震央「海域」)
-        case 21:
-            //csvファイル読込
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "kaiiki7", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }
-            break
-        case 22:
-            //csvファイル読込
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "kaiiki6strong", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }
-            break
-        case 23:
-            //csvファイル読込
-            var result: [[String]] = []
-            if let path = Bundle.main.path(forResource: "kaiiki6weak", ofType: "csv") {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.components(separatedBy: ","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }
-            break
-        
-        default:
-            text1.text=""
-            break
+            _text = _text + lineText
         }
         
+        text1.text = _text        
         self.win1.addSubview(text1)
         
         //閉じるボタン生成

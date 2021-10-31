@@ -165,8 +165,8 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         //消去処理
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
-        parent.view.alpha = 1.0 //元の画面明るく
-        mViewController.view.alpha = 1.0
+        //parent.view.alpha = 1.0 //元の画面明るく
+        //mViewController.view.alpha = 1.0
     }
     
     //閉じる
@@ -189,8 +189,8 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("セルを選択 #\(indexPath.row)!")
-        mSelectedPrefectureIndexList.append(indexPath.row)
+        print("セルを選択 #\(indexPath.row + 1)")
+        mSelectedPrefectureIndexList.append(indexPath.row + 1) //csvファイルのヘッダの分+1するのを忘れないように
         selectScale(items[indexPath.row])
         print("mSelectedPrefectureIndexList= \(mSelectedPrefectureIndexList)")
     }
@@ -206,7 +206,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度７")
-            self.mSelectedPrefectureCSVList.append("riku7_multi.csv")
+            self.mSelectedPrefectureCSVList.append("riku7_multi")
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
@@ -216,7 +216,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度６強")
-            self.mSelectedPrefectureCSVList.append("riku6strong_multi.csv")
+            self.mSelectedPrefectureCSVList.append("riku6strong_multi")
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
@@ -226,7 +226,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
             (action: UIAlertAction!) in
             //実際の処理
             self.mSelectedPrefectureScaleList.append("震度６弱")
-            self.mSelectedPrefectureCSVList.append("riku6weak_multi.csv")
+            self.mSelectedPrefectureCSVList.append("riku6weak_multi")
             print("mSelectedPrefectureScaleList= \(self.mSelectedPrefectureScaleList)")
             print("mSelectedPrefectureCSVList= \(self.mSelectedPrefectureCSVList)")
             self.win1.isHidden = false
