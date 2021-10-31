@@ -91,6 +91,7 @@
 		5960EB7C1E47443500D1917A /* ContactLoadDialog2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */; };
 		5967947425F495A400CED7B7 /* KinmusyoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5967947325F495A400CED7B7 /* KinmusyoSelectDialog.swift */; };
 		5967947625F50CF100CED7B7 /* AlertDialogMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5967947525F50CF100CED7B7 /* AlertDialogMail.swift */; };
+		59701BC2272E1FD100880366 /* KinentaiResultRialogMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59701BC1272E1FD100880366 /* KinentaiResultRialogMulti.swift */; };
 		597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1151E2113E50011ABB1 /* ViewController.swift */; };
 		597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1171E21DB780011ABB1 /* typhoon_caution.txt */; };
 		597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1191E21DB820011ABB1 /* kokuminhogo_caution.txt */; };
@@ -263,6 +264,7 @@
 		5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactLoadDialog2.swift; sourceTree = "<group>"; };
 		5967947325F495A400CED7B7 /* KinmusyoSelectDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinmusyoSelectDialog.swift; sourceTree = "<group>"; };
 		5967947525F50CF100CED7B7 /* AlertDialogMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogMail.swift; sourceTree = "<group>"; };
+		59701BC1272E1FD100880366 /* KinentaiResultRialogMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiResultRialogMulti.swift; sourceTree = "<group>"; };
 		597FD1151E2113E50011ABB1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		597FD1171E21DB780011ABB1 /* typhoon_caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon_caution.txt; sourceTree = "<group>"; };
 		597FD1191E21DB820011ABB1 /* kokuminhogo_caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo_caution.txt; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				599CBAB22712CE530005A151 /* KinentaiSelectDialog2Multi.swift */,
 				597FD11D1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift */,
 				597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */,
+				59701BC1272E1FD100880366 /* KinentaiResultRialogMulti.swift */,
 				926A120F215B5B1300ABE76D /* KinentaiToukai1.swift */,
 				926A1210215B5B1400ABE76D /* KinentaiShutochokka1.swift */,
 				597FD13F1E2EF3CF0011ABB1 /* KinentaiNankaitraf1.swift */,
@@ -786,6 +789,7 @@
 				5960CEF025D8FBE90072129C /* SansyusyoSelectDialog.swift in Sources */,
 				5953613C1E7FCDD700551A0E /* Guide21Dialog.swift in Sources */,
 				597FD1401E2EF3CF0011ABB1 /* KinentaiNankaitraf1.swift in Sources */,
+				59701BC2272E1FD100880366 /* KinentaiResultRialogMulti.swift in Sources */,
 				590157681E38CC6800928154 /* ContactCell1.swift in Sources */,
 				595233741E73CF2F00FC8CE8 /* Guide3Dialog.swift in Sources */,
 				59F6407224553AF200A39423 /* ViewController2.swift in Sources */,

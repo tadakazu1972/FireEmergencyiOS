@@ -17,7 +17,7 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
     fileprivate var items:[String] = ["","","",""]
     fileprivate var btnFinishSelect: UIButton!
     fileprivate var btnClose: UIButton!
-    fileprivate var mKinentaiResultDialog: KinentaiResultDialog!
+    fileprivate var mKinentaiResultDialogMulti: KinentaiResultDialogMulti!
     //自分が何番目のダイアログか保存用
     fileprivate var mIndex: Int!
     //複数都道府県選択保存配列
@@ -159,8 +159,9 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         print("選択終了")
         //csvファイルの結果呼び出し
         //let itemNo: Int = indexPath.row + 1 //csvファイルのヘッダの分+1するのを忘れないように
-        //mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
-        //mKinentaiResultDialog.showResult(mIndex, item: itemNo)
+        mKinentaiResultDialogMulti = KinentaiResultDialogMulti(parentView: parent)
+        //複数県選択の結果の３つの配列を次の結果表示クラスに引数として渡す
+        mKinentaiResultDialogMulti.showResult(mSelectedPrefectureIndexList, scaleList: mSelectedPrefectureScaleList, csvList: mSelectedPrefectureCSVList)
         //消去処理
         win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
