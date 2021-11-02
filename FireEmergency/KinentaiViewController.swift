@@ -97,7 +97,7 @@ class KinentaiViewController: UIViewController {
         //2020-10-31 追加
         btnKinentai5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKinentai5.layer.masksToBounds = true
-        btnKinentai5.setTitle("噴火", for: UIControl.State())
+        btnKinentai5.setTitle("噴火警報(居住区域)", for: UIControl.State())
         btnKinentai5.setTitleColor(UIColor.black, for: UIControl.State())
         btnKinentai5.tag=9
         btnKinentai5.translatesAutoresizingMaskIntoConstraints = false

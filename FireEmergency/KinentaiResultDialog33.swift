@@ -30,15 +30,15 @@ class KinentaiResultDialog33 {
         switch index {
         //指揮支援部隊
         case 1:
-            text0.text = "■指揮支援部隊\n　統括指揮支援隊\n　→和歌山県\n\n　指揮支援隊\n　→被害状況による\n"
+            text0.text = "■指揮支援部隊\n　統括指揮支援隊\n　→和歌山県\n　　南別館屋上へリポート又はコスモパーク加太\n\n　指揮支援隊\n　→被害状況により消防庁長官が指示\n"
             break
         //大阪府大隊(陸上)
         case 2:
-            text0.text = "■大阪府大隊(陸上)\n　出動先：和歌山県\n\n　集結場所：高度専門教育訓練センター\n\n　進出拠点：紀ノ川SA(阪和自動車道)又は橋本運動公園\n"
+            text0.text = "■大阪府大隊(陸上)\n　出動先：被害状況により消防庁長官が指示\n\n　集結場所：高度専門教育訓練センター(統合機動部隊含む)\n\n　進出拠点：紀ノ川SA(阪和自動車道)又は橋本運動公園\n"
             break
         //航空小隊
         case 3:
-            text0.text = "■航空小隊\n　出動先：和歌山県\n\n　任務：指揮支援隊輸送ヘリ又は救助・救急・輸送ヘリ\n"
+            text0.text = "■航空小隊\n　出動先：長官が指定する任務による\n\n　任務：統括指揮支援隊輸送ヘリ\n　→和歌山県\n　　南別館屋上へリポート又はコスモパーク加太\n\n　任務：救助・救急・輸送ヘリ\n　→応援先は長官が指定"
             break
         default:
             break
@@ -77,7 +77,7 @@ class KinentaiResultDialog33 {
         self.win1.makeKeyAndVisible()
         
         //TextView0生成
-        text0.frame = CGRect(x: 10, y: 20, width: self.win1.frame.width-20, height: 200)
+        text0.frame = CGRect(x: 10, y: 20, width: self.win1.frame.width-20, height: 240)
         text0.backgroundColor = UIColor.clear
         text0.font = UIFont.systemFont(ofSize: CGFloat(18))
         text0.textColor = UIColor.black

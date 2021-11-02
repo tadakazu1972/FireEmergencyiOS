@@ -52,15 +52,15 @@ class KinentaiSelectDialog3 {
             break
         //首都直下地震
         case 2:
-            text0.text = "首都直下地震アクションプラン適用"
+            text0.text = "首都直下地震アクションプラン適用\n\n即時応援都道府県に該当する\n"
             text1.text = "■指揮支援部隊\n　→統括指揮支援隊として出動\n　→"
-            text2.text = "■大阪府大隊(陸上)\n　→全隊出動\n　→"
+            text2.text = "■大阪府大隊(陸上)\n　→全隊出動(エネ産編成)\n　→"
             text3.text = "■航空小隊\n　→統括指揮支援部隊輸送航空小隊\n　→"
             break
         //南海トラフ地震
         case 3:
-            text0.text = "南海トラフ地震アクションプラン適用"
-            text1.text = "■指揮支援部隊\n　→出動可能な全隊出動\n　→"
+            text0.text = "南海トラフ地震アクションプラン適用\n\n被害確認後応援都道府県に該当\n"
+            text1.text = "■指揮支援部隊\n　→被害確認後、出動可能な全隊出動\n　→"
             text2.text = "■大阪府大隊(陸上)\n　→被害確認後、出動可能な全隊出動\n　→"
             text3.text = "■航空小隊\n　→被害確認後、出動可能な全隊出動\n　→"
             break
@@ -107,7 +107,7 @@ class KinentaiSelectDialog3 {
         self.win1.makeKeyAndVisible()
         
         //TextView0生成
-        text0.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
+        text0.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 80)
         text0.backgroundColor = UIColor.clear
         text0.font = UIFont.systemFont(ofSize: CGFloat(18))
         text0.textColor = UIColor.black
@@ -116,7 +116,7 @@ class KinentaiSelectDialog3 {
         self.win1.addSubview(text0)
         
         //TextView1生成
-        text1.frame = CGRect(x: 10, y: 60, width: self.win1.frame.width-20, height: 90)
+        text1.frame = CGRect(x: 10, y: 100, width: self.win1.frame.width-20, height: 90)
         text1.backgroundColor = UIColor.clear
         text1.font = UIFont.systemFont(ofSize: CGFloat(18))
         text1.textColor = UIColor.black
@@ -131,12 +131,12 @@ class KinentaiSelectDialog3 {
         button1.setTitleColor(UIColor.white, for: UIControl.State())
         button1.layer.masksToBounds = true
         button1.layer.cornerRadius = 10.0
-        button1.layer.position = CGPoint(x: self.win1.frame.width/2, y: 140)
+        button1.layer.position = CGPoint(x: self.win1.frame.width/2, y: 170)
         button1.addTarget(self, action: #selector(self.onClickButton1(_:)), for: .touchUpInside)
         self.win1.addSubview(button1)
         
         //TextView2生成
-        text2.frame = CGRect(x: 10, y: 180, width: self.win1.frame.width-20, height: 90)
+        text2.frame = CGRect(x: 10, y: 200, width: self.win1.frame.width-20, height: 90)
         text2.backgroundColor = UIColor.clear
         text2.font = UIFont.systemFont(ofSize: CGFloat(18))
         text2.textColor = UIColor.black
@@ -151,12 +151,12 @@ class KinentaiSelectDialog3 {
         button2.setTitleColor(UIColor.white, for: UIControl.State())
         button2.layer.masksToBounds = true
         button2.layer.cornerRadius = 10.0
-        button2.layer.position = CGPoint(x: self.win1.frame.width/2, y: 260)
+        button2.layer.position = CGPoint(x: self.win1.frame.width/2, y: 270)
         button2.addTarget(self, action: #selector(self.onClickButton2(_:)), for: .touchUpInside)
         self.win1.addSubview(button2)
         
         //TextView3生成
-        text3.frame = CGRect(x: 10, y: 300, width: self.win1.frame.width-20, height: 90)
+        text3.frame = CGRect(x: 10, y: 320, width: self.win1.frame.width-20, height: 90)
         text3.backgroundColor = UIColor.clear
         text3.font = UIFont.systemFont(ofSize: CGFloat(18))
         text3.textColor = UIColor.black
@@ -171,7 +171,7 @@ class KinentaiSelectDialog3 {
         button3.setTitleColor(UIColor.white, for: UIControl.State())
         button3.layer.masksToBounds = true
         button3.layer.cornerRadius = 10.0
-        button3.layer.position = CGPoint(x: self.win1.frame.width/2, y: 380)
+        button3.layer.position = CGPoint(x: self.win1.frame.width/2, y: 400)
         button3.addTarget(self, action: #selector(self.onClickButton3(_:)), for: .touchUpInside)
         self.win1.addSubview(button3)
         

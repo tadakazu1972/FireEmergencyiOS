@@ -168,13 +168,13 @@
 		926A120E215B55DE00ABE76D /* FireEmergency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 926A120C215B55DE00ABE76D /* FireEmergency.xcdatamodeld */; };
 		926A1211215B5B1400ABE76D /* KinentaiToukai1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A120F215B5B1300ABE76D /* KinentaiToukai1.swift */; };
 		926A1212215B5B1400ABE76D /* KinentaiShutochokka1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A1210215B5B1400ABE76D /* KinentaiShutochokka1.swift */; };
+		E38120CC2731432200DD9F25 /* otsunami.csv in Resources */ = {isa = PBXBuildFile; fileRef = E38120CB2731432200DD9F25 /* otsunami.csv */; };
 		E3F5104E245307B9007A33E1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104D245307B9007A33E1 /* riku7.csv */; };
 		E3F5105024530B28007A33E1 /* riku6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104F24530B27007A33E1 /* riku6strong.csv */; };
 		E3F5105224530E09007A33E1 /* riku6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105124530E09007A33E1 /* riku6weak.csv */; };
 		E3F5105424530F71007A33E1 /* kaiiki7.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105324530F71007A33E1 /* kaiiki7.csv */; };
 		E3F5105624531106007A33E1 /* kaiiki6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105524531106007A33E1 /* kaiiki6strong.csv */; };
 		E3F5105824531243007A33E1 /* kaiiki6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105724531243007A33E1 /* kaiiki6weak.csv */; };
-		E3F5105A24531434007A33E1 /* otsunami.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105924531433007A33E1 /* otsunami.csv */; };
 		E3F5105C245315EE007A33E1 /* hunka.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105B245315EE007A33E1 /* hunka.csv */; };
 /* End PBXBuildFile section */
 
@@ -350,13 +350,13 @@
 		926A120D215B55DE00ABE76D /* FireEmergency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireEmergency.xcdatamodel; sourceTree = "<group>"; };
 		926A120F215B5B1300ABE76D /* KinentaiToukai1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiToukai1.swift; sourceTree = "<group>"; };
 		926A1210215B5B1400ABE76D /* KinentaiShutochokka1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiShutochokka1.swift; sourceTree = "<group>"; };
+		E38120CB2731432200DD9F25 /* otsunami.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = otsunami.csv; path = ../../FireEmergency/app/src/main/assets/otsunami.csv; sourceTree = "<group>"; };
 		E3F5104D245307B9007A33E1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
 		E3F5104F24530B27007A33E1 /* riku6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6strong.csv; sourceTree = "<group>"; };
 		E3F5105124530E09007A33E1 /* riku6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6weak.csv; sourceTree = "<group>"; };
 		E3F5105324530F71007A33E1 /* kaiiki7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki7.csv; sourceTree = "<group>"; };
 		E3F5105524531106007A33E1 /* kaiiki6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6strong.csv; sourceTree = "<group>"; };
 		E3F5105724531243007A33E1 /* kaiiki6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6weak.csv; sourceTree = "<group>"; };
-		E3F5105924531433007A33E1 /* otsunami.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = otsunami.csv; sourceTree = "<group>"; };
 		E3F5105B245315EE007A33E1 /* hunka.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hunka.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -426,7 +426,7 @@
 				59701BCD272E5D7500880366 /* kaiiki6strong_multi.csv */,
 				E3F5105724531243007A33E1 /* kaiiki6weak.csv */,
 				59701BCB272E5D6D00880366 /* kaiiki6weak_multi.csv */,
-				E3F5105924531433007A33E1 /* otsunami.csv */,
+				E38120CB2731432200DD9F25 /* otsunami.csv */,
 				59701BCF272E5D8C00880366 /* otsunami_multi.csv */,
 				E3F5105B245315EE007A33E1 /* hunka.csv */,
 				597FD12F1E2BB4340011ABB1 /* nbc.csv */,
@@ -670,13 +670,13 @@
 				E3F5105C245315EE007A33E1 /* hunka.csv in Resources */,
 				59973B691E86BCC400C799AA /* guide226.png in Resources */,
 				595361561E80203B00551A0E /* guide222.png in Resources */,
-				E3F5105A24531434007A33E1 /* otsunami.csv in Resources */,
 				926A11FE215B1D3E00ABE76D /* kinentai_toukai111.txt in Resources */,
 				59701BD0272E5D8C00880366 /* otsunami_multi.csv in Resources */,
 				595361341E7FB72A00551A0E /* guide442.png in Resources */,
 				59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
+				E38120CC2731432200DD9F25 /* otsunami.csv in Resources */,
 				595361401E7FF12A00551A0E /* guide211.png in Resources */,
 				595233801E741B2200FC8CE8 /* guide51.png in Resources */,
 				597FD13E1E2D0F620011ABB1 /* kinentai_nankaitraf2.txt in Resources */,
@@ -981,7 +981,7 @@
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.osakacity.fireemergency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1001,7 +1001,7 @@
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.osakacity.fireemergency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

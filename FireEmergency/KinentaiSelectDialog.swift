@@ -48,7 +48,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         case 3:
             text1.text = "アクションプラン"
             //items = ["■東海地震","■首都直下地震","■東南海・南海地震","■南海トラフ"]
-            items = ["■東海地震","■首都直下地震","■南海トラフ"] //2018-09-26 東南海・南海地震削除
+            items = ["■首都直下地震","■南海トラフ地震"] //2018-09-26 東南海・南海地震削除　2021-11-2 東海地震削除
             break
         /* case 34:  //南海トラフの場合はもう一度自己呼び出し
             text1.text = "南海トラフ"
@@ -205,16 +205,16 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         //アクションプラン
         case 3:
             switch indexPath.row {
-            //東海地震
+            /*//東海地震 2021-11-2　削除
             case 0:
                 //2018-09-26 変更
                 /* mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
                 mKinentaiResultDialog.showResult(31, item: 0) */
                 mKinentaiToukai1 = KinentaiToukai1(parentView: parent)
                 mKinentaiToukai1.showResult()
-                break
+                break*/
             //首都直下地震
-            case 1:
+            case 0: // 1=> 0
                 //2018-09-26 変更
                 /* mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
                 mKinentaiResultDialog.showResult(32, item: 0) */
@@ -227,7 +227,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
                 mKinentaiResultDialog.showResult(33, item: 0)
                 break */
             //南海トラフ地震
-            case 2: // 3 => 2
+            case 1: // 3 => 2  2021-11-2 2=>1
                 //2018-09-26 変更
                 /* mKinentaiSelectDialog = KinentaiSelectDialog(index: 34, parentView: parent)
                 mKinentaiSelectDialog.showInfo() */

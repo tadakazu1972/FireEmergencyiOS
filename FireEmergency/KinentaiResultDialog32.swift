@@ -34,11 +34,11 @@ class KinentaiResultDialog32 {
             break
         //大阪府大隊(陸上)
         case 2:
-            text0.text = "■大阪府大隊(陸上)\n　出動先：埼玉県\n　集結場所：高度専門教育訓練センター\n　進出拠点：三芳PA(関越自動車道)\n"
+            text0.text = "■大阪府大隊(陸上)\n\n　出動先：埼玉県\n\n　集結場所：高度専門教育訓練センター\n\n　進出拠点：三芳PA(関越自動車道)"
             break
         //航空小隊
         case 3:
-            text0.text = "■航空小隊\n　出動先：埼玉県\n"
+            text0.text = "■航空小隊\n　出動先：埼玉県\n　任務：統括指揮支援隊長搬送ヘリ\n　運休中：状況により航空指揮支援隊"
             break
         default:
             break
@@ -77,7 +77,7 @@ class KinentaiResultDialog32 {
         self.win1.makeKeyAndVisible()
         
         //TextView0生成
-        text0.frame = CGRect(x: 10, y: 20, width: self.win1.frame.width-20, height: 120)
+        text0.frame = CGRect(x: 10, y: 20, width: self.win1.frame.width-20, height: 300)
         text0.backgroundColor = UIColor.clear
         text0.font = UIFont.systemFont(ofSize: CGFloat(18))
         text0.textColor = UIColor.black
