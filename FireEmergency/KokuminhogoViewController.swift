@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KokuminhogoViewController: UIViewController {
+class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
     //メイン画面
     let lblKokuminhogo   = UILabel(frame: CGRect.zero)
     let btnKokuminhogo1  = UIButton(frame: CGRect.zero)
@@ -16,6 +16,8 @@ class KokuminhogoViewController: UIViewController {
     let btnKokuminhogo3  = UIButton(frame: CGRect.zero)
     let btnKokuminhogo4  = UIButton(frame: CGRect.zero)
     let btnKokuminhogo5  = UIButton(frame: CGRect.zero)
+    let btnKokuminhogo6  = UIButton(frame: CGRect.zero) // 2021.11.30　追加
+    let btnClose         = UIButton(frame: CGRect.zero) // 2021.11.30　追加
     let padY1           = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
     let padY2           = UIView(frame: CGRect.zero)
     let padY3           = UIView(frame: CGRect.zero)
@@ -34,12 +36,21 @@ class KokuminhogoViewController: UIViewController {
     let pad31            = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
     let pad32            = UIView(frame: CGRect.zero)
     let pad33            = UIView(frame: CGRect.zero)
+    //北朝鮮ミサイル　画像追加用
+    fileprivate var scrollView = UIScrollView(frame: CGRect.zero)
+    fileprivate var text0: UITextView!
+    fileprivate var imageView1: UIImageView!
+    fileprivate var text1: UITextView!
+    fileprivate var imageView2 = UIImageView(frame: CGRect.zero)
+    var imageUrl: String = "northkorea.png"
+    fileprivate var text2: UITextView!
     //別クラスのインスタンス保持用変数
     internal var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
     fileprivate var mKokuminhogoSelectDialog: KokuminhogoSelectDialog!
     internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
     fileprivate var mPassInputDialog: PassInputDialog!
+    fileprivate var mKokuminhogo6Dialog: Kokuminhogo6Dialog!
     //データ保存用
     let userDefaults = UserDefaults.standard
     
@@ -100,6 +111,47 @@ class KokuminhogoViewController: UIViewController {
         btnKokuminhogo5.translatesAutoresizingMaskIntoConstraints = false
         btnKokuminhogo5.addTarget(self, action: #selector(self.showKokuminhogo5(_:)), for: .touchUpInside)
         self.view.addSubview(btnKokuminhogo5)
+        //北朝鮮ミサイル発射時等に係る体制　2021.11.30追加
+        btnKokuminhogo6.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo6.layer.masksToBounds = true
+        btnKokuminhogo6.setTitle("北朝鮮ミサイル発射時等に係る体制", for: UIControl.State())
+        btnKokuminhogo6.setTitleColor(UIColor.black, for: UIControl.State())
+        btnKokuminhogo6.tag=10
+        btnKokuminhogo6.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo6.addTarget(self, action: #selector(self.showKokuminhogo6(_:)), for: .touchUpInside)
+        self.view.addSubview(btnKokuminhogo6)
+        //北朝鮮ミサイル発射時等に係る体制のImageViewを消すボタン　2021.11.30追加
+        btnClose.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnClose.layer.masksToBounds = true
+        btnClose.setTitle("閉じる", for: UIControl.State())
+        btnClose.setTitleColor(UIColor.black, for: UIControl.State())
+        btnClose.translatesAutoresizingMaskIntoConstraints = false
+        btnClose.addTarget(self, action: #selector(self.showKokuminhogo6(_:)), for: .touchUpInside)
+        btnClose.isHidden = true
+        self.view.addSubview(btnClose)
+        
+        //scroll生成
+        //scrollView = UIScrollView()
+        //scrollView.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
+        scrollView.frame = self.view.frame
+        scrollView.contentSize = CGSize(width: 300,height: 1000)
+        self.view.addSubview(scrollView)
+        
+        // デリゲートを設定
+        self.scrollView.delegate = self
+        // 最大倍率・最小倍率を設定する
+        self.scrollView.maximumZoomScale = 5.0
+        self.scrollView.minimumZoomScale = 1.0
+
+        // imageView2をscrollViewいっぱいに生成
+        imageView2.image = UIImage(named: "northkorea")
+        imageView2.frame = CGRect(x:0,y:0,width:view.frame.width,height:view.frame.height)
+        scrollView.addSubview(imageView2)
+        self.imageView2.contentMode = .scaleAspectFit
+        
+        //一旦隠しておく
+        scrollView.isHidden = true;
+        
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY1)
@@ -193,6 +245,7 @@ class KokuminhogoViewController: UIViewController {
         mKokuminhogoSelectDialog = KokuminhogoSelectDialog(parentView: self)
         mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
         mPassInputDialog = PassInputDialog(parentView: self)
+        mKokuminhogo6Dialog = Kokuminhogo6Dialog(parentView: self) // 2021.11.30追加
         
         //passCheckをfalseで初期化
         userDefaults.set(false, forKey: "passCheck")
@@ -216,7 +269,7 @@ class KokuminhogoViewController: UIViewController {
     override func viewDidLayoutSubviews(){
         //制約
         self.view.addConstraints([
-            //非常召集基準（震災）ラベル
+            //非常召集基準（国民保護）ラベル
             Constraint(lblKokuminhogo, .bottom, to:padY2, .top, constant:0),
             Constraint(lblKokuminhogo, .centerX, to:self.view, .centerX, constant:8),
             Constraint(lblKokuminhogo, .width, to:self.view, .width, constant:0, multiplier:0.8)
@@ -228,7 +281,7 @@ class KokuminhogoViewController: UIViewController {
             Constraint(padY2, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
-            //震度５強以上ボタン
+            //第１非常警備ボタン
             Constraint(btnKokuminhogo1, .bottom, to:padY3, .top, constant:0),
             Constraint(btnKokuminhogo1, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo1, .width, to:self.view, .width, constant:0, multiplier:0.8)
@@ -240,7 +293,7 @@ class KokuminhogoViewController: UIViewController {
             Constraint(padY3, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
-            //震度５弱ボタン
+            //第２非常警備ボタン
             Constraint(btnKokuminhogo2, .bottom, to:padY4, .top, constant:0),
             Constraint(btnKokuminhogo2, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo2, .width, to:self.view, .width, constant:0, multiplier:0.8)
@@ -252,7 +305,7 @@ class KokuminhogoViewController: UIViewController {
             Constraint(padY4, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
-            //震度４ボタン Y座標の中心 -72に留意
+            //第３非常警備ボタン Y座標の中心 -72に留意
             Constraint(btnKokuminhogo3, .centerY, to:self.view, .centerY, constant:-72),
             Constraint(btnKokuminhogo3, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo3, .width, to:self.view, .width, constant:0, multiplier:0.8)
@@ -264,7 +317,7 @@ class KokuminhogoViewController: UIViewController {
             Constraint(padY5, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
-            //震度３以下ボタン
+            //第４非常警備ボタン
             Constraint(btnKokuminhogo4, .top, to:padY5, .bottom, constant:0),
             Constraint(btnKokuminhogo4, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo4, .width, to:self.view, .width, constant:0, multiplier:0.8)
@@ -276,10 +329,16 @@ class KokuminhogoViewController: UIViewController {
             Constraint(padY6, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
-            //東海地震に伴う非常招集ボタン
+            //第５非常警備ボタン
             Constraint(btnKokuminhogo5, .top, to:padY6, .bottom, constant:0),
             Constraint(btnKokuminhogo5, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo5, .width, to:self.view, .width, constant:0, multiplier:0.8)
+            ])
+        self.view.addConstraints([
+            //北朝鮮ミサイル発射時等に係る体制ボタン
+            Constraint(btnKokuminhogo6, .top, to:btnKokuminhogo5, .bottom, constant:16),
+            Constraint(btnKokuminhogo6, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnKokuminhogo6, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //pad21
@@ -380,6 +439,33 @@ class KokuminhogoViewController: UIViewController {
         mKokuminhogoResultDialog.showResult(5)
     }
     
+    //北朝鮮ミサイル発射時に係る体制
+    @objc func showKokuminhogo6(_ sender: UIButton){
+        //mKokuminhogo6Dialog.showInfo()
+        scrollView.isHidden = false
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+            return self.imageView2
+        }
+
+        func scrollViewDidZoom(_ scrollView: UIScrollView) {
+            // ズーム終了時の処理
+        }
+
+        func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+            // ズーム開始時の処理
+        }
+
+        func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+            var zoomRect: CGRect = CGRect()
+            zoomRect.size.height = self.scrollView.frame.size.height / scale
+            zoomRect.size.width = self.scrollView.frame.size.width  / scale
+            zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
+            zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
+            return zoomRect
+        }
+    
     //情報(関係機関)
     @objc func showInfoKankeikikan(_ sender: UIButton){
         mInfoDialog.showInfo("kankeikikan")
@@ -430,5 +516,4 @@ class KokuminhogoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }

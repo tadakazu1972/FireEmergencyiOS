@@ -168,6 +168,9 @@
 		926A120E215B55DE00ABE76D /* FireEmergency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 926A120C215B55DE00ABE76D /* FireEmergency.xcdatamodeld */; };
 		926A1211215B5B1400ABE76D /* KinentaiToukai1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A120F215B5B1300ABE76D /* KinentaiToukai1.swift */; };
 		926A1212215B5B1400ABE76D /* KinentaiShutochokka1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A1210215B5B1400ABE76D /* KinentaiShutochokka1.swift */; };
+		E3236CD62756279F00FFC9B2 /* Kokuminhogo6Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3236CD52756279F00FFC9B2 /* Kokuminhogo6Dialog.swift */; };
+		E3236CD92756289900FFC9B2 /* northkorea.png in Resources */ = {isa = PBXBuildFile; fileRef = E3236CD72756289900FFC9B2 /* northkorea.png */; };
+		E3236CDA2756289900FFC9B2 /* scrollpinch.png in Resources */ = {isa = PBXBuildFile; fileRef = E3236CD82756289900FFC9B2 /* scrollpinch.png */; };
 		E38120CC2731432200DD9F25 /* otsunami.csv in Resources */ = {isa = PBXBuildFile; fileRef = E38120CB2731432200DD9F25 /* otsunami.csv */; };
 		E3F5104E245307B9007A33E1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104D245307B9007A33E1 /* riku7.csv */; };
 		E3F5105024530B28007A33E1 /* riku6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104F24530B27007A33E1 /* riku6strong.csv */; };
@@ -350,6 +353,9 @@
 		926A120D215B55DE00ABE76D /* FireEmergency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FireEmergency.xcdatamodel; sourceTree = "<group>"; };
 		926A120F215B5B1300ABE76D /* KinentaiToukai1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiToukai1.swift; sourceTree = "<group>"; };
 		926A1210215B5B1400ABE76D /* KinentaiShutochokka1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiShutochokka1.swift; sourceTree = "<group>"; };
+		E3236CD52756279F00FFC9B2 /* Kokuminhogo6Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kokuminhogo6Dialog.swift; sourceTree = "<group>"; };
+		E3236CD72756289900FFC9B2 /* northkorea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = northkorea.png; sourceTree = "<group>"; };
+		E3236CD82756289900FFC9B2 /* scrollpinch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollpinch.png; sourceTree = "<group>"; };
 		E38120CB2731432200DD9F25 /* otsunami.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = otsunami.csv; path = ../../FireEmergency/app/src/main/assets/otsunami.csv; sourceTree = "<group>"; };
 		E3F5104D245307B9007A33E1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
 		E3F5104F24530B27007A33E1 /* riku6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6strong.csv; sourceTree = "<group>"; };
@@ -477,6 +483,8 @@
 				59973B7C1E86D99500C799AA /* guide2212.png */,
 				59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */,
 				59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */,
+				E3236CD72756289900FFC9B2 /* northkorea.png */,
+				E3236CD82756289900FFC9B2 /* scrollpinch.png */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				590157671E38CC6800928154 /* ContactCell1.swift */,
 				59D8AEF21E6126C200A3EDE2 /* ContactCellCheckbox.swift */,
@@ -501,6 +509,7 @@
 				593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */,
 				593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */,
 				59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */,
+				E3236CD52756279F00FFC9B2 /* Kokuminhogo6Dialog.swift */,
 				598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */,
 				597FD11B1E21E44C0011ABB1 /* KinentaiSelectDialog.swift */,
 				599CBAB42712D9960005A151 /* KinentaiSelectDialogSingleMultiple.swift */,
@@ -685,6 +694,7 @@
 				E3F5105224530E09007A33E1 /* riku6weak.csv in Resources */,
 				595361281E7F8A4500551A0E /* guide421.png in Resources */,
 				595361461E7FF69400551A0E /* guide213.png in Resources */,
+				E3236CD92756289900FFC9B2 /* northkorea.png in Resources */,
 				926A11FF215B1D3E00ABE76D /* kinentai_nankaitraf111.txt in Resources */,
 				59701BCC272E5D6D00880366 /* kaiiki6weak_multi.csv in Resources */,
 				926A1202215B1D3E00ABE76D /* kinentai_nankaitraf110.txt in Resources */,
@@ -717,6 +727,7 @@
 				595361161E7F667600551A0E /* guide65.png in Resources */,
 				595361201E7F7E0000551A0E /* guide411.png in Resources */,
 				597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */,
+				E3236CDA2756289900FFC9B2 /* scrollpinch.png in Resources */,
 				595361381E7FB73600551A0E /* guide444.png in Resources */,
 				597FD1441E2EFC290011ABB1 /* nankaitraf_case2.txt in Resources */,
 				59973B7D1E86D99500C799AA /* guide2212.png in Resources */,
@@ -827,6 +838,7 @@
 				594CA3421E002F8900FF8714 /* TyphoonSelectDialog2.swift in Sources */,
 				595966B825DBF94100157446 /* KyokusyoSelectDialog.swift in Sources */,
 				59D8AEE31E59B64A00A3EDE2 /* ContactUpdateViewController.swift in Sources */,
+				E3236CD62756279F00FFC9B2 /* Kokuminhogo6Dialog.swift in Sources */,
 				59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -981,7 +993,7 @@
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.osakacity.fireemergency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1001,7 +1013,7 @@
 				INFOPLIST_FILE = FireEmergency/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.osakacity.fireemergency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
