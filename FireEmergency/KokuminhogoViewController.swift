@@ -39,10 +39,9 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
     //北朝鮮ミサイル　画像追加用
     fileprivate var scrollView = UIScrollView(frame: CGRect.zero)
     fileprivate var text0: UITextView!
-    fileprivate var imageView1: UIImageView!
+    fileprivate var imageView1 = UIImageView(frame: CGRect.zero)
     fileprivate var text1: UITextView!
     fileprivate var imageView2 = UIImageView(frame: CGRect.zero)
-    var imageUrl: String = "northkorea.png"
     fileprivate var text2: UITextView!
     //別クラスのインスタンス保持用変数
     internal var mInfoDialog: InfoDialog!
@@ -50,7 +49,6 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
     fileprivate var mKokuminhogoSelectDialog: KokuminhogoSelectDialog!
     internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
     fileprivate var mPassInputDialog: PassInputDialog!
-    fileprivate var mKokuminhogo6Dialog: Kokuminhogo6Dialog!
     //データ保存用
     let userDefaults = UserDefaults.standard
     
@@ -120,22 +118,18 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
         btnKokuminhogo6.translatesAutoresizingMaskIntoConstraints = false
         btnKokuminhogo6.addTarget(self, action: #selector(self.showKokuminhogo6(_:)), for: .touchUpInside)
         self.view.addSubview(btnKokuminhogo6)
-        //北朝鮮ミサイル発射時等に係る体制のImageViewを消すボタン　2021.11.30追加
-        btnClose.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnClose.layer.masksToBounds = true
-        btnClose.setTitle("閉じる", for: UIControl.State())
-        btnClose.setTitleColor(UIColor.black, for: UIControl.State())
-        btnClose.translatesAutoresizingMaskIntoConstraints = false
-        btnClose.addTarget(self, action: #selector(self.showKokuminhogo6(_:)), for: .touchUpInside)
-        btnClose.isHidden = true
-        self.view.addSubview(btnClose)
         
         //scroll生成
-        //scrollView = UIScrollView()
-        //scrollView.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
-        scrollView.frame = self.view.frame
+        scrollView.frame = CGRect(x:0, y:0, width:self.view.frame.width, height:self.view.frame.height)
         scrollView.contentSize = CGSize(width: 300,height: 1000)
+        scrollView.backgroundColor = UIColor(red:0.0, green:0.35, blue:0.0, alpha:1.0)
         self.view.addSubview(scrollView)
+        
+        //スクロールとピンチの画像を設定
+        imageView1.image = UIImage(named: "scrollpinch")
+        imageView1.frame = CGRect(x:self.view.frame.midX, y:0, width:200, height:100)
+        imageView1.isHidden = true
+        self.view.addSubview(imageView1)
         
         // デリゲートを設定
         self.scrollView.delegate = self
@@ -145,12 +139,22 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
 
         // imageView2をscrollViewいっぱいに生成
         imageView2.image = UIImage(named: "northkorea")
-        imageView2.frame = CGRect(x:0,y:0,width:view.frame.width,height:view.frame.height)
+        imageView2.frame = CGRect(x:0,y:0,width:view.frame.width,height:450)
+        //一旦隠しておく
+        scrollView.isHidden = true
         scrollView.addSubview(imageView2)
         self.imageView2.contentMode = .scaleAspectFit
         
-        //一旦隠しておく
-        scrollView.isHidden = true;
+        //北朝鮮ミサイル発射時等に係る体制のImageViewを消すボタン　2021.11.30追加
+        btnClose.backgroundColor = UIColor.orange
+        btnClose.layer.masksToBounds = true
+        btnClose.setTitle("体制　閉じる", for: UIControl.State())
+        btnClose.layer.cornerRadius = 10.0
+        btnClose.setTitleColor(UIColor.white, for: UIControl.State())
+        btnClose.translatesAutoresizingMaskIntoConstraints = false
+        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
+        btnClose.isHidden = true
+        self.view.addSubview(btnClose)
         
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
@@ -245,8 +249,6 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
         mKokuminhogoSelectDialog = KokuminhogoSelectDialog(parentView: self)
         mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
         mPassInputDialog = PassInputDialog(parentView: self)
-        mKokuminhogo6Dialog = Kokuminhogo6Dialog(parentView: self) // 2021.11.30追加
-        
         //passCheckをfalseで初期化
         userDefaults.set(false, forKey: "passCheck")
     }
@@ -340,6 +342,12 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
             Constraint(btnKokuminhogo6, .centerX, to:self.view, .centerX, constant:8),
             Constraint(btnKokuminhogo6, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
+        self.view.addConstraints([
+            //閉じるボタン
+            Constraint(btnClose, .top, to:lblKokuminhogo, .top, constant:0),
+            Constraint(btnClose, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnClose, .trailing, to:self.view, .centerX, constant:-8)
+        ])
         self.view.addConstraints([
             //pad21
             Constraint(pad21, .bottom, to:btnKokuminhogoTel, .top, constant:-8),
@@ -441,8 +449,16 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
     
     //北朝鮮ミサイル発射時に係る体制
     @objc func showKokuminhogo6(_ sender: UIButton){
-        //mKokuminhogo6Dialog.showInfo()
+        btnClose.isHidden   = false
+        imageView1.isHidden = false
         scrollView.isHidden = false
+    }
+    
+    //閉じるボタン
+    @objc func onClickClose(_ sender: UIButton){
+        btnClose.isHidden   = true
+        imageView1.isHidden = true
+        scrollView.isHidden = true
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
