@@ -452,6 +452,13 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
         btnClose.isHidden   = false
         imageView1.isHidden = false
         scrollView.isHidden = false
+        //画面下部ボタン消去
+        btnKokuminhogoKankeikikan.isHidden = true
+        btnKokuminhogoBlackout.isHidden    = true
+        btnKokuminhogoRoad.isHidden        = true
+        btnKokuminhogoTel.isHidden         = true
+        btnKokuminhogoCaution.isHidden     = true
+        btnKokuminhogoBousaiNet.isHidden   = true
     }
     
     //閉じるボタン
@@ -459,28 +466,35 @@ class KokuminhogoViewController: UIViewController, UIScrollViewDelegate {
         btnClose.isHidden   = true
         imageView1.isHidden = true
         scrollView.isHidden = true
+        //画面下部ボタン表示
+        btnKokuminhogoKankeikikan.isHidden = false
+        btnKokuminhogoBlackout.isHidden    = false
+        btnKokuminhogoRoad.isHidden        = false
+        btnKokuminhogoTel.isHidden         = false
+        btnKokuminhogoCaution.isHidden     = false
+        btnKokuminhogoBousaiNet.isHidden   = false
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-            return self.imageView2
-        }
+        return self.imageView2
+    }
 
-        func scrollViewDidZoom(_ scrollView: UIScrollView) {
-            // ズーム終了時の処理
-        }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        // ズーム終了時の処理
+    }
 
-        func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-            // ズーム開始時の処理
-        }
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        // ズーム開始時の処理
+    }
 
-        func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
-            var zoomRect: CGRect = CGRect()
-            zoomRect.size.height = self.scrollView.frame.size.height / scale
-            zoomRect.size.width = self.scrollView.frame.size.width  / scale
-            zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
-            zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
-            return zoomRect
-        }
+    func zoomForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+        var zoomRect: CGRect = CGRect()
+        zoomRect.size.height = self.scrollView.frame.size.height / scale
+        zoomRect.size.width = self.scrollView.frame.size.width  / scale
+        zoomRect.origin.x = center.x - zoomRect.size.width / 2.0
+        zoomRect.origin.y = center.y - zoomRect.size.height / 2.0
+        return zoomRect
+    }
     
     //情報(関係機関)
     @objc func showInfoKankeikikan(_ sender: UIButton){
