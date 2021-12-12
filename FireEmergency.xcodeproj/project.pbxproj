@@ -95,9 +95,7 @@
 		59701BC4272E5D3800880366 /* riku7_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BC3272E5D3800880366 /* riku7_multi.csv */; };
 		59701BC6272E5D4600880366 /* riku6weak_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BC5272E5D4600880366 /* riku6weak_multi.csv */; };
 		59701BC8272E5D5100880366 /* riku6strong_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BC7272E5D5100880366 /* riku6strong_multi.csv */; };
-		59701BCA272E5D6500880366 /* kaiiki7_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BC9272E5D6500880366 /* kaiiki7_multi.csv */; };
 		59701BCC272E5D6D00880366 /* kaiiki6weak_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BCB272E5D6D00880366 /* kaiiki6weak_multi.csv */; };
-		59701BCE272E5D7500880366 /* kaiiki6strong_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BCD272E5D7500880366 /* kaiiki6strong_multi.csv */; };
 		59701BD0272E5D8C00880366 /* otsunami_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59701BCF272E5D8C00880366 /* otsunami_multi.csv */; };
 		597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1151E2113E50011ABB1 /* ViewController.swift */; };
 		597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1171E21DB780011ABB1 /* typhoon_caution.txt */; };
@@ -154,6 +152,10 @@
 		59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */; };
 		59D8AEFB1E6246E700A3EDE2 /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEFA1E6246E700A3EDE2 /* ContactSearchViewController.swift */; };
 		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
+		59F0BF762765ECED00ECC357 /* kaiiki7_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59F0BF752765ECED00ECC357 /* kaiiki7_multi.csv */; };
+		59F0BF782765ED1800ECC357 /* kaiiki7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59F0BF772765ED1800ECC357 /* kaiiki7.csv */; };
+		59F0BF7A2765ED3900ECC357 /* kaiiki6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59F0BF792765ED3900ECC357 /* kaiiki6strong.csv */; };
+		59F0BF7C2765ED5900ECC357 /* kaiiki6strong_multi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 59F0BF7B2765ED5900ECC357 /* kaiiki6strong_multi.csv */; };
 		59F6407224553AF200A39423 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F6407124553AF200A39423 /* ViewController2.swift */; };
 		926A11FB215B1D3E00ABE76D /* kinentai_shutochokka110.txt in Resources */ = {isa = PBXBuildFile; fileRef = 926A11F1215B1D3D00ABE76D /* kinentai_shutochokka110.txt */; };
 		926A11FC215B1D3E00ABE76D /* kinentai_shutochokka112.txt in Resources */ = {isa = PBXBuildFile; fileRef = 926A11F2215B1D3D00ABE76D /* kinentai_shutochokka112.txt */; };
@@ -174,8 +176,6 @@
 		E3F5104E245307B9007A33E1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104D245307B9007A33E1 /* riku7.csv */; };
 		E3F5105024530B28007A33E1 /* riku6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5104F24530B27007A33E1 /* riku6strong.csv */; };
 		E3F5105224530E09007A33E1 /* riku6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105124530E09007A33E1 /* riku6weak.csv */; };
-		E3F5105424530F71007A33E1 /* kaiiki7.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105324530F71007A33E1 /* kaiiki7.csv */; };
-		E3F5105624531106007A33E1 /* kaiiki6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105524531106007A33E1 /* kaiiki6strong.csv */; };
 		E3F5105824531243007A33E1 /* kaiiki6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105724531243007A33E1 /* kaiiki6weak.csv */; };
 		E3F5105C245315EE007A33E1 /* hunka.csv in Resources */ = {isa = PBXBuildFile; fileRef = E3F5105B245315EE007A33E1 /* hunka.csv */; };
 /* End PBXBuildFile section */
@@ -277,9 +277,7 @@
 		59701BC3272E5D3800880366 /* riku7_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7_multi.csv; sourceTree = "<group>"; };
 		59701BC5272E5D4600880366 /* riku6weak_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6weak_multi.csv; sourceTree = "<group>"; };
 		59701BC7272E5D5100880366 /* riku6strong_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6strong_multi.csv; sourceTree = "<group>"; };
-		59701BC9272E5D6500880366 /* kaiiki7_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki7_multi.csv; sourceTree = "<group>"; };
 		59701BCB272E5D6D00880366 /* kaiiki6weak_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6weak_multi.csv; sourceTree = "<group>"; };
-		59701BCD272E5D7500880366 /* kaiiki6strong_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6strong_multi.csv; sourceTree = "<group>"; };
 		59701BCF272E5D8C00880366 /* otsunami_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = otsunami_multi.csv; sourceTree = "<group>"; };
 		597FD1151E2113E50011ABB1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		597FD1171E21DB780011ABB1 /* typhoon_caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon_caution.txt; sourceTree = "<group>"; };
@@ -338,6 +336,10 @@
 		59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactImportCSVDialog.swift; sourceTree = "<group>"; };
 		59D8AEFA1E6246E700A3EDE2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
 		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
+		59F0BF752765ECED00ECC357 /* kaiiki7_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kaiiki7_multi.csv; path = "../../../Downloads/修正/kaiiki7_multi.csv"; sourceTree = "<group>"; };
+		59F0BF772765ED1800ECC357 /* kaiiki7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kaiiki7.csv; path = "../../../Downloads/修正/kaiiki7.csv"; sourceTree = "<group>"; };
+		59F0BF792765ED3900ECC357 /* kaiiki6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kaiiki6strong.csv; path = "../../../Downloads/修正/kaiiki6strong.csv"; sourceTree = "<group>"; };
+		59F0BF7B2765ED5900ECC357 /* kaiiki6strong_multi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kaiiki6strong_multi.csv; path = "../../../Downloads/修正/kaiiki6strong_multi.csv"; sourceTree = "<group>"; };
 		59F6407124553AF200A39423 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		926A11F1215B1D3D00ABE76D /* kinentai_shutochokka110.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kinentai_shutochokka110.txt; sourceTree = "<group>"; };
 		926A11F2215B1D3D00ABE76D /* kinentai_shutochokka112.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kinentai_shutochokka112.txt; sourceTree = "<group>"; };
@@ -358,8 +360,6 @@
 		E3F5104D245307B9007A33E1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
 		E3F5104F24530B27007A33E1 /* riku6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6strong.csv; sourceTree = "<group>"; };
 		E3F5105124530E09007A33E1 /* riku6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6weak.csv; sourceTree = "<group>"; };
-		E3F5105324530F71007A33E1 /* kaiiki7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki7.csv; sourceTree = "<group>"; };
-		E3F5105524531106007A33E1 /* kaiiki6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6strong.csv; sourceTree = "<group>"; };
 		E3F5105724531243007A33E1 /* kaiiki6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6weak.csv; sourceTree = "<group>"; };
 		E3F5105B245315EE007A33E1 /* hunka.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hunka.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -424,10 +424,10 @@
 				59701BC7272E5D5100880366 /* riku6strong_multi.csv */,
 				E3F5105124530E09007A33E1 /* riku6weak.csv */,
 				59701BC5272E5D4600880366 /* riku6weak_multi.csv */,
-				E3F5105324530F71007A33E1 /* kaiiki7.csv */,
-				59701BC9272E5D6500880366 /* kaiiki7_multi.csv */,
-				E3F5105524531106007A33E1 /* kaiiki6strong.csv */,
-				59701BCD272E5D7500880366 /* kaiiki6strong_multi.csv */,
+				59F0BF772765ED1800ECC357 /* kaiiki7.csv */,
+				59F0BF752765ECED00ECC357 /* kaiiki7_multi.csv */,
+				59F0BF792765ED3900ECC357 /* kaiiki6strong.csv */,
+				59F0BF7B2765ED5900ECC357 /* kaiiki6strong_multi.csv */,
 				E3F5105724531243007A33E1 /* kaiiki6weak.csv */,
 				59701BCB272E5D6D00880366 /* kaiiki6weak_multi.csv */,
 				E38120CB2731432200DD9F25 /* otsunami.csv */,
@@ -659,18 +659,15 @@
 			files = (
 				597FD1361E2D0F0E0011ABB1 /* kinentai_tounankai.txt in Resources */,
 				597FD1341E2BB4340011ABB1 /* nbc.csv in Resources */,
-				59701BCE272E5D7500880366 /* kaiiki6strong_multi.csv in Resources */,
 				594DDA491D9747110078EE72 /* caution.txt in Resources */,
 				595361141E796C2C00551A0E /* guide62.png in Resources */,
 				5953612C1E7F975600551A0E /* guide423.png in Resources */,
 				926A1201215B1D3E00ABE76D /* kinentai_toukai110.txt in Resources */,
-				59701BCA272E5D6500880366 /* kaiiki7_multi.csv in Resources */,
 				593C668D1DCEB31500405F53 /* kokuminhogo1.txt in Resources */,
 				593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */,
 				595233821E741B2800FC8CE8 /* guide52.png in Resources */,
 				5952336E1E72F4BA00FC8CE8 /* guide12.png in Resources */,
 				5953610E1E78182100551A0E /* guide61.png in Resources */,
-				E3F5105624531106007A33E1 /* kaiiki6strong.csv in Resources */,
 				5953612A1E7F8F2800551A0E /* guide422.png in Resources */,
 				5953615C1E81610500551A0E /* guide224.png in Resources */,
 				E3F5105C245315EE007A33E1 /* hunka.csv in Resources */,
@@ -687,9 +684,11 @@
 				595233801E741B2200FC8CE8 /* guide51.png in Resources */,
 				597FD13E1E2D0F620011ABB1 /* kinentai_nankaitraf2.txt in Resources */,
 				593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */,
+				59F0BF762765ECED00ECC357 /* kaiiki7_multi.csv in Resources */,
 				595361241E7F845300551A0E /* guide413.png in Resources */,
 				E3F5105224530E09007A33E1 /* riku6weak.csv in Resources */,
 				595361281E7F8A4500551A0E /* guide421.png in Resources */,
+				59F0BF7C2765ED5900ECC357 /* kaiiki6strong_multi.csv in Resources */,
 				595361461E7FF69400551A0E /* guide213.png in Resources */,
 				E3236CD92756289900FFC9B2 /* northkorea.png in Resources */,
 				926A11FF215B1D3E00ABE76D /* kinentai_nankaitraf111.txt in Resources */,
@@ -697,6 +696,7 @@
 				926A1202215B1D3E00ABE76D /* kinentai_nankaitraf110.txt in Resources */,
 				595361121E782D5400551A0E /* guide64.png in Resources */,
 				926A11FD215B1D3E00ABE76D /* kinentai_shutochokka111.txt in Resources */,
+				59F0BF782765ED1800ECC357 /* kaiiki7.csv in Resources */,
 				59973B791E86D39A00C799AA /* guide2210.png in Resources */,
 				5953610C1E78145100551A0E /* guide63.png in Resources */,
 				595361441E7FF31B00551A0E /* guide212.png in Resources */,
@@ -736,6 +736,7 @@
 				5952337A1E73D28A00FC8CE8 /* guide32.png in Resources */,
 				597FD13C1E2D0F550011ABB1 /* kinentai_nankaitraf.txt in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
+				59F0BF7A2765ED3900ECC357 /* kaiiki6strong.csv in Resources */,
 				597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */,
 				595233841E741B2E00FC8CE8 /* guide53.png in Resources */,
 				597FD13A1E2D0F1F0011ABB1 /* kinentai_toukai.txt in Resources */,
@@ -747,7 +748,6 @@
 				5953615E1E81629C00551A0E /* guide225.png in Resources */,
 				59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */,
 				595361321E7FB71900551A0E /* guide441.png in Resources */,
-				E3F5105424530F71007A33E1 /* kaiiki7.csv in Resources */,
 				593C668E1DCEB31500405F53 /* kokuminhogo2.txt in Resources */,
 				597FD1381E2D0F150011ABB1 /* kinentai_syutochokka.txt in Resources */,
 			);

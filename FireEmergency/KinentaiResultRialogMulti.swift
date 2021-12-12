@@ -91,7 +91,7 @@ class KinentaiResultDialogMulti {
                     csvString.enumerateLines { (line, stop) -> () in
                         result.append(line.components(separatedBy: ","))
                     }
-                    lineText = "\(i + 1).\(result[indexList[i]][0]) : \(scaleList[i])\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
+                    lineText = "\(i + 1).\(result[indexList[i]][0]) : \(scaleList[i])\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================\n"
                 } else {
                     lineText = "csvファイル読み込みエラー"
                 }
@@ -114,7 +114,7 @@ class KinentaiResultDialogMulti {
                     csvString.enumerateLines { (line, stop) -> () in
                         result.append(line.components(separatedBy: ","))
                     }
-                    lineText = "\(i + 1).\(result[indexList[i]][0]) : 大津波警報\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================"
+                    lineText = "\(i + 1).\(result[indexList[i]][0]) : 大津波警報\n ・指揮支援部隊\n　\(result[indexList[i]][1])\n・大阪府大隊(陸上)\n　\(result[indexList[i]][2])\n・大阪府大隊(航空)\n　\(result[indexList[i]][3])\n============================\n"
                 } else {
                     lineText = "csvファイル読み込みエラー"
                 }
@@ -122,7 +122,7 @@ class KinentaiResultDialogMulti {
             }
         }
         
-        text1.text = _text        
+        text1.text = "※応援先は長官が指定\n\n" + _text
         self.win1.addSubview(text1)
         
         //閉じるボタン生成

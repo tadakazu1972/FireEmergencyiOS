@@ -81,7 +81,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度７\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -102,7 +102,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -123,7 +123,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度6弱(特別区5強,政令市5強又は6弱)\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -145,7 +145,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度７\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -166,7 +166,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -187,7 +187,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■最大震度6弱(特別区5強,政令市5強又は6弱)\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -355,7 +355,7 @@ class KinentaiResultDialog {
                 text1.text = "ファイル読込エラー"
             }
             break
-        //大津波警報・噴火
+        //大津波警報
         case 41:
             //csvファイル読込
             var result: [[String]] = []
@@ -371,7 +371,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■大津波警報\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■大津波警報\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"
@@ -392,7 +392,7 @@ class KinentaiResultDialog {
                 }
                 
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■噴火\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                    text1.text = "■噴火\n　\(result[item][0])\n\n・指揮支援部隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
                 }
             } else {
                 text1.text = "csvファイル読み込みエラー"

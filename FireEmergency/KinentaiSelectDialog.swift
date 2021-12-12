@@ -39,11 +39,11 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         switch index {
         case 1:
             text1.text = "最大震度は？"
-            items = ["■震度７(特別区６強)","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強)"]
+            items = ["■震度７","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強又は６弱)"]
             break
         case 2:
             text1.text = "最大震度は？"
-            items = ["■震度７(特別区６強)","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強)"]
+            items = ["■震度７","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強又は６弱)"]
             break
         case 3:
             text1.text = "アクションプラン"
@@ -73,7 +73,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         //噴火はここで存在しない。先のクラスで都道府県選択に遷移しているため。
         //特殊災害(NBC含む)はここでは存在しない。KinentaiViewController>KinentaiSelectDiaglog2へ直接飛んでいるので。
         default:
-            items = ["■震度７(特別区６強)","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強)"]
+            items = ["■震度７","■震度６強(特別区６弱)","■震度６弱(特別区５強、政令市５強又は６弱)"]
             break
         }
     }

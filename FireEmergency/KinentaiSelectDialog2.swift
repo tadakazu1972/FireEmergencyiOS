@@ -40,23 +40,23 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
         switch index {
         //地震(震央「陸」)
         case 11:
-            text1.text = "■最大震度７(特別区６強)\n　震央管轄都道府県は？"
+            text1.text = "■最大震度７\n　震央管轄都道府県は？"
             break
         case 12:
             text1.text = "■最大震度６強(特別区６弱)\n　震央管轄都道府県は？"
             break
         case 13:
-            text1.text = "■最大震度6弱(特別区5強,政令市5強) 震央管轄都道府県は？"
+            text1.text = "■最大震度6弱(特別区5強,政令市5強又は6弱) 震央管轄都道府県は？"
             break
         //地震(震央「海域」)
         case 21:
-            text1.text = "■最大震度７(特別区６強)\n　最大震度都道府県は？"
+            text1.text = "■最大震度７\n　最大震度都道府県は？"
             break
         case 22:
             text1.text = "■最大震度６強(特別区６弱)\n　最大震度都道府県は？"
             break
         case 23:
-            text1.text = "■最大震度6弱(特別区5強,政令市5強) 最大震度都道府県は？"
+            text1.text = "■最大震度6弱(特別区5強,政令市5強又は6弱) 最大震度都道府県は？"
             break
         //アクションプランはこのダイアログには無い。ただ、case番号31-33は欠番とする
         //大津波警報・噴火
