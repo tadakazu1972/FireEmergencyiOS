@@ -17,6 +17,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
     fileprivate var pic1: UIPickerView!
     let pic1Array: NSArray = ["山梨県中・西部","長野県南部","静岡県東部","静岡県中部","静岡県西部","駿河湾","駿河湾南方沖","新島・神津島近海","愛知県東部","愛知県西部","遠州灘","三河湾","岐阜県美濃東部","三重県北部","三重県中部","三重県南部","伊勢湾","三重県南東沖","和歌山県北部","和歌山県南部","和歌山県南方沖","紀伊水道","奈良県","淡路島付近","播磨灘","徳島県北部","徳島県南部","香川県東部","香川県西部","瀬戸内海中部","愛媛県東予","愛媛県中予","愛媛県南予","伊予灘","豊後水道","高知県東部","高知県中部","高知県西部","土佐湾","四国沖","大分県南部","宮崎県北部平野部","日向灘","九州地方南東沖","その他"]
     fileprivate var label2: UITextView!
+    fileprivate var label3: UITextView! // 2021-12-12 add
     //2019-02-03 削除
     /*fileprivate var text2: UITextView!
     fileprivate var textField2: UITextField!
@@ -67,6 +68,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
     fileprivate var chk1: CheckBox!
     fileprivate var chk2: CheckBox!
     fileprivate var chk3: CheckBox!
+    fileprivate var chk4: CheckBox! //2021-12-12追加
     
     //UITextFieldを便宜的に親として継承しているため。UIViewControllerを継承したくないための策。
     override init(frame: CGRect) {
@@ -87,6 +89,8 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField1  = UITextField()
         pic1        = UIPickerView()
         label2      = UITextView()
+        //2021-12-12 add
+        label3      = UITextView()
         //2019-02-03 削除
         /*
         text2       = UITextView()
@@ -105,6 +109,8 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         chk1 = CheckBox()
         chk2 = CheckBox()
         chk3 = CheckBox()
+        // 2021-12-12 追加
+        chk4 = CheckBox()
     }
     
     //デコンストラクタ
@@ -117,6 +123,8 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         pic1        = nil
         
         label2      = nil
+        //2021-12-12 add
+        label3      = nil
         //2019-02-03 削除
         /*
         text2       = nil
@@ -138,6 +146,8 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         chk1 = nil
         chk2 = nil
         chk3 = nil
+        // 2021-12-12 追加
+        chk4 = nil
     }
     
     //表示
@@ -311,6 +321,24 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         chk3.awakeFromNib()
         self.win1.addSubview(chk3)
         
+        //2021-12-12 add
+        //label3生成
+        label3.text = "又は"
+        label3.frame = CGRect(x: 10,y: 410, width: self.win1.frame.width - 20, height: 30)
+        label3.backgroundColor = UIColor.clear
+        label3.font = UIFont.systemFont(ofSize: (CGFloat(14)))
+        label3.textColor = UIColor.black
+        label3.textAlignment = NSTextAlignment.left
+        self.win1.addSubview(label3)
+        
+        chk4.frame = CGRect(x:10, y:420, width:self.win1.frame.width-20, height:60)
+        chk4.setTitle("発生した地震がＭ8.0以上の場合(南海トラフ地震臨時情報(巨大地震警戒)が発表される可能性がある場合)", for: UIControl.State())
+        chk4.setTitleColor(UIColor.black, for: UIControl.State())
+        chk4.titleLabel?.font = UIFont.systemFont(ofSize: (CGFloat(14)))
+        chk4.titleLabel?.numberOfLines = 2
+        chk4.awakeFromNib()
+        self.win1.addSubview(chk4)
+        
         //閉じるボタン生成
         btnClose.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
         btnClose.backgroundColor = UIColor.orange
@@ -445,7 +473,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         if chk2.isChecked {i += 1}
         if chk3.isChecked {i += 1}
         //対応の結果であるアクションプランを表示
-        if (textField1.text != "その他" && i==3) {
+        if (textField1.text != "その他" && i==3) || chk4.isChecked {
             // 2018-09-26 遷移先を選択用ダイアログに変更
             /* mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
             mKinentaiResultDialog.showResult(34, item: 0) */
@@ -453,7 +481,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
             /*mKinentaiSelectDialog = KinentaiSelectDialog(index: 34, parentView: parent)
             mKinentaiSelectDialog.showInfo()*/
             mKinentaiSelectDialog3 = KinentaiSelectDialog3(index: 3, parentView: parent)
-            mKinentaiSelectDialog3.showInfo()
+            mKinentaiSelectDialog3.showInfo()            
         } else {
             mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
             mKinentaiResultDialog.showResult(35, item: 0)

@@ -97,7 +97,7 @@ class KinentaiSelectDialog3 {
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.white
-        win1.frame = CGRect(x: 20,y: 80, width: parent.view.frame.width-40, height: parent.view.frame.height*1.2) //拡大
+        win1.frame = CGRect(x: 20,y: 80, width: parent.view.frame.width-40, height: parent.view.frame.height)
         win1.layer.position = CGPoint(x: parent.view.frame.width/2, y: parent.view.frame.height/2+72) //+72調整
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
