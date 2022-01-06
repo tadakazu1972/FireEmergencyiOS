@@ -313,7 +313,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         chk2.awakeFromNib()
         self.win1.addSubview(chk2)
         
-        chk3.frame = CGRect(x:10, y:340, width:self.win1.frame.width-20, height:60)
+        chk3.frame = CGRect(x:10, y:330, width:self.win1.frame.width-20, height:60)
         chk3.setTitle("四国・九州地方：徳島県、香川県、愛媛県、高知県、大分県、宮崎県", for: UIControl.State())
         chk3.setTitleColor(UIColor.black, for: UIControl.State())
         chk3.titleLabel?.font = UIFont.systemFont(ofSize: (CGFloat(14)))
@@ -324,7 +324,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         //2021-12-12 add
         //label3生成
         label3.text = "又は"
-        label3.frame = CGRect(x: 10,y: 410, width: self.win1.frame.width - 20, height: 30)
+        label3.frame = CGRect(x: 10,y: 390, width: self.win1.frame.width - 20, height: 30)
         label3.backgroundColor = UIColor.clear
         label3.font = UIFont.systemFont(ofSize: (CGFloat(14)))
         label3.textColor = UIColor.black
@@ -335,7 +335,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         chk4.setTitle("発生した地震がＭ8.0以上の場合(南海トラフ地震臨時情報(巨大地震警戒)が発表される可能性がある場合)", for: UIControl.State())
         chk4.setTitleColor(UIColor.black, for: UIControl.State())
         chk4.titleLabel?.font = UIFont.systemFont(ofSize: (CGFloat(14)))
-        chk4.titleLabel?.numberOfLines = 2
+        chk4.titleLabel?.numberOfLines = 3
         chk4.awakeFromNib()
         self.win1.addSubview(chk4)
         
