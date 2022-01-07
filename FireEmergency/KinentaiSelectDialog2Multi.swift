@@ -188,7 +188,11 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         let action2 = UIAlertAction(title: "震度６強(特別区６弱)", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             //実際の処理
-            self.mSelectedPrefectureScaleList.append("震度６強")
+            if prefecture == "東京都" {
+                self.mSelectedPrefectureScaleList.append("震度６強(特別区６弱)")
+            } else {
+                self.mSelectedPrefectureScaleList.append("震度６強")
+            }
             //陸か海域か
             if self.mIndex == 1 {
                 self.mSelectedPrefectureCSVList.append("riku6strong_multi")
@@ -202,8 +206,13 @@ class KinentaiSelectDialog2Multi: NSObject, UICollectionViewDelegate, UICollecti
         // 表示させたいタイトル2ボタンが押された時の処理をクロージャ実装する
         let action3 = UIAlertAction(title: "震度６弱(特別区は５強、政令市は５強又は６弱)", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
+            let specialSet = Set(arrayLiteral: "北海道", "宮城県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "静岡県", "愛知県", "京都府", "大阪府", "兵庫県", "岡山県", "広島県", "福岡県", "熊本県")
             //実際の処理
-            self.mSelectedPrefectureScaleList.append("震度６弱")
+            if specialSet.contains(prefecture) {
+                self.mSelectedPrefectureScaleList.append("震度６弱(特別区は５強、政令市は５強又は６弱)")
+            } else {
+                self.mSelectedPrefectureScaleList.append("震度６弱")
+            }
             //陸か海域か
             if self.mIndex == 1 {
                 self.mSelectedPrefectureCSVList.append("riku6weak_multi")
