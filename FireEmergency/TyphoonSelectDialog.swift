@@ -37,7 +37,8 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         case 3:
             //2020.06 天竺川、高川、西除川　追加
             //2021.05 石川　追加
-            items = ["■淀川（枚方）", "■大和川（柏原）", "■神崎川（三国）", "■天竺川（天竺川橋）", "■高川（水路橋）", "■安威川（千歳橋）", "■寝屋川（京橋）", "■第二寝屋川（昭明橋）", "■平野川（剣橋）", "■平野川分水路（今里大橋）", "■古川（桑才）", "■東除川（大堀上小橋）", "■石川（玉手橋）", "■西除川（布忍橋）", "■高潮"]
+            //2022.05 旧淀川流域の河川　追加
+            items = ["■淀川（枚方）", "■大和川（柏原）", "■神崎川（三国）", "■天竺川（天竺川橋）", "■高川（水路橋）", "■安威川（千歳橋）", "■寝屋川（京橋）", "■第二寝屋川（昭明橋）", "■平野川（剣橋）", "■平野川分水路（今里大橋）", "■古川（桑才）", "■東除川（大堀上小橋）", "■石川（玉手橋）", "■西除川（布忍橋）", "■旧淀川流域の河川（京橋） 大川、堂島川、安治川、土佐堀川、尻無川", "■高潮"]
             break
         default:
             items = ["■特別警報", "■暴風（雪）警報", "■大雨警報", "■大雪警報", "■洪水警報", "■波浪警報", "■高潮警報", "■高潮注意報"]
@@ -252,8 +253,13 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
                 mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 14, parentView: parent)
                 mTyphoonSelectDialog2.showInfo()
                 break
-            //高潮区域
+            //旧淀川流域等の河川(京橋) 2022.05　追加 index:16(既存分を変更しないため)
             case 14:
+                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 16, parentView: parent)
+                mTyphoonSelectDialog2.showInfo()
+                break
+            //高潮区域
+            case 15:
                 mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 11, parentView: parent)
                 mTyphoonSelectDialog2.showInfo()
                 break
