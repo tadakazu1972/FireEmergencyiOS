@@ -754,7 +754,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 162:
-            let title:String! = "■旧淀川流域等の河川(京橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■旧淀川流域の河川等(京橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "港", "浪速", "旭", "城東", "西成", "消防局")
             text2.text = "4号:北,都島,福島,此花,港,浪速,旭,城東,西成,消防局\n5号:その他の署"
@@ -762,7 +762,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難
         case 163:
-            let title:String! = "■旧淀川流域等の河川(京橋)\n 【警戒レベル３】\n高齢者等避難(水位3.32m)\n\n"
+            let title:String! = "■旧淀川流域の河川等(京橋)\n 【警戒レベル３】\n高齢者等避難(水位3.32m)\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "港", "浪速", "旭", "城東", "西成", "消防局")
             text2.text = "3号:北,都島,福島,此花,港,浪速,旭,城東,西成,消防局\n4号:その他の署"
@@ -770,7 +770,7 @@ class TyphoonResultDialog2 {
             break
         //避難指示　２号、３号、４号判定
         case 164:
-            let title:String! = "■旧淀川流域等の河川(京橋)\n【警戒レベル４】\n避難指示(水位3.5m)\n\n"
+            let title:String! = "■旧淀川流域の河川等(京橋)\n【警戒レベル４】\n避難指示(水位3.5m)\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "港", "浪速", "旭", "城東", "西成", "消防局")
             text2.text = "2号:北,都島,福島,此花,港,浪速,旭,城東,西成,消防局\n3号:その他の署"
@@ -778,7 +778,7 @@ class TyphoonResultDialog2 {
             break
         //緊急安全確保
         case 165:
-            let title:String! = "■旧淀川流域等の河川(京橋)\n【警戒レベル５】\n緊急安全確保(水位3.9m)\n\n"
+            let title:String! = "■旧淀川流域の河川等(京橋)\n【警戒レベル５】\n緊急安全確保(水位3.9m)\n\n"
             let hosoku:String! = ""
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "港", "浪速", "旭", "城東", "西成", "消防局")
             text2.text = "1号:北,都島,福島,此花,港,浪速,旭,城東,西成,消防局\n2号:その他の署"
