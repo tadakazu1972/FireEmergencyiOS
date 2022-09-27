@@ -132,7 +132,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 12:
-            let title:String! = "■淀川（枚方）\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■淀川（枚方）\n高齢者等避難が発令される見込みとなった場合\n急激な水位上昇時の対応になる場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "西淀川", "淀川", "東淀川", "旭", "消防局")
             text2.text = "4号:北,都島,福島,此花,西淀川,淀川,東淀川,旭,消防局\n5号:その他の署"
@@ -180,7 +180,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 22:
-            let title:String! = "■大和川(柏原)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■大和川(柏原)\n高齢者等避難が発令される見込みとなった場合\n急激な水位上昇時の対応になる場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "住之江", "住吉", "東住吉", "平野", "消防局")
             text2.text = "4号:住之江,住吉,東住吉,平野,消防局\n5号:その他の署"
@@ -228,7 +228,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 32:
-            let title:String! = "■神崎川(三国)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■神崎川(三国)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "西淀川", "淀川", "東淀川", "消防局")
             text2.text = "4号:西淀川,淀川,東淀川,消防局\n5号:その他の署"
@@ -276,7 +276,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 122:
-            let title:String! = "■天竺川(天竺川橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■天竺川(天竺川橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "4号:淀川,消防局\n5号:その他の署"
@@ -324,7 +324,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 132:
-            let title:String! = "■高川(水路橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■高川(水路橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "淀川", "消防局")
             text2.text = "4号:淀川,消防局\n5号:その他の署"
@@ -372,7 +372,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 42:
-            let title:String! = "■安威川(千歳橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■安威川(千歳橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "東淀川", "消防局")
             text2.text = "4号:東淀川,消防局\n5号:その他の署"
@@ -421,7 +421,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 52:
-            let title:String! = "■寝屋川(京橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■寝屋川(京橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "都島", "中央", "東成", "生野", "旭", "城東", "鶴見", "東住吉", "平野", "消防局")
             text2.text = "4号:都島,中央,東成,生野,旭,城東,鶴見,東住吉,平野,消防局\n5号:その他の署"
@@ -469,7 +469,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 62:
-            let title:String! = "■第二寝屋川(昭明橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■第二寝屋川(昭明橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "城東", "鶴見", "消防局")
             text2.text = "4号:中央,東成,城東,鶴見,消防局\n5号:その他の署"
@@ -517,7 +517,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 72:
-            let title:String! = "■平野川(剣橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■平野川(剣橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "生野", "城東", "東住吉", "平野", "消防局")
             text2.text = "4号:中央,東成,生野,城東,東住吉,平野,消防局\n5号:その他の署"
@@ -565,7 +565,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 82:
-            let title:String! = "■平野川分水路(今里大橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■平野川分水路(今里大橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "中央", "東成", "生野", "城東", "東住吉", "平野", "消防局")
             text2.text = "4号:中央,東成,生野,城東,東住吉,平野,消防局\n5号:その他の署"
@@ -613,7 +613,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 92:
-            let title:String! = "■古川(桑才)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■古川(桑才)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "旭", "城東", "鶴見", "消防局")
             text2.text = "4号:旭,城東,鶴見,消防局\n5号:その他の署"
@@ -661,7 +661,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 102:
-            let title:String! = "■東除川(大堀上小橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■東除川(大堀上小橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "平野", "消防局")
             text2.text = "4号:平野,消防局\n5号:その他の署"
@@ -717,7 +717,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 142:
-            let title:String! = "■西除川(布忍橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■西除川(布忍橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "東住吉", "平野", "消防局")
             text2.text = "4号:東住吉,平野,消防局\n5号:その他の署"
@@ -754,7 +754,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 162:
-            let title:String! = "■旧淀川流域の河川等(京橋)\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■旧淀川流域の河川等(京橋)\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "港", "浪速", "旭", "城東", "西成", "消防局")
             text2.text = "4号:北,都島,福島,此花,港,浪速,旭,城東,西成,消防局\n5号:その他の署"
@@ -802,7 +802,7 @@ class TyphoonResultDialog2 {
             break
         //高齢者等避難発令の見込み
         case 112:
-            let title:String! = "■高潮\n高齢者等避難が発令される見込みとなったとき\n\n"
+            let title:String! = "■高潮\n高齢者等避難が発令される見込みとなった場合\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央","西","港","大正","天王寺","浪速","西淀川", "淀川", "東淀川", "旭", "城東","阿倍野","住之江","住吉","西成","水上","消防局")
             text2.text = "4号:北,都島,福島,此花,中央,西,港,大正,天王寺,浪速,西淀川,淀川,東淀川,旭,城東,阿倍野,住之江,住吉,西成,水上,消防局\n5号:その他の署"
@@ -874,7 +874,7 @@ class TyphoonResultDialog2 {
         self.win1.addSubview(btnGaitousyo)
     }
     
-    //高齢者等避難が発令される見込みとなったとき
+    //高齢者等避難が発令される見込みとなった場合
     func setLevel2(title: String, hosoku: String, gaitousyo: Set<String> ){
         var message:String! = ""
         //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
